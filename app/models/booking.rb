@@ -6,7 +6,7 @@ class Booking < ApplicationRecord
                        numericality: { only_integer: true, greater_than: 0 },
                        if: :multiple_of_thirty?
 
-  belongs_to :student, foreign_key: "student_id", class_name: "User"
+  belongs_to :user
   belongs_to :followed_lesson, foreign_key: "followed_lesson_id", class_name: "Lesson"
 
   def start_in_future
@@ -17,9 +17,7 @@ class Booking < ApplicationRecord
     errors.add(:duration, ": Les cours se font par tranche de 30min") unless duration % 30 == 0
   end
 
-  def teacher
+  def student
     user
   end
-
-
 end

@@ -1,5 +1,4 @@
 class Lesson < ApplicationRecord
-
   validates_presence_of :title, :description, :number_of_credit
   validates :title, uniqueness: { case_sensitive: false }, length: { minimum: 10 }
   validates :description, length: { in: 20...5000 }
@@ -14,6 +13,10 @@ class Lesson < ApplicationRecord
             class_name: 'User',
             dependent: :destroy
   has_one_attached :picture
+
+  def teacher
+    user
+  end
 
   private
 
