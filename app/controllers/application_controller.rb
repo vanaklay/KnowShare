@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Configure the autorisation of params for controller devise only on sign up and update pages 
+  # Configure the authorization of params for controller devise only on sign up and update pages 
   def configure_permitted_params
 
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :avatar, :email, :password)}
