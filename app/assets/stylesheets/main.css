@@ -4,3 +4,14 @@
   background-position: center center;
   background-size: cover;
 }
+
+.footer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-font {
+  font-family: 'Permanent Marker', cursive;
+}
