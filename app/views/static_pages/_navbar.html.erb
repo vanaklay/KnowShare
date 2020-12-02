@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <%= link_to "KnowShare", root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "Créer un cours", root_path, class: "nav-item active nav-link mr-3" %>
+      </li>
+    </ul>
+
+    <div class="nav-item dropdown">
+      <a class="nav-link btn btn-primary dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Se connecter
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to "Inscription", root_path, class: "nav-link btn btn-outline-primary mx-2 my-2" %>
+        <%= link_to "Connexion", root_path, class: "nav-link btn btn-outline-primary mx-2 my-2" %>        
+      </div>
+    </div>
+  </div>
+</nav>
