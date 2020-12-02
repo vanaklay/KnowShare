@@ -1,0 +1,6 @@
+.jumbo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
