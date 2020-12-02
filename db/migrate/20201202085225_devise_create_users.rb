@@ -5,6 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
 
       t.string :username,           null: false
+
+      # adds an index to this attribute, and add a uniquess constraint
       t.index :username,            unique: true
 
       ## Database authenticatable
