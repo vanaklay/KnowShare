@@ -8,6 +8,12 @@ class Booking < ApplicationRecord
 
   belongs_to :user
   belongs_to :followed_lesson, foreign_key: "followed_lesson_id", class_name: "Lesson"
+  
+  def student
+    user
+  end
+
+  private
 
   def start_in_future
     errors.add(:start_date, ": Impossible de réserver un événement dans le passé") unless start_date > DateTime.now
@@ -15,9 +21,5 @@ class Booking < ApplicationRecord
 
   def multiple_of_thirty?
     errors.add(:duration, ": Les cours se font par tranche de 30min") unless duration % 30 == 0
-  end
-
-  def student
-    user
   end
 end
