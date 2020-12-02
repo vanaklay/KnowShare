@@ -7,6 +7,12 @@ class Lesson < ApplicationRecord
   after_create :add_teacher_role, if: :not_teacher?
 
   belongs_to :user
+  has_many  :bookings
+  has_many  :students,
+            through: :bookings,
+            foreign_key: 'student_id',
+            class_name: 'User',
+            dependent: :destroy
   has_one_attached :picture
 
   private
