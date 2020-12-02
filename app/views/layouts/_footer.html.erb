@@ -1,31 +1,35 @@
 <footer class='bg-dark pl-5'>
   <div class='row container-fluid'>
-    <div class='col-md-4 col-sm-1'>
+    <div class='col-md-3 col-sm-1'>
+      <h4 class="py-3 logo-font">Kn<span class="text-danger">o</span>wSh<span class="text-danger">a</span>re</h4>
+      <p>Un espace d'échange et de partage de connaissances</p>
+    </div>
+    <div class='col-md-3 col-sm-1'>
+      <h4 class="py-3">À propos de nous</h4>
+      <p><%= link_to "L'équipe", root_path, class: "text-light" %></p>
+      <p><%= link_to "Contactez-nous", root_path, class: "text-light" %></p>
+    </div>
+    <div class='col-md-3 col-sm-1'>
+      <h4 class="py-3">Liens pratiques</h4>
+      <p><%= link_to "Tarifs", root_path, class: "text-light" %></p>
+      <p><%= link_to "Conditions générales de vente", root_path, class: "text-light" %></p>
+    </div>
+    <div class='col-md-3 col-sm-1'>
       <h4 class="py-3">Suivez-nous !</h4>
       <div class="social-icon">
-        <%= link_to root_path do %>
-          <i class="fab fa-facebook-square fa-3x"></i>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-facebook-square fa-2x"></i>
         <%end %>
-        <%= link_to root_path do %>
-          <i class="fab fa-twitter-square fa-3x"></i>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-github-square fa-2x"></i>
         <%end %>
-        <%= link_to root_path do %>
-          <i class="fab fa-linkedin fa-3x"></i>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-linkedin fa-2x"></i>
         <%end %>
-        <%= link_to root_path do %>
-          <i class="fab fa-instagram fa-3x"></i>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-instagram fa-2x"></i>
         <%end %>
       </div>
-    </div>
-    <div class='col-md-4 col-sm-1'>
-      <h4 class="py-3">À propos de nous</h4>
-      <p><%= link_to "L'équipe", root_path %></p>
-      <p><%= link_to "Contactez-nous", root_path %></p>
-    </div>
-    <div class='col-md-4 col-sm-1'>
-      <h4 class="py-3">Liens pratiques</h4>
-      <p><%= link_to "Tarifs", root_path %></p>
-      <p><%= link_to "Conditions générales de vente", root_path %></p>
     </div>
   </div>
   <div class="text-center py-3 mt-3">© KnowShare, 2020</div>

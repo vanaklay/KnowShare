@@ -11,3 +11,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.logo-font {
+  font-family: 'Permanent Marker', cursive;
+}
