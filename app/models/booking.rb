@@ -13,6 +13,10 @@ class Booking < ApplicationRecord
     user
   end
 
+  def teacher
+    followed_lesson.user
+  end
+
   private
 
   def start_in_future
