@@ -6,7 +6,22 @@ class User < ApplicationRecord
 
   validates :username,  presence: true,
                         uniqueness: true
-  
+
   has_one_attached :avatar
 
+  before_create :assign_student_role
+
+  def role_include?(searched_role)
+    role.split.include?(searched_role)
+  end
+
+  def student?
+    role_include?('student')
+  end
+
+  private
+
+  def assign_student_role
+    self.role = 'student'
+  end
 end
