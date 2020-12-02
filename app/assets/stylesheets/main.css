@@ -4,24 +4,18 @@
   background-position: center center;
   background-size: cover;
 }
-
-.titleIndex {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.344;
-  }
   
-  .subTitleIndex {
-  font-size: 18px;
-  }
+.subTitleIndex {
+font-size: 18px;
+}
 
-  .avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 1;
-  }
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1;
+}
