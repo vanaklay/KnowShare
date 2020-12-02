@@ -72,3 +72,10 @@ font-size: 18px;
 .text-subTitleJumbo {
   font-size: 1rem;
 }
+.row-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 4px;
+}

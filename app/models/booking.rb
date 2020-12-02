@@ -6,9 +6,18 @@ class Booking < ApplicationRecord
                        numericality: { only_integer: true, greater_than: 0 },
                        if: :multiple_of_thirty?
 
-  belongs_to :student, foreign_key: "student_id", class_name: "User"
+  belongs_to :user
   belongs_to :followed_lesson, foreign_key: "followed_lesson_id", class_name: "Lesson"
   
+  def student
+    user
+  end
+
+  def teacher
+    followed_lesson.user
+  end
+
+  private
 
   def start_in_future
     errors.add(:start_date, ": Impossible de réserver un événement dans le passé") unless start_date > DateTime.now
@@ -16,13 +25,5 @@ class Booking < ApplicationRecord
 
   def multiple_of_thirty?
     errors.add(:duration, ": Les cours se font par tranche de 30min") unless duration % 30 == 0
-    
   end
-
-  def teacher
-    user
-    
-  end
-
-
 end
