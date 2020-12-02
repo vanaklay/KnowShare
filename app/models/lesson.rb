@@ -6,5 +6,5 @@ class Lesson < ApplicationRecord
   validates :number_of_credit, numericality: { grater_than_or_equal_to: 1 }
 
   has_one_attached :picture
-  
+  belongs_to :user
 end
