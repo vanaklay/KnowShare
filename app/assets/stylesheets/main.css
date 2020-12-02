@@ -1,8 +1,13 @@
+/* */
 .jumbo {
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+.h1-jumbo {
+  font-size: 4rem;
 }
 
   
@@ -31,4 +36,39 @@ font-size: 18px;
 .logo-font {
   font-family: 'Permanent Marker', cursive;
 
+}
+
+.number {
+  width: 40px;
+  height: 40px;
+  margin-right: 80px;
+  font-size: 22px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  border: 3px solid;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.p-concept {
+  font-size: 18px;
+}
+
+.subTitleJumbo {
+  display: inline-block;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  margin-right: 1rem;
+  font-size: 5rem;
+  line-height: inherit;
+  white-space: nowrap;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.text-subTitleJumbo {
+  font-size: 1rem;
 }
