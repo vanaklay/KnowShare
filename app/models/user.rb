@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validates :username,  presence: true,
                         uniqueness: true
 
-  has_many  :lessons
-  has_many  :bookings
+  has_many  :lessons, dependent: :destroy
+  has_many  :bookings, dependent: :destroy
   has_many  :followed_lessons,
             through: :bookings,
             foreign_key: 'followed_lesson_id',
@@ -27,6 +27,15 @@ class User < ApplicationRecord
     role_include?('student')
   end
 
+  def teacher?
+    role_include?('teacher')
+  end
+
+  def assign_teacher_role
+    new_role = role + ' ' + 'teacher'
+    update(role: new_role)
+  end
+  
   private
 
   def assign_student_role
