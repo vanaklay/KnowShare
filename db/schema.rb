@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 2020_12_02_134030) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_date", null: false
     t.integer "duration", default: 30, null: false
-    t.bigint "user_id"
-    t.bigint "lesson_id"
+    t.bigint "student_id"
+    t.bigint "followed_lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["followed_lesson_id"], name: "index_bookings_on_followed_lesson_id"
+    t.index ["student_id"], name: "index_bookings_on_student_id"
   end
 
   create_table "lessons", force: :cascade do |t|

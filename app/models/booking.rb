@@ -7,7 +7,8 @@ class Booking < ApplicationRecord
                        if: :multiple_of_thirty?
 
   belongs_to :student, foreign_key: "student_id", class_name: "User"
-
+  belongs_to :followed_lesson, foreign_key: "followed_lesson_id", class_name: "Lesson"
+  
 
   def start_in_future
     errors.add(:start_date, ": Impossible de réserver un événement dans le passé") unless start_date > DateTime.now
