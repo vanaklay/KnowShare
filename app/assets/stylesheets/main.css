@@ -4,3 +4,31 @@
   background-position: center center;
   background-size: cover;
 }
+
+  
+.subTitleIndex {
+font-size: 18px;
+}
+
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.footer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-font {
+  font-family: 'Permanent Marker', cursive;
+
+}

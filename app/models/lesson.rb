@@ -6,6 +6,7 @@ class Lesson < ApplicationRecord
   validates :number_of_credit, numericality: { greater_than_or_equal_to: 1 }
   after_create :add_teacher_role, if: :not_teacher?
 
+  belongs_to :user
   has_one_attached :picture
 
   private

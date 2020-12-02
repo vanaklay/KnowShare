@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :username,  presence: true,
                         uniqueness: true
 
+  has_many  :lessons
   has_many  :bookings
   has_many  :followed_lessons,
             through: :bookings,
