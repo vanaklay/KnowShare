@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2020_12_02_154924) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_date", null: false
+    t.integer "duration", default: 30, null: false
+    t.bigint "student_id"
+    t.bigint "followed_lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_lesson_id"], name: "index_bookings_on_followed_lesson_id"
+    t.index ["student_id"], name: "index_bookings_on_student_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
