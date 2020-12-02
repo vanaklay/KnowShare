@@ -1,6 +1,10 @@
 class Booking < ApplicationRecord
-  validates :start_date, presence: true, if: :start_in_future
-  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }, if: :multiple_of_thirty?
+  validates :start_date, presence: true,
+                         if: :start_in_future
+
+  validates :duration, presence: true,
+                       numericality: { only_integer: true, greater_than: 0 },
+                       if: :multiple_of_thirty?
 
   belongs_to :student, foreign_key: "student_id", class_name: "User"
 
@@ -14,11 +18,10 @@ class Booking < ApplicationRecord
     
   end
 
-  private
-
   def teacher
     user
     
   end
-  
+
+
 end
