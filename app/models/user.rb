@@ -26,6 +26,15 @@ class User < ApplicationRecord
     role_include?('student')
   end
 
+  def teacher?
+    role_include?('teacher')
+  end
+
+  def assign_teacher_role
+    new_role = role + ' ' + 'teacher'
+    update(role: new_role)
+  end
+  
   private
 
   def assign_student_role
