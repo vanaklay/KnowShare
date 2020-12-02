@@ -32,3 +32,11 @@ font-size: 18px;
   font-family: 'Permanent Marker', cursive;
 
 }
+
+.row-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 4px;
+}
