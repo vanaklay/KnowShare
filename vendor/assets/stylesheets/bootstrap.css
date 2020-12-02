@@ -161,13 +161,13 @@
  }
  
  a {
-   color: #00e677;
+   color: #fff;
    text-decoration: none;
    background-color: transparent;
  }
  
  a:hover {
-   color: #007053;
+   color: #fff;
    text-decoration: underline;
  }
  
@@ -3104,12 +3104,12 @@
  
  .btn-link {
    font-weight: 400;
-   color: #00e677;
+   color: #fff;
    text-decoration: none;
  }
  
  .btn-link:hover {
-   color: #007053;
+   color: #fff;
    text-decoration: underline;
  }
  
@@ -5024,7 +5024,7 @@
    margin-left: 0;
    line-height: 1.25;
    color: #fff;
-   background-color: #00e677;
+   background-color: #fff;
    border: 0 solid transparent;
  }
  
@@ -5032,7 +5032,7 @@
    z-index: 2;
    color: #fff;
    text-decoration: none;
-   background-color: #00efb2;
+   background-color: #fff;
    border-color: transparent;
  }
  
