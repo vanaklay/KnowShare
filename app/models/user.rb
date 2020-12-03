@@ -35,6 +35,18 @@ class User < ApplicationRecord
     new_role = role + ' ' + 'teacher'
     update(role: new_role)
   end
+
+  def has_first_name?
+    self.first_name
+  end
+
+  def has_last_name?
+    self.last_name
+  end
+
+  def has_description?
+    self.description
+  end 
   
   private
 
