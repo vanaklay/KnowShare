@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to(root_path)
     else
-      flash[:danger] = "Votre réservation n'a pas abouti"
+      flash[:danger] = "Votre réservation n'a pas pu aboutir"
       redirect_back(fallback_location: root_path)
     end
   end 
