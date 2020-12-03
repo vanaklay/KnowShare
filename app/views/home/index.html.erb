@@ -1,4 +1,10 @@
 <%= render 'jumbotron' %>
-<%= render 'concept' %>
+
+<% if user_signed_in? %>
+  <%= render 'concept_user' %>
+<% else %>
+  <%= render 'concept' %>
+<% end %>
+
 <%= render 'index_cards' %>
 <%= render 'testimony'%>
