@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      flash[:success] = "Votre réservation a bien été prise en compte"
       redirect_to(root_path)
     else
       flash[:danger] = "Votre réservation n'a pas pu aboutir"
@@ -15,20 +16,11 @@ class BookingsController < ApplicationController
     end
   end 
 
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html {redirect_to @cart, notice: "Le cours a bien été annulé"}
-      format.json {head :no_content}
+      format.html { redirect_to @cart, notice: "Le cours a bien été annulé" }
+      format.json { head :no_content }
       format.js {}
   end
 
