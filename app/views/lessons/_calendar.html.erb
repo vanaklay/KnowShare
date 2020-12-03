@@ -1,0 +1,24 @@
+<div class="card-body">
+  <h3 class="text-center">Disponibilité du prof</h2>
+    <div class="row">
+    <% @schedules.each do |schedule| %>
+      
+        <% if schedule.title == "booked" %>
+        <button class="btn btn-danger " disabled id="schedule_id_<%=schedule.id%>"><%= local_time(schedule.start_time, format: '%H:%M %P') %></button>
+        <% else %>
+        <button class="btn btn-info" id="schedule_id_<%=schedule.id%>"><%= local_time(schedule.start_time, format: '%H:%M %P') %></button>
+        <% end %>
+      <script type="text/javascript">
+        document.getElementById("schedule_id_<%=schedule.id%>").addEventListener('click',function ()
+            {
+            
+            let target = document.getElementById("target_calendar");
+            target.style.color = "green";
+            target.textContent = "Horaire choisi : <%= schedule.start_time.strftime("%d %m %y - %k:%M") %>"; 
+            }  );
+      </script>
+    <% end %>
+    </div>
+</div>
+
+
