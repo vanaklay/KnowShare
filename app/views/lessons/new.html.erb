@@ -6,7 +6,7 @@
       <%= form_with model: @lesson, class: "form", id: "contact-form" do |f| %>
         <div class="form-group">
           <%= f.label "Titre du cours (min 10 charactères)", class: "form-label" %>
-          <%= f.text_field :title, class: "form-control", placeholder: "Apprendre les 8 principaux accords à la guitare", required: true %>
+          <%= f.text_field :title, class: "form-control", placeholder: "Apprendre les 8 principaux accords à la guitare", required: true, minlength: "10" %>
         </div>
         <div class="form-group">
           <%= f.label "Description", class: "form-label" %>
