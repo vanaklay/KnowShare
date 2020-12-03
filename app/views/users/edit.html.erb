@@ -1,2 +1,28 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="bg-white">
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-dark">
+        <br><br><br>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Editez vos informations personnelles</h1>
+
+        <%= form_for current_user do |f| %>
+          <div class="form-group">
+            <%= f.text_field :first_name, class: "form-control", placeholder: "Prénom", autocomplete: "first_name" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_field :last_name, class: "form-control", placeholder: "Nom", autocomplete: "last_name" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_area :description, class: "form-control", placeholder: "Bio", autocomplete: "description" %>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-block btn-primary">Mettre à jour</button>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@
         <br><br><br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "users/shared/error_messages", resource: resource %>
-          <h1 class="h3 mb-5 font-weight-normal text-center">Edition des informations</h1>
+          <h1 class="h3 mb-5 font-weight-normal text-center">Edition de tes informations</h1>
 
           <div class="field">
             <% if resource.avatar.attached? %>
@@ -32,11 +32,11 @@
           <% end %>
 
           <div class="form-group">
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Mot de passe (6 caractères minumum)" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Nouveau mot de passe (6 caractères minumum)" %>
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmer le mot de passe" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmer le nouveau mot de passe" %>
           </div>
 
           <div class="form-group">
@@ -45,9 +45,9 @@
 
           <div class="actions mt-4">
             <%= f.submit "Mettre à jour", class: "btn btn-outline-primary d-flex mx-auto mb-1" %>
-            <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sur ?" }, method: :delete, class: "btn btn-danger d-flex mx-auto mb-3" %>
           </div>
         <% end %>
+        <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sur ?" }, method: :delete, class: "btn btn-danger d-flex mx-auto mb-3" %>
       </div>
     </div>
   </div>

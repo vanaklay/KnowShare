@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path(@user), success: "Vos informations ont bien été mises à jour"
+    if current_user.update(user_params)
+      redirect_to current_user, success: "Vos informations ont bien été mises à jour"
     else
       render :edit
     end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :description, :username)
+    params.require(:user).permit(:first_name, :last_name, :description)
   end
 
 end

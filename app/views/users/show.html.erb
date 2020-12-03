@@ -24,7 +24,7 @@
       <div class="col-lg-3 col-md-3 col-sm-12">
         <h4>Mon nom</h4>
         <% if current_user.has_last_name? %>
-          <%= current_user.first_name %>
+          <%= current_user.last_name %>
         <% end %>
       </div>
        <div class="col-lg-3 col-md-3 col-sm-12">
@@ -40,7 +40,7 @@
 
     <h4>Ma bio</h4>
     <% if current_user.has_description? %>
-      <%= current_user.first_name %>
+      <%= current_user.description %>
     <% else %>
       Pas encore de bio, édite ton profil pour en rajouter une !
     <% end %>

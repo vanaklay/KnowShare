@@ -47,6 +47,7 @@ class User < ApplicationRecord
   def has_description?
     self.description
   end 
+  
   def add_credit(number_of_credit)
     new_personal_credit = personal_credit + number_of_credit
     update(personal_credit: new_personal_credit)
