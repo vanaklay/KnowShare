@@ -1,15 +1,24 @@
   <!-- Start show lesson -->
-<div class="container vh-100">
+<section class="container">
+<div class="container-fluid min-vh-100">
   <h1 class="my-4"><%= @lesson.title %></h1>
 
   <div class="row">
     <div class="col-md-8">
-      <%= image_tag  @lesson.picture, class: "img-fluid" %>
+      <div class="d-flex justify-content-center">
+        <%= image_tag  @lesson.picture, class: "img-fluid img-lesson " %>
+      </div>
 
      <!-- Btn to scroll to the calendar section -->
       <div class="d-flex justify-content-center">
         <a href="#calendar-section" class="btn btn-outline-warning btn-lg btn-block w-75 mt-4">Reserve ton cours !</a>
       </div>
+
+      <div class="d-flex justify-content-around">
+        <%= link_to "Découvrir le créateur du cours", @lesson.teacher, class:"btn btn-outline-info mt-5" %>
+        <%= link_to "Voir les commentaires du cours", @lesson.teacher, class:"btn btn-outline-info mt-5" %>
+      </div>
+      
     </div>
     <div class="col-md-4">
       <h3 class="my-3">Proposé par <%= @lesson.teacher.username.capitalize %></h3>
@@ -19,7 +28,7 @@
   </div>
   <!-- End show lesson -->
 </div>
-
+</section>
   <!-- Start calendar section -->
 <section class="bg-white text-dark py-5" >
   <h2 class="font-weight-bold mb-2 text-center" id="calendar-section">Décourvre les disponibilités de <%= @lesson.teacher.username.capitalize %></h2>

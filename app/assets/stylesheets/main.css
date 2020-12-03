@@ -83,3 +83,9 @@ font-size: 18px;
   flex-wrap: wrap;
   padding-left: 4px;
 }
+
+.img-lesson {
+  max-height: 400px;
+  width: auto;
+
+}
