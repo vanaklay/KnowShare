@@ -82,7 +82,8 @@ font-size: 18px;
 }
 
 .img-lesson{
-  max-height: 200px;
+  max-height: 50vh;
+  object-fit: contain;
 }
 
 .teacher-avatar{
