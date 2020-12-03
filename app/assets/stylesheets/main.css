@@ -84,3 +84,10 @@ font-size: 18px;
 .img-lesson{
   max-height: 200px;
 }
+
+.teacher-avatar{
+  width: 4vw; 
+  height: 4vw; 
+  object-fit: cover; 
+  border-radius: 50px
+}
