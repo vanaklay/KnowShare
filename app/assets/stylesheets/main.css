@@ -87,8 +87,8 @@ font-size: 18px;
 }
 
 .teacher-avatar{
-  width: 4vw; 
-  height: 4vw; 
+  width: 8vh; 
+  height: 8vh; 
   object-fit: cover; 
   border-radius: 50px
 }

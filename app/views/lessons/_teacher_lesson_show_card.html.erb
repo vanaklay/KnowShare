@@ -14,15 +14,13 @@
     </div>
   </div>
   <div class="card-body">
-  <%
-=begin%>
- <% if @lesson.teacher.description %>
-    <p class="card-text"><%= @lesson.teacher.description%></p>
-  <% else %>
-    <p></p>
-  <% end %> 
-<%
-=end%>
-    <button type="button" class="btn btn-secondary">Voir son profil</button>
+  <% if @lesson.teacher.description %>
+      <p class="card-text"><%= @lesson.teacher.description%></p>
+    <% else %>
+      <p></p>
+    <% end %>
+    <div class="text-center">
+      <%= link_to "Voir son profil", @lesson.teacher, class:"btn btn-outline-info" %>
+    </div>
   </div>
 </div>
