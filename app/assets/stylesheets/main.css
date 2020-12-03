@@ -1,7 +1,4 @@
 /* */
-html {
-  scroll-behavior: smooth;
-}
 
 .jumbo {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
@@ -84,8 +81,6 @@ font-size: 18px;
   padding-left: 4px;
 }
 
-.img-lesson {
-  max-height: 400px;
-  width: auto;
-
+.img-lesson{
+  max-height: 200px;
 }
