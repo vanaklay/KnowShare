@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def show
+    # @future_lessons = current_user.future_lessons
+    # @past_lessons = current_user.past_lessons
   end
 
   def create
