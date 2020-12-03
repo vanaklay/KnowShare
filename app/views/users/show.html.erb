@@ -3,7 +3,7 @@
     <div class="row">
       <div class="mx-2">
         <% if current_user.avatar.attached? %>
-          <% image_tag current_user.avatar, alt: "profile picture", class: "p-1", style: "width: 6vw; height: 6vw; object-fit: cover; border-radius: 50px" %>
+          <%= image_tag current_user.avatar, alt: "profile picture", class: "p-1", style: "width: 6vw; height: 6vw; object-fit: cover; border-radius: 50px" %>
         <% else %>
           <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class: "p-1", style: "width: 6vw; height: 6vw; object-fit: cover; border-radius: 50px" %>
         <% end %>
