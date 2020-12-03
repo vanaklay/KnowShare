@@ -11,9 +11,9 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.lesson_id = current_lesson.id
+    @lesson.user_id = current_user.id
     if @lesson.save
-        redirect_to root_path
+        redirect_to @lesson
     else
       flash[:danger] = "Le cours n'a pas pu être créé"
       render :new
