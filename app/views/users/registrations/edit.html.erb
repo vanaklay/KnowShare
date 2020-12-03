@@ -17,41 +17,37 @@
     <%= f.file_field :avatar, accept: "image/png, image/gif, image/jpeg" %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+   <div class="form-group">
+    <%= f.label :email, "Email" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Vous n'avez pas encore confirmé votre compte. Un email vous a été envoyé à : <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %> <i>(ne pas remplir si vous ne souhaitez pas le changer)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Nouveau mot de passe (6 caractères minumum)" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-group">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmer le nouveau mot de passe" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="form-group">
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe actuel" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions mt-4">
+    <%= f.submit "Mettre à jour", class: "btn btn-outline-primary d-flex mx-auto mb-3" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<hr />
+<h3 class="h3 mb-3 font-weight-normal text-center">Supprimez votre compte</h3>
+<%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sur ?" }, method: :delete, class: "btn btn-danger d-flex mx-auto mb-3" %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= link_to "Retour vers page profil", :back %>
 
-<%= link_to "Back", :back %>
