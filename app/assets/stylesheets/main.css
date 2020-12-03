@@ -19,7 +19,7 @@ font-size: 18px;
 .avatar {
   position: relative;
   flex-shrink: 0;
-  width: 2.5rem;
+  width: auto;
   height: 2.5rem;
   border-radius: 50%;
   text-align: center;
@@ -91,4 +91,10 @@ font-size: 18px;
   height: 8vh; 
   object-fit: cover; 
   border-radius: 50px
+}
+
+.img-lesson-card{
+  height: 200px;
+  width: auto;
+  object-fit: contain;
 }
