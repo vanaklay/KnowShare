@@ -1,4 +1,8 @@
 /* */
+html {
+  scroll-behavior: smooth;
+}
+
 .jumbo {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
   background-repeat: no-repeat;
