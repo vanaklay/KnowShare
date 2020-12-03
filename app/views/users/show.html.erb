@@ -1,2 +1,112 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="card my-3 mx-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="p-1" style="width: 6vw; height: 6vw; object-fit: cover; border-radius: 50px">
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <h2><strong>Mon profil</strong></h2>
+      </div>
+      <div class="mx-2 align-self-center" style="position: absolute; right: 0;">
+          <%= link_to "Editer email et mot de passe", edit_user_registration_path, class: "btn btn-outline-primary mx-2" %>
+          <%= link_to "Éditer mon profil", edit_user_path(current_user.id), class: "btn btn-outline-primary mx-2" %>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <h4>Mon prénom</h4>
+        <p>Test</p>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <h4>Mon nom</h4>
+        <p>Test</p>
+      </div>
+       <div class="col-lg-3 col-md-3 col-sm-12">
+        <h4>Mon pseudo</h4>
+        <p><%= current_user.username %></p>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <h4>Mon email</h4>
+        <p><%= current_user.email %></p>
+      </div>
+    </div>
+    <hr>
+
+    <h4>Ma description</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <hr> 
+
+    <h4>Mes cours à venir</h4>
+    <p>Bloup</p>
+    <p>Bloup</p>
+    <p>Bloup</p>
+    <p>Bloup</p>
+    <hr>
+
+    <h4>Mes cours passés</h4>
+    <p>Bloup</p>
+    <p>Bloup</p>
+    <p>Bloup</p>
+    <hr>
+
+  </div>
+</div>
+
+<%
+=begin%>
+ <div class="card mb-3 mx-4 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="p-1" style="width: 6vw; height: 6vw; object-fit: cover; border-radius: 50px">
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <h2><strong>Mon profil</strong></h2>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-3 border">
+        Mes informations personnelles
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3 border">
+        Show
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-3 border">
+        Modifier mon profil
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3 border">
+        Show
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-3 border">
+        Changer mon mot de passe
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3 border">
+        Show
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-3 border">
+        Mes cours
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3 border">
+        Show
+      </div>
+    </div>
+  </div>
+</div> 
+<%
+=end%>
+
+
+
+
+
