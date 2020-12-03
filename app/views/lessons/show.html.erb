@@ -1,2 +1,49 @@
-<h1>Lessons#show</h1>
-<p>Find me in app/views/lessons/show.html.erb</p>
+  <!-- Start show lesson -->
+<div class="container">
+  <h1 class="my-4"><%= @lesson.title %></h1>
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag  @lesson.picture, class: "img-fluid" %>
+    </div>
+    <div class="col-md-4">
+      <h3 class="my-3">Cours proposé par <%= @lesson.teacher.username %></h3>
+      <h4 class="my-3">Qu'est-ce que ce cours peut m'apporter ?</h4>
+      <p><%= @lesson.description %></p>
+    </div>
+
+  </div>
+  <!-- End show lesson -->
+
+  <!-- Start calendar section -->
+  <h3 class="my-4">Découvre les disponibilités de <%= @lesson.teacher.username %> et reserve au plus vite ton cours ! </h3>
+
+  <div class="row">
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="#">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="#">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="#">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="#">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          </a>
+    </div>
+
+  </div>
+  <!-- End calendar section -->
+</div>
