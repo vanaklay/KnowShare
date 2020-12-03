@@ -1,16 +1,23 @@
-<h2>Forgot your password?</h2>
+<div class="bg-white">
+  <div class="container my-5 py-3">
+    <%= devise_error_messages! %>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-dark">
+        <br><br><br>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-signin mt-3" }) do |f| %>
+          <h1 class="h3 mb-5 font-weight-normal text-center">Mot de passe oublié ?</h1>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+          </div>
+          <p>Un email vous sera envoyé avec les instructions pour changer votre mot de passe </p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+          <div class="actions mt-5">
+            <%= f.submit "Envoyer les instructions", class: "btn btn-primary d-flex mx-auto mb-3" %>
+          </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+  </div>  
+</div>
