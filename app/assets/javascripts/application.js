@@ -18,3 +18,4 @@
 //= require bootstrap
 //= require typed
 //= require_tree .
+//= stub 'jumbo_typed_text'
