@@ -3,20 +3,11 @@
     <div class="row align-items-center h-100 px-4">
       <div>
       <h1 class="pt-5 h1-jumbo" >Tu veux apprendre <span id="typed"></span></h1>
-      <h3>Trouves ton professeur et apprends en pair learning</h3>
+      <h2 class="mb-4">Tu es au bon endroit ! Avec KnowShare, trouves le professeur qui te correspond et apprends en pair learning</h2>
+      <%= link_to "Voir les cours", lessons_path, :class => "btn-lg btn-primary" %>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  new Typed('#typed', {
-    strings: ['les mathématiques ?', 'la trigonométrie ?', 'le développement web ?'],
-    smartBackspace: true,
-    typeSpeed: 50,
-    backSpeed: 20,
-    startDelay: 100,
-    loop: true,
-    loopCount: 3,
-  });
-</script>
+<%= javascript_include_tag 'jumbo_typed_text' %>
