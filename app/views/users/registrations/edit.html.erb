@@ -2,22 +2,14 @@
   <div class="container my-1 pb-3">
     <%= devise_error_messages! %>
     <div class="row">
-      <div class="mx-2" style="position: absolute; right: 0;">
+      <div class="mx-2 my-2" style="position: absolute; right: 0;">
         <%= link_to "Retour vers page profil", user_path(current_user), class: "btn btn-outline-primary d-flex mx-auto mb-3" %>
       </div>
       <div class="col-md-6 offset-md-3 text-dark">
         <br><br><br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "users/shared/error_messages", resource: resource %>
-          <h1 class="h3 mb-5 font-weight-normal text-center">Edition de tes informations</h1>
-
-          <div class="field">
-            <% if resource.avatar.attached? %>
-              <%= image_tag resource.avatar, width: "10%" %>
-            <% end %>
-            <%= f.label :avatar %><br />
-            <%= f.file_field :avatar, accept: "image/png, image/gif, image/jpeg" %>
-          </div>
+          <h1 class="h3 mb-5 font-weight-normal text-center">Edite tes informations de connexion</h1>    
 
           <div class="form-group">
             <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "Pseudonyme",autocomplete: "username", required: true %>
