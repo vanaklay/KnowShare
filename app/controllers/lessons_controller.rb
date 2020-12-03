@@ -11,7 +11,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.user_id = current_user.id
+    @lesson.lesson_id = current_lesson.id
     if @lesson.save
         redirect_to root_path
     else
@@ -20,8 +20,18 @@ class LessonsController < ApplicationController
     end
   end
 
-  def update
+  def edit
     
+  end
+
+  def update
+    @lesson = Lesson.find(params[:id])
+    if @lesson.update(lesson_params)
+      redirect_to @lesson, success: "Le cours à été édité "
+    else
+      flash[:danger] = "Le cours n'as pas pu être édité"
+      render :edit
+    end
   end
 
   private
