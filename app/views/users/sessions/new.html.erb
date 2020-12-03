@@ -1,26 +1,39 @@
-<h2>Log in</h2>
+<div class="bg-white" style="color: black">
+  <div class="container my-5 py-3">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+          <h1 class="h3 mb-3 font-weight-normal text-center">Se connecter</h1>
+          <%= devise_error_messages! %>
+          
+          <div class="form-group">
+            <%= f.label :email, "Email" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="form-group">
+            <%= f.label :password, "Mot de passe" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "Se souvenir de moi" %>
+            </div>
+          <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="actions mt-5">
+            <%= f.submit "S'inscrire", class: "btn btn-outline-primary d-flex mx-auto mb-3" %>
+          </div>
+        <% end %>
+        <p>Vous n'avez pas encore de compte ?</p>
+        <%= render "users/shared/links" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+<div>
 
-<%= render "users/shared/links" %>
+
+
+
