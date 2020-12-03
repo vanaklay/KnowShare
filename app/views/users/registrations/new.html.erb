@@ -1,35 +1,32 @@
-<div class="container mb-5">
-  <%= devise_error_messages! %>
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <br><br><br>
-      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">S'inscrire</h1>
-        
-        <div class="form-group">
-          <%= f.label :username, "Pseudonyme" %><br />
-          <%= f.text_field :username, class: "form-control", required: true %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, "Email" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, "Mot de passe" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> caractères minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, "Confirmer le mot de passe" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-        </div>
-        <div class="actions mt-5">
-          <%= f.submit "S'inscrire", class: "btn btn-primary d-flex mx-auto mb-3" %>
-        </div>
-      <% end %>
-      <p>Déjà inscrit(e) ? <%= render "users/shared/links" %></p>
+<div class="bg-white", style="color: black">
+  <div class="container mb-5">
+    <%= devise_error_messages! %>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <br><br><br>
+        <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+          <h1 class="h3 mb-5 font-weight-normal text-center">Inscription</h1>
+          
+          <div class="form-group">
+            <%= f.text_field :username, class: "form-control", placeholder: "Pseudonyme",required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Mot de passe (6 caractères minumum)" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmer le mot de passe" %>
+          </div>
+          <div class="actions mt-5">
+            <%= f.submit "S'inscrire", class: "btn btn-outline-primary d-flex mx-auto mb-3" %>
+          </div>
+        <% end %>
+        <p>Vous avez déjà un compte ?</p>
+        <%= render "users/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
+
