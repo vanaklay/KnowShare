@@ -37,15 +37,15 @@ class User < ApplicationRecord
   end
 
   def has_first_name?
-    self.first_name
+    first_name
   end
 
   def has_last_name?
-    self.last_name
+    last_name
   end
 
   def has_description?
-    self.description
+    description
   end 
   
   def add_credit(number_of_credit)
@@ -56,6 +56,26 @@ class User < ApplicationRecord
   def remove_credit(number_of_credit)
     new_personal_credit = personal_credit - number_of_credit
     update(personal_credit: new_personal_credit)
+  end
+
+  def past_bookings
+    bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_bookings
+    bookings.select { |booking| booking.start_date > DateTime.now }
+  end
+
+  def past_lessons
+    past_lessons = Array.new
+    past_bookings.each { |booking| past_lessons << booking.followed_lesson } 
+    past_lessons 
+  end
+
+  def future_lessons
+    future_lessons = Array.new
+    future_bookings.each { |booking| future_lessons << booking.followed_lesson } 
+    future_lessons 
   end
   
   private

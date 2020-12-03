@@ -46,18 +46,6 @@ class Booking < ApplicationRecord
     end
   end
 
-  def self.past_lessons
-    @bookings = Booking.all.sort
-    @past_lessons = @bookings.select { |booking| booking.start_date < DateTime.now }
-    @past_lessons
-  end
-
-  def self.future_lessons
-    @bookings = Booking.all.sort
-    @future_lessons = @bookings.select { |booking| booking.start_date > DateTime.now }
-    @future_lessons
-  end
-
   private
 
   def start_in_future
