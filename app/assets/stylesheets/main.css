@@ -1,4 +1,5 @@
 /* */
+
 .jumbo {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
   background-repeat: no-repeat;
@@ -78,4 +79,16 @@ font-size: 18px;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding-left: 4px;
+}
+
+.img-lesson{
+  max-height: 50vh;
+  object-fit: contain;
+}
+
+.teacher-avatar{
+  width: 8vh; 
+  height: 8vh; 
+  object-fit: cover; 
+  border-radius: 50px
 }
