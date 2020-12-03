@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  include UsersHelper
+  before_action :authenticate_user!, except: [:create]
+  before_action :find_user, :all_users
+  before_action :redirect_not_author_to_dashboard, only: [:show, :edit, :update, :destroy]
   def show
   end
 
@@ -26,5 +30,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description)
   end
-
 end
