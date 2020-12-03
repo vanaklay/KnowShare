@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger, :error, :notice, :alert
+  include ApplicationHelper
   
   # Allows to verify each requests with authenticity token sent to the application, with exception for added parameters to users (username, avatar)
   protect_from_forgery with: :exception
