@@ -2019,9 +2019,9 @@
    font-weight: 400;
    line-height: 1.5;
    color: #adb5bd;
-   background-color: #fff;
+   background-color: #F8F8F8;
    background-clip: padding-box;
-   border: 1px solid #222;
+   border: 2px solid rgba(133, 129, 129, 0.815);
    border-radius: 0.25rem;
    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
  }
