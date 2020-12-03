@@ -11,7 +11,9 @@ class Booking < ApplicationRecord
 
   validate :student_enough_credit?
   after_create :payment_from_student, :payment_to_teacher
+  before_destroy :refund
 
+  # Easier to read and use
   def student
     user
   end
@@ -20,6 +22,7 @@ class Booking < ApplicationRecord
     followed_lesson.user
   end
 
+  # The number of credit to be transferred
   def price
     duration / 30
   end
@@ -28,13 +31,18 @@ class Booking < ApplicationRecord
       errors.add(:base, :student_personal_credit, message: 'Vous ne possédez pas suffisamment de crédit(s) !') unless user.personal_credit >= price
   end
 
-  def cancel
-    if DateTime.now >= start_date
+  def not_begun?
+    errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.") unless start_date > DateTime.now
+  end
+
+  def refund
+    if start_date > DateTime.now
       refund_from_teacher
       refund_to_student
-      destroy
     else
-      errors.add(:base, :booking_started, message: ': Le cours a déjà commencé.')
+      errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.")
+      # Cancels the destroy action
+      :abort
     end
   end
 
