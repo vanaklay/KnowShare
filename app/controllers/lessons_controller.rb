@@ -21,6 +21,7 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    @lesson = Lesson.find(params[:id])
     
   end
 

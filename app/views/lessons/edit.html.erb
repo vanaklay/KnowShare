@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <div class="row ml-3">
+    <div class="offset-md-3 col-md-6 offset-md-3">
+      <h3 class="text-center">Modifier <%= @lesson.title %></h3>
+      <%= form_with model: @lesson, class: "form", id: "contact-form" do |f| %>
+        <div class="form-group">
+          <%= f.label "Titre du cours", class: "form-label" %>
+          <%= f.text_field :title, class: "form-control", value: @lesson.title %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Description", class: "form-label" %>
+          <%= f.text_area :description, class: "form-control", value: @lesson.description, minlength: "20", maxlength: "5000" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Durée", class: "exampleSelect1" %>
+          <%= f.select :number_of_credit, [30, 1, 1.30, 2], value: @lesson.number_of_credit, min: 30, step: 30 %>
+        </div>
+        
+        <div class="form-group text-center my-3">
+          <%= f.label "Changer l'image", class: "form-label" %>
+          <br>
+          <%= f.file_field :picture , accept: 'image/png,image/gif,image/jpeg' %>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit "Valider les modifications", class: "btn btn-primary" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
