@@ -53,7 +53,7 @@
     <h4>Mes cours à venir</h4>
     
       <div class="bg-white rounded box-shadow">
-      <% if current_user.future_lessons.count > 0 %>
+      <% if current_user.future_bookings.count > 0 %>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
           <div class="col-lg-3 col-md-3 col-sm-12">
             <strong>Date du cours</strong>
@@ -68,8 +68,8 @@
             <strong>Actions</strong>
           </div>
         </div>
-        <% current_user.future_lessons.each do |lesson| %>
-          <%= render 'lesson_list', lesson: lesson %>
+        <% current_user.future_bookings.each do |booking| %>
+          <%= render 'booking_list', booking: booking %>
         <% end %>
       <% else %>
         <p>Tu n'as encore aucun cours de prévu !</p>
@@ -80,7 +80,7 @@
     <h4>Mes cours passés</h4>
 
     <div class="bg-white rounded box-shadow">
-      <% if current_user.past_lessons.count > 0 %>
+      <% if current_user.past_bookings.count > 0 %>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
           <div class="col-lg-3 col-md-3 col-sm-12">
             <strong>Date du cours</strong>
@@ -95,8 +95,8 @@
             <strong>Actions</strong>
           </div>
         </div>
-        <% current_user.past_lessons.each do |lesson| %>
-          <%= render 'lesson_list', lesson: lesson %>
+        <% current_user.past_bookings.each do |booking| %>
+          <%= render 'booking_list', booking: booking %>
         <% end %>
       <% else %>
         <p>Tu n'as encore jamais pris de cours</p>
