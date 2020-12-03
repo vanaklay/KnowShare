@@ -1,12 +1,21 @@
+<% lesson = booking.followed_lesson %>
 <div class="row border-bottom border-gray py-2 mb-2 mr-2">
   <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= lesson.start_date %>
+    <%= booking.start_date %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
     <%= lesson.title %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= lesson.teacher %>
+    <% if lesson.teacher.has_first_name? %>
+      <% if lesson.teacher.has_last_name? %>
+        <%= lesson.teacher.first_name %> <%= lesson.teacher.last_name %>
+      <% else %>
+        <%= lesson.teacher.first_name %>
+      <% end %>
+    <% else %>
+      <%= lesson.teacher.username %>
+    <% end %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
     <button type="button" class="btn btn-outline-danger">Annuler ce cours</button>
