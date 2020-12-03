@@ -2,128 +2,39 @@
   <h2 class="font-weight-bold mt-5 mb-0 text-center">Les cours à la une</h2>
   <p class="subTitleIndex text-center mb-5">Découvres les cours les plus populaires</p>
   <div class="row">
-
+  <% @lessons.each do |lesson| %>
     <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-      <div class="card bg-white" style="color: black">
-        <img class="card-img-top w-100 h-auto" src="https://www.ville-lomme.fr/var/www/storage/images/mediatheque/ecole-de-coupe-et-couture2/127485-1-fre-FR/Ecole-de-Coupe-et-Couture.jpg">
-        <h4 class="card-header bg-white">Introduction à la couture</h4>
+      <div class="card bg-white text-dark">
+      <% if lesson.picture.attached? %>
+        <%= image_tag lesson.picture, class:"img-fluid img-lesson-card" %>
+      <% else %>
+        <%= image_tag  "https://cdn.pixabay.com/photo/2020/11/04/10/45/school-5711987_1280.jpg", class:"img-fluid img-lesson-card" %>
+
+      <% end %>
+
+        <h4 class="card-header bg-white"><%= lesson.title %></h4>
         <div class="card-body">
           <div class="row mx-2">
-            <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="avatar mr-3">
+          <% if lesson.teacher.avatar.attached? %>
+            <%= image_tag lesson.teacher.avatar, class:"avatar mr-3"%>
+          <% else %>
+            <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"avatar mr-3"%>
+          <% end %>
             <div class="d-flex flex-column">
-                <strong>Teacher's name</strong>
+                <strong><%= lesson.teacher.username %></strong>
                 <h6 class="card-title">⭐️⭐️⭐️⭐️⭐️ 4,8 (65 avis)</h6>
             </div>
           </div>
           <div class="row justify-content-around">
-            <a href="#" class="btn btn-warning">Réserver ce cours</a>
-            <a href="#" class="btn btn-info">En savoir plus</a>
+            <%= link_to  "En savoir plus", lessons_path(lesson.id), class:"btn btn-warning" %>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-      <div class="card bg-white" style="color: black">
-        <img class="card-img-top w-100 h-auto" src="https://www.ville-lomme.fr/var/www/storage/images/mediatheque/ecole-de-coupe-et-couture2/127485-1-fre-FR/Ecole-de-Coupe-et-Couture.jpg">
-        <h4 class="card-header bg-white">Introduction à la couture</h4>
-        <div class="card-body">
-          <div class="row mx-2">
-            <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="avatar mr-3">
-            <div class="d-flex flex-column">
-                <strong>Teacher's name</strong>
-                <h6 class="card-title">⭐️⭐️⭐️⭐️⭐️ 4,8 (65 avis)</h6>
-            </div>
-          </div>
-          <div class="row justify-content-around">
-            <a href="#" class="btn btn-warning">Réserver ce cours</a>
-            <a href="#" class="btn btn-info">En savoir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-      <div class="card bg-white" style="color: black">
-        <img class="card-img-top w-100 h-auto" src="https://www.ville-lomme.fr/var/www/storage/images/mediatheque/ecole-de-coupe-et-couture2/127485-1-fre-FR/Ecole-de-Coupe-et-Couture.jpg">
-        <h4 class="card-header bg-white">Introduction à la couture</h4>
-        <div class="card-body">
-          <div class="row mx-2">
-            <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="avatar mr-3">
-            <div class="d-flex flex-column">
-                <strong>Teacher's name</strong>
-                <h6 class="card-title">⭐️⭐️⭐️⭐️⭐️ 4,8 (65 avis)</h6>
-            </div>
-          </div>
-          <div class="row justify-content-around">
-            <a href="#" class="btn btn-warning">Réserver ce cours</a>
-            <a href="#" class="btn btn-info">En savoir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-      <div class="card bg-white" style="color: black">
-        <img class="card-img-top w-100 h-auto" src="https://www.ville-lomme.fr/var/www/storage/images/mediatheque/ecole-de-coupe-et-couture2/127485-1-fre-FR/Ecole-de-Coupe-et-Couture.jpg">
-        <h4 class="card-header bg-white">Introduction à la couture</h4>
-        <div class="card-body">
-          <div class="row mx-2">
-            <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="avatar mr-3">
-            <div class="d-flex flex-column">
-                <strong>Teacher's name</strong>
-                <h6 class="card-title">⭐️⭐️⭐️⭐️⭐️ 4,8 (65 avis)</h6>
-            </div>
-          </div>
-          <div class="row justify-content-around">
-            <a href="#" class="btn btn-warning">Réserver ce cours</a>
-            <a href="#" class="btn btn-info">En savoir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-      <div class="card bg-white" style="color: black">
-        <img class="card-img-top w-100 h-auto" src="https://www.ville-lomme.fr/var/www/storage/images/mediatheque/ecole-de-coupe-et-couture2/127485-1-fre-FR/Ecole-de-Coupe-et-Couture.jpg">
-        <h4 class="card-header bg-white">Introduction à la couture</h4>
-        <div class="card-body">
-          <div class="row mx-2">
-            <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="avatar mr-3">
-            <div class="d-flex flex-column">
-                <strong>Teacher's name</strong>
-                <h6 class="card-title">⭐️⭐️⭐️⭐️⭐️ 4,8 (65 avis)</h6>
-            </div>
-          </div>
-          <div class="row justify-content-around">
-            <a href="#" class="btn btn-warning">Réserver ce cours</a>
-            <a href="#" class="btn btn-info">En savoir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-      <div class="card bg-white" style="color: black">
-        <img class="card-img-top w-100 h-auto" src="https://www.ville-lomme.fr/var/www/storage/images/mediatheque/ecole-de-coupe-et-couture2/127485-1-fre-FR/Ecole-de-Coupe-et-Couture.jpg">
-        <h4 class="card-header bg-white">Introduction à la couture</h4>
-        <div class="card-body">
-          <div class="row mx-2">
-            <img src="https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697" alt="profile picture" class="avatar mr-3">
-            <div class="d-flex flex-column">
-                <strong>Teacher's name</strong>
-                <h6 class="card-title">⭐️⭐️⭐️⭐️⭐️ 4,8 (65 avis)</h6>
-            </div>
-          </div>
-          <div class="row justify-content-around">
-            <a href="#" class="btn btn-warning">Réserver ce cours</a>
-            <a href="#" class="btn btn-info">En savoir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <% end %>
 
   </div>
+
   <div class="row justify-content-center my-5">
     <%= link_to "Tous les cours", lessons_path, :class => "btn-lg btn-primary" %>
   </div>
