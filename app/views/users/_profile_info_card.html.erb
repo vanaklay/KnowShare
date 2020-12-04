@@ -17,15 +17,11 @@
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-12">
         <h4>Mon prénom</h4>
-        <% if current_user.has_first_name? %>
-          <%= current_user.first_name %>
-        <% end %>
+        <%= current_user.display_first_name %>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12">
         <h4>Mon nom</h4>
-        <% if current_user.has_last_name? %>
-          <%= current_user.last_name %>
-        <% end %>
+        <%= current_user.display_last_name %>
       </div>
        <div class="col-lg-4 col-md-4 col-sm-12">
         <h4>Mon pseudo</h4>
@@ -41,11 +37,7 @@
     <hr>
 
     <h4>Ma bio</h4>
-    <% if current_user.has_description? %>
-      <%= current_user.description %>
-    <% else %>
-      Pas encore de bio, édite ton profil pour en rajouter une !
-    <% end %>
+    <%= current_user.display_description %>
     <hr> 
 
     <div class="mx-2 align-self-center">

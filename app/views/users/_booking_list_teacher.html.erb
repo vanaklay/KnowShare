@@ -7,15 +7,7 @@
     <%= lesson.title %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
-    <% if booking.student.has_first_name? %>
-      <% if booking.student.has_last_name? %>
-        <%= booking.student.first_name %> <%= lesson.teacher.last_name %>
-      <% else %>
-        <%= booking.student.first_name %>
-      <% end %>
-    <% else %>
-      <%= booking.student.username %>
-    <% end %>
+    <%= booking.student.display_name %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
       <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?", remote: true}  do %>
