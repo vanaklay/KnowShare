@@ -1,0 +1,121 @@
+/* JUMBOTRON */
+
+.jumbo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.h1-jumbo {
+  font-size: 4rem;
+}
+
+  
+.subTitleIndex {
+font-size: 18px;
+}
+
+.subTitleJumbo {
+  display: inline-block;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  margin-right: 1rem;
+  font-size: 5rem;
+  line-height: inherit;
+  white-space: nowrap;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.text-subTitleJumbo {
+  font-size: 1rem;
+}
+
+.avatar {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+.navbar-avatar{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-color: #F8F8F8; */
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  /* object-fit: contain; */
+
+}
+
+.profile-avatar{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 50px
+}
+
+.footer-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-font {
+  font-family: 'Permanent Marker', cursive;
+
+}
+
+/* CONCEPT */
+
+.number {
+  width: 40px;
+  height: 40px;
+  margin-right: 80px;
+  font-size: 22px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  border: 3px solid;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.p-concept {
+  font-size: 18px;
+}
+
+.row-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 4px;
+}
+
+.img-lesson{
+  max-height: 50vh;
+  object-fit: contain;
+}
+
+.teacher-avatar{
+  width: 8vh; 
+  height: 8vh; 
+  object-fit: cover; 
+  border-radius: 50px
+}
+
+.img-lesson-card{
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}

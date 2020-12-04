@@ -1,0 +1,19 @@
+<div class="card mb-3 bg-white text-dark text-center">
+  <div class="card-body">
+    <h5 class="card-title">Inscrivez-vous à ce cours</h5>
+
+    <p id="target_calendar">Cliquer sur un horaire</p>
+    <div id="form-target" hidden>
+    <%= form_for [ @lesson, @booking ] do |f| %>
+      <div class="form-group">
+          <%= f.label :Confirmes_ton_horaire %>
+          <%= f.datetime_field :start_date, class: "form-control" %>
+        </div>
+      <div class="form-group d-flex">
+        <%= button_to "Je m'inscris", lesson_bookings_path(@lesson), :class => "btn btn-warning m-2 px-5" %>
+      </div>
+    <% end %>
+    </div>
+
+  </div>
+</div>

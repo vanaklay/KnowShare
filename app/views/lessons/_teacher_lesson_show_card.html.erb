@@ -1,0 +1,28 @@
+<div class="card mb-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+      <% if @lesson.teacher.avatar.attached? %>
+        <%= image_tag @lesson.teacher.avatar, class:"p-1 teacher-avatar"%>
+      <% else %>
+        <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"p-1 teacher-avatar"%>
+      <% end %>
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <strong>Cours créé par <%= @lesson.teacher.display_name.capitalize %></strong>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+  <% if @lesson.teacher.description %>
+      <p class="card-text"><%= @lesson.teacher.description%></p>
+    <% else %>
+      <p></p>
+    <% end %>
+    <div class="text-center">
+    <% unless @lesson.teacher?(current_user)%>
+      <%= link_to "Voir son profil", @lesson.teacher, class:"btn btn-outline-info disabled" %>
+    <% end %>
+    </div>
+  </div>
+</div>

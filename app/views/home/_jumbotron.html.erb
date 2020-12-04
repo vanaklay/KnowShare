@@ -1,0 +1,13 @@
+<div class="container-fluid vh-100 jumbo">
+  <div class="px-4 h-100">
+    <div class="row align-items-center h-100 px-4">
+      <div>
+      <h1 class="pt-5 h1-jumbo" >Tu veux apprendre <span id="typed"></span></h1>
+      <h2 class="mb-5">Bienvenue sur <b>KnowShare</b>, où le partage est au coeur de la connaissance </h2>
+      <%= link_to "Voir tous les cours disponibles", lessons_path, :class => "btn-lg btn-info px-4 py-3 text-center" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag 'jumbo_typed_text' %>

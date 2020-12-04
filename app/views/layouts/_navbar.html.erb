@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    Kn<span class="text-danger">o</span>wSh<span class="text-danger">a</span>re
+  <%end%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse mr-2" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "Créer un cours", new_lesson_path, class: "nav-item active nav-link mr-3" %>
+      </li>
+    </ul>
+
+    <% if user_signed_in? %>
+      <div class="nav-item">
+      <div class="nav-item dropdown">
+        <a class="dropdown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, alt: "profile picture", class:"navbar-avatar" %>
+          <% else %>
+            <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class:"navbar-avatar" %>
+          <% end %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Mon profil", user_path(current_user), class: "nav-link btn btn-primary mx-2 my-2" %>
+          <%= link_to "Déconnexion", destroy_user_session_path, class: "nav-link btn btn-danger mx-2 my-2", method: :delete %>
+        </div>
+      </div>
+        
+    <% else %>
+      <div class="nav-item dropdown">
+        <a class="nav-link btn btn-primary dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Se connecter
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Inscription", new_user_registration_path, class: "nav-link btn btn-warning mx-2 my-2" %>
+          <%= link_to "Connexion", new_user_session_path, class: "nav-link btn btn-info mx-2 my-2" %>        
+        </div>
+      </div>
+    <% end %> 
+  </div>
+</nav>

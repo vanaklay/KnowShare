@@ -13,4 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
+//= require popper
+//= require bootstrap
+//= require typed
+//= require local-time
 //= require_tree .
+//= stub 'jumbo_typed_text'

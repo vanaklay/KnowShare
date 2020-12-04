@@ -1,0 +1,36 @@
+<footer class='bg-dark'>
+  <div class='row-footer container-fluid'>
+    <div class='col-md-3 col-sm-12'>
+      <h4 class="py-3 logo-font px-5">Kn<span class="text-danger">o</span>wSh<span class="text-danger">a</span>re</h4>
+      <p class="px-5">Un espace d'échange et de partage de connaissances</p>
+    </div>
+    <div class='col-md-3 col-sm-12'>
+      <h4 class="py-3 px-5">À propos de nous</h4>
+      <p><%= link_to "L'équipe", root_path, class: "text-light px-5" %></p>
+      <p><%= link_to "Contactez-nous", contact_path, class: "text-light px-5" %></p>
+    </div>
+    <div class='col-md-3 col-sm-12'>
+      <h4 class="py-3 px-5">Liens pratiques</h4>
+      <p><%= link_to "Tarifs", root_path, class: "text-light px-5" %></p>
+      <p><%= link_to "Conditions générales de vente", root_path, class: "text-light px-5" %></p>
+    </div>
+    <div class='col-md-3 col-sm-12'>
+      <h4 class="py-3 px-5">Suivez-nous !</h4>
+      <div class="social-icon px-5">
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-facebook-square fa-2x"></i>
+        <%end %>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-github-square fa-2x"></i>
+        <%end %>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-linkedin fa-2x"></i>
+        <%end %>
+        <%= link_to root_path, class: "text-light mr-1" do %>
+          <i class="fab fa-instagram fa-2x"></i>
+        <%end %>
+      </div>
+    </div>
+  </div>
+  <div class="text-center py-3 mt-3">© KnowShare, 2020</div>
+</footer>
