@@ -92,12 +92,18 @@ class Booking < ApplicationRecord
     student.add_credit(price)
   end
 
+  # -------- Email section -------- #
+
   def send_email_new_booking_user
     UserMailer.send_email_confirm_to_user(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
   end
 
   def send_email_new_booking_teacher
     UserMailer.send_email_confirm_to_teacher(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
+  end
+
+  def after_destroy_booking_email
+    UserMailer.destroy_booking_email(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now 
   end
 
 end
