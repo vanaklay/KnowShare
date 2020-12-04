@@ -21,6 +21,8 @@ class User < ApplicationRecord
     role.class == String
   end
   
+  after_create :send_welcome_email
+
   def role_include?(searched_role)
     role.split.include?(searched_role) if role?
   end
@@ -119,13 +121,13 @@ class User < ApplicationRecord
 
   def past_lessons
     past_lessons = []
-    past_bookings.each { |booking| past_lessons << booking.followed_lesson }
+    past_bookings.each { |booking| past_lessons << booking.lesson }
     past_lessons
   end
 
   def future_lessons
     future_lessons = []
-    future_bookings.each { |booking| future_lessons << booking.followed_lesson }
+    future_bookings.each { |booking| future_lessons << booking.lesson }
     future_lessons
   end
   
@@ -160,4 +162,8 @@ class User < ApplicationRecord
   def future_given_bookings
     given_bookings.select { |given_booking| given_booking.start_date > DateTime.now }
   end 
+
+  def send_welcome_email
+    UserMailer.welcome_send(self).deliver_now
+  end
 end

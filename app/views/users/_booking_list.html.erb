@@ -1,0 +1,24 @@
+<% lesson = booking.lesson %>
+<div class="row border-bottom border-gray pb-2 mb-2 mr-2 align-items-center">
+  <div class="col-lg-3 col-md-3 col-sm-12">
+    <%= booking.start_date %>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12">
+    <%= lesson.title %>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12">
+    <% if lesson.teacher.has_first_name? %>
+      <% if lesson.teacher.has_last_name? %>
+        <%= lesson.teacher.first_name %> <%= lesson.teacher.last_name %>
+      <% else %>
+        <%= lesson.teacher.first_name %>
+      <% end %>
+    <% else %>
+      <%= lesson.teacher.username %>
+    <% end %>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12">
+      <%= link_to "Annuler ce cours", lesson_booking_path(lesson.id, booking.id), class: "btn btn-danger", method: :delete %>
+      <%= link_to  "Voir le cours", lesson, class:"btn btn-outline-info" %>
+  </div>
+</div>

@@ -1,11 +1,12 @@
 class SchedulesController < ApplicationController
+  before_action :find_user
+
   def index
     @schedules = Schedule.where(user_id: params[:user_id]).all
   end
 
   def new
     @schedule = Schedule.new
-    @user = current_user
   end
 
   def create
@@ -14,12 +15,16 @@ class SchedulesController < ApplicationController
     if @schedule.save
         redirect_to user_schedules_path
     else
-      flash[:danger] = "L'horaire n'a pas pu être créé"
+      flash.now[:danger] = "L'horaire n'a pas pu être créé"
       render :new
     end
   end
 
   private
+
+  def find_user
+    @user = User.find(params[:user_id])
+  end
 
   def schedule_params
     params.require(:schedule).permit(:start_time)

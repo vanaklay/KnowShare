@@ -1,5 +1,7 @@
 <div class="container">
+  <%= link_to "Voir mon planning", user_schedules_path(@user.id), class: "btn btn-outline-primary mx-2" %>
   <div class="row">
+    
     <div class="col-md-6 offset-md-3">
       <br><br><br>
       <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" }, multipart: true do |f| %>
