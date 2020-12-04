@@ -19,7 +19,8 @@
             document.getElementById("schedule_id_<%=schedule.id%>").addEventListener('click',function () {
                 let target = document.getElementById("target_calendar");
                 target.style.color = "green";
-                target.textContent = "Horaire choisi : <%= schedule.start_time.strftime("%d %m %y - %k:%M") %>"; 
+                target.textContent = "Horaire choisi : <%= schedule.start_time.strftime("%d %m %y - %k:%M") %>";
+                document.getElementById("form-target").removeAttribute("hidden");
                 });
           </script>
         <% end %>
