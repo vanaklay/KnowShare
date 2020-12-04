@@ -1,26 +1,26 @@
-<div class="container my-5">
-    <h3 class="text-center mb-4"><u>Créer un nouveau cours</u></h3>
+<div class="bg-white">
+  <div class="container my-5 py-3 text-dark">
+      <h3 class="h3 mb-5 font-weight-normal text-center">Créer un nouveau cours</h3>
 
-  <div class="row ml-3">
-    <div class="offset-md-3 col-md-6 offset-md-3">
-      <%= form_with model: @lesson, class: "form", id: "contact-form" do |f| %>
-        <div class="form-group">
-          <%= f.label "Titre du cours (min 10 charactères)", class: "form-label" %>
-          <%= f.text_field :title, class: "form-control", placeholder: "Apprendre les 8 principaux accords à la guitare", required: true, minlength: "10" %>
-        </div>
-        <div class="form-group">
-          <%= f.label "Description", class: "form-label" %>
-          <%= f.text_area :description, class: "form-control", rows: "7", placeholder: "Dans ce cours, je vais te montrer comment apprendre pas à pas les 8 accords de base pour être à l'aise en guitare. J'estime qu'il faut 2h de cours pour comprendre les fondamentaux.", required: true, minlength: "20", maxlength: "5000" %>
-        </div>
-        <div class="form-group text-center my-3">
-          <%= f.label "Ajouter une image", class: "form-label" %>
-          <br>
-          <%= f.file_field :picture, accept: 'image/png,image/gif,image/jpeg'%>
-        </div>
-        <div class="text-center">
-          <%= f.submit "Publier mon cours", class: "btn btn-primary px-5" %>
-        </div>
-      <%end%>
+    <div class="row ml-3">
+      <div class="offset-md-3 col-md-6 offset-md-3">
+        <%= form_with model: @lesson, class: "form", id: "contact-form" do |f| %>
+          <div class="form-group">
+            <%= f.text_field :title, class: "form-control", placeholder: "Titre du cours", required: true, minlength: "10" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :description, class: "form-control", rows: "7", placeholder: "Description du cours", required: true, minlength: "20", maxlength: "5000" %>
+          </div>
+          <div class="form-group text-center my-4">
+            <%= f.label "Ajouter une image", class: "form-label" %>
+            <br>
+            <%= f.file_field :picture, accept: 'image/png,image/gif,image/jpeg'%>
+          </div>
+          <div class="actions mt-5">
+            <%= f.submit "Publier mon cours", class: "btn btn-primary d-flex mx-auto mb-3" %>
+          </div>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>

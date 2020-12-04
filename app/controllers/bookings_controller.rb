@@ -1,17 +1,14 @@
 class BookingsController < ApplicationController
   include BookingsHelper
   before_action :authenticate_user!, only: [:create]
-  before_action :find_booking
-  before_action :prevent_teacher_booking, only: [:new, :create]
+  before_action :find_booking, only: [:destroy]
   
-  def new
-  end 
-
   def create
     @booking = Booking.new(booking_params)
     @booking.followed_lesson_id = params[:lesson_id]
     @booking.duration = 30
     @booking.user_id = current_user.id
+    prevent_teacher_booking
 
     if @booking.save
       flash[:success] = "Votre réservation a bien été prise en compte"
