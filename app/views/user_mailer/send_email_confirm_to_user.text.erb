@@ -1,6 +1,11 @@
-Salut !
+Salut <%= @student.unsername %>!
+
 ======================================
-Tu t'es inscrit sur au cours nom_du_cours de pseudo_teacher en utilisant l'e-mail suivant : <%= @student.email %>.
-Voici un rappel :
-Date_et_horaire
+
+Tu t'es inscrit au cours <%= @lesson_title %> créé par <%= @teacher.username%>. Contacte le au plus vite via la messagerie de KnowShare, ou bien, voici son email : <%= @teacher.email%>
+
+Pour rappel :
+    Le cours commencera le <%= @start_date %>
+
+
 À très vite sur KnowShare !

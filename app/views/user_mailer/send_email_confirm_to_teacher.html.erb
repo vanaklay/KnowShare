@@ -1,12 +1,14 @@
 <%= render "header_mail" %>
 
-  <h1>Salut !</h1>
+  <h1>Salut <%= @teacher.username %>!</h1>
   <p>
-    Pseudo_student s'est inscrit sur ton cours nom_du_cours en utilisant l'e-mail suivant : <%= @student.email %>.
+    <%= @student.username %> s'est inscrit à ton cours <%= @lesson_title %> en utilisant l'e-mail suivant : <%= @student.email %>.
+    Contacte le via la messagerie de KnowShare ou par mail.
   </p>
   <p>
-    Voici un rappel :
-    Date_et_horaire
+    Détails du cours :
+    Le cours commencera le <%= @start_date %>
+    
   </p>
 
 <%= render "footer_mail" %>

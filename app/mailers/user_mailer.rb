@@ -9,9 +9,11 @@ class UserMailer < ApplicationMailer
     mail(to: @student.email, subject: 'Votre nouvelle réservation !') 
   end
 
-  def send_email_confirm_to_teacher(teacher, student)
+  def send_email_confirm_to_teacher(student, teacher, start_date, lesson_title)
     @student = student 
     @teacher = teacher
-    mail(to: @teacher.email, subject: 'Un de vos cours est réservé !') 
+    @start_date = start_date
+    @lesson_title = lesson_title
+    mail(to: @teacher.email, subject: 'Une nouvelle réservation de cours !') 
   end
 end

@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
   belongs_to :followed_lesson, foreign_key: 'followed_lesson_id', class_name: 'Lesson'
 
   validate :student_enough_credit?
-  after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user
+  after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user, :send_email_new_booking_teacher
   
   before_destroy :refund
 
@@ -86,6 +86,10 @@ class Booking < ApplicationRecord
 
   def send_email_new_booking_user
     UserMailer.send_email_confirm_to_user(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
+  end
+
+  def send_email_new_booking_teacher
+    UserMailer.send_email_confirm_to_teacher(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
   end
 
 end
