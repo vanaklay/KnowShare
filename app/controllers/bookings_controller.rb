@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   
   def create
     @booking = Booking.new(booking_params)
-    @booking.followed_lesson_id = params[:lesson_id]
+    @booking.lesson_id = params[:lesson_id]
     @booking.duration = 30
     @booking.user_id = current_user.id
     create_booking
