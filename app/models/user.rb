@@ -107,13 +107,13 @@ class User < ApplicationRecord
 
   def past_lessons
     past_lessons = []
-    past_bookings.each { |booking| past_lessons << booking.followed_lesson }
+    past_bookings.each { |booking| past_lessons << booking.lesson }
     past_lessons
   end
 
   def future_lessons
     future_lessons = []
-    future_bookings.each { |booking| future_lessons << booking.followed_lesson }
+    future_bookings.each { |booking| future_lessons << booking.lesson }
     future_lessons
   end
 end

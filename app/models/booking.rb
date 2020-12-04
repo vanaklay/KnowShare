@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
                        if: :multiple_of_thirty?
 
   belongs_to :user
-  belongs_to :followed_lesson, foreign_key: 'followed_lesson_id', class_name: 'Lesson'
+  belongs_to :lesson
 
   validate :student_enough_credit?, :prevent_teacher_booking
   after_create :payment_from_student, :payment_to_teacher
@@ -19,7 +19,7 @@ class Booking < ApplicationRecord
   end
 
   def teacher
-    followed_lesson.user
+    lesson.user
   end
 
   # The number of credit to be transferred
