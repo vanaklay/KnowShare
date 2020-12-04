@@ -4,8 +4,11 @@
       <div class="mx-2">
         <i class="fas fa-chalkboard-teacher fa-3x"></i>
       </div>
-      <div class="mx-2 d-flex align-self-center">
+      <div class="d-flex mx-2">
           <h3><strong>Mon dashboard prof</strong></h3>
+      </div>
+      <div class="pb-0 ml-auto mr-2">
+        <%= link_to "Editer mon planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>
