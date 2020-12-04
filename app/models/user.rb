@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  after_create :send_welcome_email
+
   def role_include?(searched_role)
     role.split.include?(searched_role)
   end
@@ -115,5 +117,9 @@ class User < ApplicationRecord
     future_lessons = []
     future_bookings.each { |booking| future_lessons << booking.lesson }
     future_lessons
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_send(self).deliver_now
   end
 end
