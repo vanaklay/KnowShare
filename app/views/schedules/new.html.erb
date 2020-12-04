@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" }, multipart: true do |f| %>
+        
+        <div class="form-group">
+          <%= f.label :Choisir_un_horaire_par_multiple_de_30_minutes %>
+          <%= f.datetime_field :start_time, class: "form-control" %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Créer", class: "btn btn-primary px-5" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
