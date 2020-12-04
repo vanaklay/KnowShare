@@ -8,9 +8,25 @@ module BookingsHelper
   end
 
   def prevent_teacher_booking
+    flash[:danger] = 'Vous ne pouvez pas réserver une séance avec vous-même !'
+    redirect_back(fallback_location: root_path)
+  end
+
+  def create_booking
     if teacher?
-      flash[:danger] = 'Vous ne pouvez pas réserver une séance avec vous-même !'
-      redirect_back(fallback_location: root_path)
+      puts "$"*50
+      puts "$"*50
+      puts "$"*50
+      prevent_teacher_booking
+    else
+      if @booking.save
+        flash[:success] = "Votre réservation a bien été prise en compte"
+        redirect_to(root_path)
+      else
+        flash[:danger] = "Votre réservation n'a pas pu aboutir"
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
+
 end

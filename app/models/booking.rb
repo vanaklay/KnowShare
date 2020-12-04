@@ -57,7 +57,7 @@ class Booking < ApplicationRecord
   private
 
   def start_in_future
-    errors.add(:start_date, ": Impossible de réserver un événement dans le passé") unless start_date > DateTime.now
+    errors.add(:start_date, ": Impossible de réserver une leçon dans le passé") unless start_date > DateTime.now
   end
 
   def multiple_of_thirty?
