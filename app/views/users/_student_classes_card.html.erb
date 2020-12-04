@@ -30,7 +30,7 @@
           </div>
         </div>
         <% current_user.future_bookings.each do |booking| %>
-          <%= render 'booking_list', booking: booking %>
+          <%= render 'booking_list_student', booking: booking %>
         <% end %>
       <% else %>
         <p>Tu n'as encore aucun cours de prévu !</p>

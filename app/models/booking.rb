@@ -46,6 +46,10 @@ class Booking < ApplicationRecord
     end
   end
 
+  def display_start_date_time
+    start_date.strftime("%d/%m/%Y à %I:%M%p")
+  end 
+
   private
 
   def start_in_future
