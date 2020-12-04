@@ -1,10 +1,7 @@
-<div class="container" id="all-lessons">
-  <h2 class="font-weight-bold mt-5 mb-0 text-center">Les cours à la une</h2>
-  <p class="subTitleIndex text-center mb-5">Découvres les cours les plus populaires</p>
-  <div class="row">
+<div class="row mb-5">
     <%@lessons.each do |lesson| %>
       <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-        <div class="card bg-white text-dark">
+        <div class="card bg-white text-dark mt-3">
         <% if lesson.picture.attached? %>
           <%= image_tag lesson.picture, class:"img-fluid img-lesson-card" %>
         <% else %>
@@ -34,8 +31,3 @@
     <% end %>
 
   </div>
-
-  <div class="row justify-content-center my-5">
-    <%= link_to "Tous les cours", lessons_path, :class => "btn-lg btn-primary" %>
-  </div>
-</div>
