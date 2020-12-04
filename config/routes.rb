@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :lessons do
     resources :bookings
   end
-  resources :users
+  resources :users do 
+    resources :schedules
+  end
   
 end

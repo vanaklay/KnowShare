@@ -1,0 +1,27 @@
+
+<div class="card my-3 mx-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2 d-flex align-self-center">
+          <h2><strong>Mon planning</strong></h2>
+      </div>
+      <div class="mx-2 align-self-center ml-auto">
+          <%= link_to "Créer un horaire", new_user_schedule_path, class: "btn btn-outline-primary mx-2" %>
+      </div>
+    </div>
+  </div>
+  <div class="card-body container">
+    
+    
+
+    <% @schedules.each do |schedule| %>
+      <%= schedule.start_time.strftime("%d/%m/%y") %>
+      <% if schedule.title == "booked" %>
+        <button class="btn btn-danger " disabled id="schedule_id_<%=schedule.id%>"><%= schedule.start_time.strftime("%H:%M") %></button>
+      <% else %>
+        <button class="btn btn-info" id="schedule_id_<%=schedule.id%>"><%= schedule.start_time.strftime("%H:%M") %></button>
+      <% end %>
+    <% end %>
+  
+  </div>
+</div>
