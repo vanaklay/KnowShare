@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   before_create :assign_student_role, :assign_default_credit
+  after_create :send_welcome_mail
 
   def role_include?(searched_role)
     role.split.include?(searched_role)
@@ -87,5 +88,9 @@ class User < ApplicationRecord
   def assign_default_credit
     default_given_credit = 4
     self.personal_credit = default_given_credit
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_send(self).deliver_now
   end
 end
