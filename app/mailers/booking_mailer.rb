@@ -16,13 +16,12 @@ class BookingMailer < ApplicationMailer
     mail(to: @teacher.email, subject: 'Une nouvelle réservation de cours !') 
   end
 
-  def destroy_booking_email(student, teacher, start_date, lesson_title)
-    @student = student 
-    @teacher = teacher
+  def after_destroy_booking_email(user, start_date, lesson_title)
+    @user = user 
     @start_date = start_date
     @lesson_title = lesson_title
-    mail(to: @teacher.email, subject: 'Une nouvelle réservation de cours !')
-    mail(to: @user.email, subject: 'Une nouvelle réservation de cours !')
+    mail(to: @user.email, subject: "Information concernant l'annulation du cours")
+
   end
-  
+
 end
