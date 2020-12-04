@@ -2,7 +2,7 @@ class Lesson < ApplicationRecord
   validates_presence_of :title, :description
   validates :title, uniqueness: { case_sensitive: false }, length: { minimum: 10 }
   validates :description, length: { in: 20...5000 }
-  after_create :add_teacher_role, unless: :teacher?
+  after_create :add_teacher_role, unless: :teacher_role?
 
   belongs_to :user
   has_many  :bookings
@@ -17,6 +17,10 @@ class Lesson < ApplicationRecord
     user
   end
 
+  def teacher_role?
+    user.teacher?
+  end  
+  
   def teacher?(user)
     user == teacher
   end
