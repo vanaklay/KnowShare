@@ -1,11 +1,17 @@
 <div class="container d-flex justify-content-center">
-  <div class="card border-secondary mb-3" style="max-width: 60rem;">
-    <div class="h4 card-header text-center">Contactez-nous !</div>
-    <div class="card-body">
-      <h5 class="card-title">Une question ?</h5>
-      <p class="card-text">Nous serons ravis de répondre à vos questions, envoyez-vous un message à : </p> 
-      <div class="text-center">
-        <%= mail_to "team.genepi.thp@gmail.com" %>
+  <div class="card border-dark mb-3" style="max-width: 60rem;">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <%= image_tag  "https://cdn.pixabay.com/photo/2020/11/04/10/45/school-5711987_1280.jpg", class:"img-fluid img-lesson" %>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card-body">
+          <h5 class="card-title">Une question ?</h5>
+          <p class="card-text">Nous serons ravis de répondre à vos questions, envoyez-vous un message à : </p> 
+          <div class="text-center">
+            <%= mail_to "team.genepi.thp@gmail.com" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

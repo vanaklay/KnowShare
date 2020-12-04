@@ -12,7 +12,7 @@ Have you ever gone to study at a friend's house and realized that his explanatio
 Wouldn't it be nice to have an online platform that would put you in contact with people willing to share their knowledge and experience with you? 
 
 KnowShare connects people that have one thing in common: the thirst for learning. 
-It allows a people to share their knowledge with one another: they can offer a course, and in return take a course from someone else. 
+It allows people to share their knowledge with one another: they can offer a course, and in return take a course from someone else. 
 
 ## Objectives of this project
 
