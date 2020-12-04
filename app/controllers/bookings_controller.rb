@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :prevent_teacher_booking, only: [:new, :create]
   
   def new
   end 
@@ -33,5 +34,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date)
   end
-
 end
