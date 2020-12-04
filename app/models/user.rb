@@ -17,10 +17,14 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  def role?
+    role.class == String
+  end
+  
   after_create :send_welcome_email
 
   def role_include?(searched_role)
-    role.split.include?(searched_role)
+    role.split.include?(searched_role) if role?
   end
 
   def teacher?
@@ -107,6 +111,14 @@ class User < ApplicationRecord
     bookings.select { |booking| booking.start_date > DateTime.now }
   end
 
+  def has_past_bookings?
+    past_bookings.count > 0
+  end 
+
+  def has_future_bookings?
+    future_bookings.count > 0
+  end 
+
   def past_lessons
     past_lessons = []
     past_bookings.each { |booking| past_lessons << booking.lesson }
@@ -118,6 +130,38 @@ class User < ApplicationRecord
     future_bookings.each { |booking| future_lessons << booking.lesson }
     future_lessons
   end
+  
+  def students
+    students = []
+    lessons.each do |lesson|
+      lesson.students.each { |student| students << student }
+    end
+    students
+  end 
+
+  def given_bookings
+    given_bookings = []
+    lessons.each do |lesson|
+      lesson.bookings.each { |booking| given_bookings << booking }
+    end
+    given_bookings
+  end 
+
+  def past_given_bookings?
+    past_given_bookings.count > 0
+  end 
+
+  def future_given_bookings?
+    future_given_bookings.count > 0
+  end 
+
+  def past_given_bookings
+    given_bookings.select { |given_booking| given_booking.start_date < DateTime.now }
+  end 
+
+  def future_given_bookings
+    given_bookings.select { |given_booking| given_booking.start_date > DateTime.now }
+  end 
 
   def send_welcome_email
     UserMailer.welcome_send(self).deliver_now

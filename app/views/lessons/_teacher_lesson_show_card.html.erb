@@ -9,7 +9,7 @@
       <% end %>
       </div>
       <div class="mx-2 d-flex align-self-center">
-          <strong>Cours créé par <%= @lesson.teacher.username.capitalize %></strong>
+          <strong>Cours créé par <%= @lesson.teacher.display_name.capitalize %></strong>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
       <p></p>
     <% end %>
     <div class="text-center">
-      <%= link_to "Voir son profil", @lesson.teacher, class:"btn btn-outline-info" %>
+      <%= link_to "Voir son profil", @lesson.teacher, class:"btn btn-outline-info disabled" %>
     </div>
   </div>
 </div>

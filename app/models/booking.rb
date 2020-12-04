@@ -29,7 +29,7 @@ class Booking < ApplicationRecord
   end
 
   def lesson_title
-    followed_lesson.title
+    lesson.title
   end
 
   def display_start_date
@@ -75,6 +75,9 @@ class Booking < ApplicationRecord
     after_destroy_booking_email
   end
 
+  def display_start_date_time
+    start_date.strftime("%d/%m/%Y à %I:%M%p")
+  end 
 
   private
 
