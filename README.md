@@ -1,6 +1,6 @@
 # KNOWSHARE
 
-### Welcome to the kitten shop!
+### Welcome to KnowShare!
 
 
 ![](https://abaforlawstudents.com/wp-content/uploads/2020/03/online-study-tips.jpg)
