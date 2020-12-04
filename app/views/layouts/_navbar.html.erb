@@ -18,9 +18,9 @@
       <div class="nav-item dropdown">
         <a class="dropdown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar, alt: "profile picture", style: "width: 4vw; height: 4vw; object-fit: cover; border-radius: 50px" %>
+            <%= image_tag current_user.avatar, alt: "profile picture", class:"navbar-avatar" %>
           <% else %>
-            <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", style: "width: 4vw; height: 4vw; object-fit: cover; border-radius: 50px" %>
+            <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class:"navbar-avatar" %>
           <% end %>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

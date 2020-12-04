@@ -39,6 +39,15 @@ font-size: 18px;
 
 }
 
+.navbar-avatar{
+  /* background-color: #F8F8F8; */
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  object-fit: contain;
+
+}
+
 .footer-container {
   min-height: 100vh;
   display: flex;
