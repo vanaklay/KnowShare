@@ -128,4 +128,36 @@ class User < ApplicationRecord
     future_bookings.each { |booking| future_lessons << booking.followed_lesson }
     future_lessons
   end
+  
+  def students
+    students = []
+    lessons.each do |lesson|
+      lesson.students.each { |student| students << student }
+    end
+    students
+  end 
+
+  def given_bookings
+    given_bookings = []
+    lessons.each do |lesson|
+      lesson.bookings.each { |booking| given_bookings << booking }
+    end
+    given_bookings
+  end 
+
+  def past_given_bookings?
+    past_given_bookings.count > 0
+  end 
+
+  def future_given_bookings?
+    future_given_bookings.count > 0
+  end 
+
+  def past_given_bookings
+    given_bookings.select { |given_booking| given_booking.start_date < DateTime.now }
+  end 
+
+  def future_given_bookings
+    given_bookings.select { |given_booking| given_booking.start_date > DateTime.now }
+  end 
 end
