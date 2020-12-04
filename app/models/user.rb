@@ -34,8 +34,24 @@ class User < ApplicationRecord
     first_name
   end
 
+  def display_first_name
+    if first_name?
+      first_name
+    else
+      "Pas encore de prénom!"
+    end
+  end
+
   def last_name?
     last_name
+  end
+
+  def display_last_name
+    if last_name?
+      last_name
+    else
+      "Pas encore de nom !"
+    end
   end
 
   def display_name
@@ -59,8 +75,16 @@ class User < ApplicationRecord
     end
   end
 
-  def has_description?
+  def description?
     description
+  end
+
+  def display_description
+    if description?
+      description
+    else
+      "Pas encore de bio, édite ton profil pour en rajouter une !"
+    end
   end
 
   def add_credit(number_of_credit)
