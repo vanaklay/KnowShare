@@ -32,14 +32,11 @@ font-size: 18px;
 }
 
 .avatar {
-  position: relative;
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1;
+  object-fit: cover;
+
 }
 
 .footer-container {
@@ -96,3 +93,8 @@ font-size: 18px;
   border-radius: 50px
 }
 
+.img-lesson-card{
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}
