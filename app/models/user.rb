@@ -66,6 +66,14 @@ class User < ApplicationRecord
     bookings.select { |booking| booking.start_date > DateTime.now }
   end
 
+  def has_past_bookings?
+    past_bookings.count > 0
+  end 
+
+  def has_future_bookings?
+    future_bookings.count > 0
+  end 
+
   def past_lessons
     past_lessons = Array.new
     past_bookings.each { |booking| past_lessons << booking.followed_lesson } 
