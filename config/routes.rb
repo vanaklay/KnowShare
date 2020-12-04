@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   resources :users do 
     resources :schedules
   end
+
+  get '/contact' => 'static_pages#contact'
   
 end
