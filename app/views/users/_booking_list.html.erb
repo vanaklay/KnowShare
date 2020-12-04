@@ -1,5 +1,5 @@
 <% lesson = booking.followed_lesson %>
-<div class="row border-bottom border-gray py-2 mb-2 mr-2">
+<div class="row border-bottom border-gray pb-2 mb-2 mr-2 align-items-center">
   <div class="col-lg-3 col-md-3 col-sm-12">
     <%= booking.start_date %>
   </div>
@@ -18,7 +18,7 @@
     <% end %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= link_to "Annuler ce cours", booking, class: "btn btn-danger mx-2 my-2", method: :delete %>
-    <%= link_to  "Voir le cours", lesson, class:"btn btn-outline-info mx-2 my-2" %>
+      <%= link_to "Annuler ce cours", lesson_booking_path(lesson.id, booking.id), class: "btn btn-danger", method: :delete %>
+      <%= link_to  "Voir le cours", lesson, class:"btn btn-outline-info" %>
   </div>
 </div>

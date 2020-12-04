@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  include BookingsHelper
   before_action :authenticate_user!, only: [:create]
   before_action :find_booking
   
@@ -23,7 +24,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to @cart, notice: "Le cours a bien été annulé" }
+      format.html { redirect_to current_user, notice: "Le cours a bien été annulé" }
       format.json { head :no_content }
       format.js {}
     end
