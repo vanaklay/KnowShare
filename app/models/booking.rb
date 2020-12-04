@@ -29,7 +29,7 @@ class Booking < ApplicationRecord
   end
 
   def lesson_title
-    followed_lesson.title
+    lesson.title
   end
 
   def display_start_date
