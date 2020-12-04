@@ -7,6 +7,9 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.followed_lesson_id = params[:lesson_id]
+    @booking.duration = 30
+    @booking.user_id = current_user.id
 
     if @booking.save
       flash[:success] = "Votre réservation a bien été prise en compte"
@@ -23,12 +26,13 @@ class BookingsController < ApplicationController
       format.html { redirect_to @cart, notice: "Le cours a bien été annulé" }
       format.json { head :no_content }
       format.js {}
+    end
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :duration)
+    params.require(:booking).permit(:start_date)
   end
 
 end
