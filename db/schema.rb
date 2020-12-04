@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_131937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"
-    t.integer "personal_credit"
+    t.integer "personal_credit", default: 4
     t.string "first_name"
     t.string "last_name"
     t.text "description"
