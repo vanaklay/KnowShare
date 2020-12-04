@@ -10,7 +10,8 @@ class Booking < ApplicationRecord
   belongs_to :followed_lesson, foreign_key: 'followed_lesson_id', class_name: 'Lesson'
 
   validate :student_enough_credit?
-  after_create :payment_from_student, :payment_to_teacher
+  after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user
+  
   before_destroy :refund
 
   # Easier to read and use
@@ -25,6 +26,15 @@ class Booking < ApplicationRecord
   # The number of credit to be transferred
   def price
     duration / 30
+  end
+
+  def lesson_title
+    followed_lesson.title
+  end
+
+  def display_start_date
+    start_date.strftime('%Y/%m/%d à %H:%M')
+    
   end
 
   def student_enough_credit? 
@@ -73,4 +83,9 @@ class Booking < ApplicationRecord
   def refund_to_student
     student.add_credit(price)
   end
+
+  def send_email_new_booking_user
+    UserMailer.send_email_confirm_to_user(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
+  end
+
 end
