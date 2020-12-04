@@ -17,7 +17,7 @@
     <% @schedules.each do |schedule| %>
       <%= schedule.start_time.strftime("%d/%m/%y") %>
       <% if schedule.title == "booked" %>
-        <button class="btn btn-danger " disabled id="schedule_id_<%=schedule.id%>"><%= schedule.start_time.strftime("%H:%M") %></button>
+        <%= button_to schedule.start_time.strftime("%H:%M"), :class => "btn btn-danger", :id => "schedule_id_<%=schedule.id%>", disabled %>
       <% else %>
         <button class="btn btn-info" id="schedule_id_<%=schedule.id%>"><%= schedule.start_time.strftime("%H:%M") %></button>
       <% end %>
