@@ -17,14 +17,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  before_create :assign_student_role, :assign_default_credit
-
   def role_include?(searched_role)
     role.split.include?(searched_role)
-  end
-
-  def student?
-    role_include?('student')
   end
 
   def teacher?
@@ -32,22 +26,43 @@ class User < ApplicationRecord
   end
 
   def assign_teacher_role
-    new_role = role + ' ' + 'teacher'
+    new_role = 'teacher'
     update(role: new_role)
   end
 
-  def has_first_name?
+  def first_name?
     first_name
   end
 
-  def has_last_name?
+  def last_name?
     last_name
+  end
+
+  def display_name
+    if first_name?
+      if last_name?
+        "#{first_name} #{last_name}"
+      else
+        first_name
+      end
+    else
+      username
+    end
+  end
+
+  def display_avatar
+    if avatar.attached?
+      avatar
+    else
+      # url to picture of cute cat
+      "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697"
+    end
   end
 
   def has_description?
     description
-  end 
-  
+  end
+
   def add_credit(number_of_credit)
     new_personal_credit = personal_credit + number_of_credit
     update(personal_credit: new_personal_credit)
@@ -67,25 +82,14 @@ class User < ApplicationRecord
   end
 
   def past_lessons
-    past_lessons = Array.new
-    past_bookings.each { |booking| past_lessons << booking.followed_lesson } 
-    past_lessons 
+    past_lessons = []
+    past_bookings.each { |booking| past_lessons << booking.followed_lesson }
+    past_lessons
   end
 
   def future_lessons
-    future_lessons = Array.new
-    future_bookings.each { |booking| future_lessons << booking.followed_lesson } 
-    future_lessons 
-  end
-  
-  private
-
-  def assign_student_role
-    self.role = 'student'
-  end
-
-  def assign_default_credit
-    default_given_credit = 4
-    self.personal_credit = default_given_credit
+    future_lessons = []
+    future_bookings.each { |booking| future_lessons << booking.followed_lesson }
+    future_lessons
   end
 end
