@@ -4,6 +4,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @schedules = Schedule.where(user_id: @lesson.user.id).all
   end
 
   def new
@@ -23,7 +24,6 @@ class LessonsController < ApplicationController
 
   def edit
     @lesson = Lesson.find(params[:id])
-    
   end
 
   def update
@@ -40,9 +40,6 @@ class LessonsController < ApplicationController
 
   def lesson_params
     params.require(:lesson).permit(:title, :description, :picture)
-    
   end
-
-
-
+  
 end
