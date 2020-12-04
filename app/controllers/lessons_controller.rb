@@ -5,6 +5,7 @@ class LessonsController < ApplicationController
   def show
     @lesson = Lesson.find(params[:id])
     @schedules = Schedule.where(user_id: @lesson.user.id).all
+    @booking = Booking.new
   end
 
   def new
