@@ -40,12 +40,24 @@ font-size: 18px;
 }
 
 .navbar-avatar{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   /* background-color: #F8F8F8; */
   width: 4vw;
   height: 4vw;
   border-radius: 50%;
-  object-fit: contain;
+  /* object-fit: contain; */
 
+}
+
+.profile-avatar{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 50px
 }
 
 .footer-container {
