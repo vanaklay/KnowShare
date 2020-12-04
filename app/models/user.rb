@@ -17,8 +17,12 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  def role?
+    role.class == String
+  end
+  
   def role_include?(searched_role)
-    role.split.include?(searched_role)
+    role.split.include?(searched_role) if role?
   end
 
   def teacher?
