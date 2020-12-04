@@ -9,9 +9,14 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :followed_lesson, foreign_key: 'followed_lesson_id', class_name: 'Lesson'
 
+<<<<<<< HEAD
   validate :student_enough_credit?
   after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user, :send_email_new_booking_teacher
   
+=======
+  validate :student_enough_credit?, :prevent_teacher_booking
+  after_create :payment_from_student, :payment_to_teacher
+>>>>>>> development
   before_destroy :refund
 
   # Easier to read and use
@@ -37,8 +42,16 @@ class Booking < ApplicationRecord
     
   end
 
-  def student_enough_credit? 
-      errors.add(:base, :student_personal_credit, message: 'Vous ne possédez pas suffisamment de crédit(s) !') unless user.personal_credit >= price
+  def student_is_teacher?
+    user == teacher
+  end
+
+  def prevent_teacher_booking
+    errors.add(:base, :student_is_teacher, message: 'Vous ne pouvez pas réserver une séance avec vous-même !') if student_is_teacher?
+  end
+
+  def student_enough_credit?
+    errors.add(:base, :student_personal_credit, message: 'Vous ne possédez pas suffisamment de crédit(s) !') unless user.personal_credit >= price
   end
 
   def not_begun?
