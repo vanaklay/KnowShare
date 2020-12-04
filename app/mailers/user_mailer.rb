@@ -6,6 +6,4 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez KnowShare !') 
   end
  
-  
-
 end
