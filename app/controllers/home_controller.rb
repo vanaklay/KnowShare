@@ -1,11 +1,15 @@
 class HomeController < ApplicationController
+  before_action :all_lessons, only: [:index]
 
   def index
-    if Lesson.all.length > 9
-      @lessons = Lesson.all.sample(9)
-    else
-      @lessons = Lesson.all
-    end
+    @lessons = Lesson.all.sample(9) if @lessons.length > 9
+  
+  end
+
+  private
+
+  def all_lessons
+    @lessons = Lesson.all.sort
 
   end
   
