@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :all_lessons, only: [:index]
 
   def index
-    @lessons = Lesson.all.sample(9) if @lessons.length > 9
+    @lessons = Lesson.all.sample(6) if @lessons.length > 6
   
   end
 

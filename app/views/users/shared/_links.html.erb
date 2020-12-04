@@ -3,11 +3,11 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Inscrivez-vous", new_registration_path(resource_name), class: "btn btn-outline-primary btn-sm" %><br />
+  <%= link_to "S'inscrire", new_registration_path(resource_name), class: "btn btn-outline-warning btn-sm mb-2" %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "btn btn-warning btn-sm" %><br />
+  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "text-dark" %><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
