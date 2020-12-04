@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  after_create :send_welcome_email
+
   def role_include?(searched_role)
     role.split.include?(searched_role)
   end
@@ -107,13 +109,17 @@ class User < ApplicationRecord
 
   def past_lessons
     past_lessons = []
-    past_bookings.each { |booking| past_lessons << booking.followed_lesson }
+    past_bookings.each { |booking| past_lessons << booking.lesson }
     past_lessons
   end
 
   def future_lessons
     future_lessons = []
-    future_bookings.each { |booking| future_lessons << booking.followed_lesson }
+    future_bookings.each { |booking| future_lessons << booking.lesson }
     future_lessons
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_send(self).deliver_now
   end
 end
