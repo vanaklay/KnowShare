@@ -1,6 +1,5 @@
-<div class="container">
+<div class="container mb-5">
   <h2 class="titleIndex my-5 mb-0 text-center">Tous les cours disponibles</h2>
-  
-    <%= render 'index_lesson_card' %>
+  <%= render "shared/index_cards", local: @lessons %>
 
 </div>
