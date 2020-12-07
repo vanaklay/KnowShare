@@ -27,7 +27,7 @@ The main objectives of this project were to:
 
 ## How to open the website
 
-The quickest and easiest way to do it would be to open it on Heroku: https://git.heroku.com/knowshare-thp.git
+The quickest and easiest way to do it would be to open it on Heroku: https://knowshare-thp.herokuapp.com/
 
 Or you can run the following commands in your terminal:
 
