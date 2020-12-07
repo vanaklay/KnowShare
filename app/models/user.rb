@@ -19,16 +19,6 @@ class User < ApplicationRecord
         
   has_one_attached :avatar
 
-
-  # ActionCable method
-  def existing_chatrooms_users
-    existing_chatroom_users = []
-    self.chatrooms.each do |chatroom|
-    existing_chatroom_users.concat(chatroom.subscriptions.where.not(user_id: self.id).map {|subscription| subscription.user})
-    end
-    existing_chatroom_users.uniq
-  end
-
   def role?
     role.class == String
   end

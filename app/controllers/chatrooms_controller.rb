@@ -1,11 +1,7 @@
 class ChatroomsController < ApplicationController
 
   before_action :authenticate_user!
-
-  def index
-    chatrooms = current_user.chatrooms
-    @existing_chatrooms_users = current_user.existing_chatrooms_users
-  end
+  before_action :chatroom_users, only: [:show]
 
   def create
     @chatroom = Chatroom.find(params[:id])
@@ -18,6 +14,15 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find_by(id: params[:id])
     @message = Message.new
   end
+
+  private
+
+  def chatroom_users
+    @chatroom = Chatroom.find(params[:id])
+    @related_booking = @chatroom.booking
+    redirect_to root_path, danger: "Impossible d'accéder à cette page" unless current_user == @related_booking.teacher || current_user == @related_booking.student
   
+  end
+
 
 end
