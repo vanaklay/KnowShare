@@ -14,7 +14,8 @@ class Booking < ApplicationRecord
   
   before_destroy :destroy_booking
 
-  # Easier to read and use
+  # ------- Easier to read and use ------- #
+
   def student
     user
   end
@@ -31,15 +32,26 @@ class Booking < ApplicationRecord
   def lesson_title
     lesson.title
   end
-
+  
   def display_start_date
-    start_date.strftime('%Y/%m/%d à %H:%M')
-    
+    start_date.strftime('%Y/%m/%d à %H:%M')    
   end
 
+  def display_start_date_time
+    start_date.strftime("%d/%m/%Y à %I:%M%p")
+  end 
+  
   def student_is_teacher?
     user == teacher
   end
+
+  def future?
+    start_date > DateTime.now
+  end
+  
+  private
+  
+  # ------- Validation methods ------- #
 
   def prevent_teacher_booking
     errors.add(:base, :student_is_teacher, message: 'Vous ne pouvez pas réserver une séance avec vous-même !') if student_is_teacher?
@@ -61,25 +73,17 @@ class Booking < ApplicationRecord
       # Cancels the destroy action
       :abort
     end
-
   end
 
   def refund
     refund_from_teacher
     refund_to_student
-    
   end
 
   def action_destroy_booking
     refund
     after_destroy_booking_email
   end
-
-  def display_start_date_time
-    start_date.strftime("%d/%m/%Y à %I:%M%p")
-  end 
-
-  private
 
   def start_in_future
     errors.add(:start_date, ": Impossible de réserver une leçon dans le passé") unless start_date > DateTime.now
@@ -90,21 +94,21 @@ class Booking < ApplicationRecord
   end
 
   def payment_from_student
-    student.remove_credit(price)
+    BookingService::RemoveCredit.new(amount: price, user: student).call
   end
 
   # Will change after finding out how to launch method at a certain date
   def payment_to_teacher
-    teacher.add_credit(price)
+    BookingService::AddCredit.new(amount: price, user: teacher).call
   end
 
   # Will disappear after finding out how to launch method at a certain date : the credit won't be given until the lesson start
   def refund_from_teacher
-    teacher.remove_credit(price)
+    BookingService::RemoveCredit.new(amount: price, user: student).call
   end
 
   def refund_to_student
-    student.add_credit(price)
+    BookingService::AddCredit.new(amount: price, user: student).call
   end
 
   # -------- Email section -------- #
