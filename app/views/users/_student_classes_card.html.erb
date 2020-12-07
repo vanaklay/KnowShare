@@ -57,7 +57,7 @@
           </div>
         </div>
         <% current_user.past_bookings.each do |booking| %>
-          <%= render 'booking_list', booking: booking %>
+          <%= render 'booking_list_student', booking: booking %>
         <% end %>
       <% else %>
         <p>Tu n'as encore jamais pris de cours</p>
