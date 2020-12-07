@@ -5,9 +5,15 @@ class Schedule < ApplicationRecord
 
   belongs_to :user
 
+  def is_booked?
+    self.title == "booked"
+  end
+  
   private
 
   def start_in_future
     errors.add(:start_time, ": Impossible de réserver un horaire dans le passé") unless start_time > DateTime.now
   end
+
+  
 end

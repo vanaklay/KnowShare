@@ -44,7 +44,7 @@ class User < ApplicationRecord
     if first_name?
       first_name
     else
-      "Pas encore de prénom!"
+      "Pas encore de prénom !"
     end
   end
 
@@ -89,7 +89,7 @@ class User < ApplicationRecord
     if description?
       description
     else
-      "Pas encore de bio, édite ton profil pour en rajouter une !"
+      "Pas encore de bio, édite vite ton profil pour en rajouter une !"
     end
   end
 

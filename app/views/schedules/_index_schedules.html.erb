@@ -1,0 +1,19 @@
+<div class="card bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="ml-2 d-flex align-self-center">
+          <h2><strong>Mon planning</strong></h2>
+      </div>
+      <div class="mr-2 align-self-center ml-auto">
+        <%= link_to "Revenir à mon profil", user_path(current_user), class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group p-3" >
+    <div class="rounded schedule-items" id="schedule-container">
+    <% @schedules.each do |schedule| %>
+      <%= render "schedule_object", schedule: schedule %>
+    <% end %>
+    </div>
+  </ul>
+</div>
