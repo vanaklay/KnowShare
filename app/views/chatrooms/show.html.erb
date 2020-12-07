@@ -1,19 +1,15 @@
-<h1>Salut t'es sur le chatroom</h1>
-<%= @chatroom.id %>
-
 <div>
   <h5>Chat with denis</h5>
   <% if @chatroom.messages.any? %>
-    <div id="messages">
+    <div id="messages" style="overflow: scroll; height: 300px" class="bg-white text-dark">
       <%= render partial: 'messages/message', collection: @chatroom.messages.order(id: :asc)%>
     </div>
   <%else%>
-    <div id="messages">
+    <div id="messages" style="overflow: scroll; height: 300px" class="bg-white text-dark">
     </div>
   <%end%>
 </div>
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
-</div>
 
 <script>
   createMessageChannel();

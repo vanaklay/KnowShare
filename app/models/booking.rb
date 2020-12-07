@@ -9,7 +9,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :lesson
 
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
 
   validate :student_enough_credit?, :prevent_teacher_booking
   after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user, :send_email_new_booking_teacher
