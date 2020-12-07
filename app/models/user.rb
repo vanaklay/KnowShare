@@ -93,16 +93,6 @@ class User < ApplicationRecord
     end
   end
 
-  def add_credit(number_of_credit)
-    new_personal_credit = personal_credit + number_of_credit
-    update(personal_credit: new_personal_credit)
-  end
-
-  def remove_credit(number_of_credit)
-    new_personal_credit = personal_credit - number_of_credit
-    update(personal_credit: new_personal_credit)
-  end
-
   def past_bookings
     bookings.select { |booking| booking.start_date < DateTime.now }
   end
