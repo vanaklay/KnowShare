@@ -94,21 +94,21 @@ class Booking < ApplicationRecord
   end
 
   def payment_from_student
-    BookingService::RemoveCredit.new(amount: price, user: student).call
+    Credit::Remove.new(amount: price, user: student).call
   end
 
   # Will change after finding out how to launch method at a certain date
   def payment_to_teacher
-    BookingService::AddCredit.new(amount: price, user: teacher).call
+    Credit::Add.new(amount: price, user: teacher).call
   end
 
   # Will disappear after finding out how to launch method at a certain date : the credit won't be given until the lesson start
   def refund_from_teacher
-    BookingService::RemoveCredit.new(amount: price, user: student).call
+    Credit::Remove.new(amount: price, user: student).call
   end
 
   def refund_to_student
-    BookingService::AddCredit.new(amount: price, user: student).call
+    Credit::Add.new(amount: price, user: student).call
   end
 
   # -------- Email section -------- #
