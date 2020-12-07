@@ -14,9 +14,6 @@ module BookingsHelper
 
   def create_booking
     if teacher?
-      puts "$"*50
-      puts "$"*50
-      puts "$"*50
       prevent_teacher_booking
     else
       if @booking.save

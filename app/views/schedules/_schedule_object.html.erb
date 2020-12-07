@@ -1,0 +1,3 @@
+<li id="schedule_id_<%= schedule.id %>" class="<%= schedule.is_booked? ? "table-light" : "table-dark"%> list-group-item">
+  Le <%= schedule.start_time.strftime("%d/%m/%y") %> de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %>
+</li>
