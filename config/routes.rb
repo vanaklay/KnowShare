@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
 
   get '/contact' => 'static_pages#contact'
+  get '/tarifs' => 'static_pages#pricing'
   
 end
