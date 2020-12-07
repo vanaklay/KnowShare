@@ -119,3 +119,15 @@ font-size: 18px;
   width: auto;
   object-fit: contain;
 }
+
+/* USER PROFILE */
+
+.user-container {
+  max-width: 99vw;
+}
+
+.schedule-items {
+  overflow: scroll;
+  height: 300px;
+
+}
