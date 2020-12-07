@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class BookingsController < ApplicationController
   include BookingsHelper
   before_action :authenticate_user!, only: [:create]
@@ -8,7 +10,19 @@ class BookingsController < ApplicationController
     @booking.lesson_id = params[:lesson_id]
     @booking.duration = 30
     @booking.user_id = current_user.id
-    create_booking
+    
+    if teacher?
+      prevent_teacher_booking
+    else
+      if @booking.save
+        Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
+        flash[:success] = "Votre réservation a bien été prise en compte"
+        redirect_to(root_path)
+      else
+        flash[:danger] = "Votre réservation n'a pas pu aboutir"
+        redirect_back(fallback_location: root_path)
+      end
+    end
   end 
 
   def destroy

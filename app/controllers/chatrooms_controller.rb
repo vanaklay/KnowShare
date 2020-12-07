@@ -1,5 +1,3 @@
-require 'securerandom'
-
 class ChatroomsController < ApplicationController
 
   before_action :authenticate_user!
@@ -10,20 +8,17 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @other_user = User.find(params[:other_user])
-    @chatroom = find_chatroom(@other_user) || Chatroom.new(identifier: SecureRandom.hex)
-    if !@chatroom.persisted?
-      @chatroom.save
-      @chatroom.subscriptions.create(user_id: current_user.id)
-      @chatroom.subscriptions.create(user_id: @other_user.id)
-    end
-    redirect_to user_chatroom_path(current_user, @chatroom,  :other_user => @other_user.id) 
+    @chatroom = Chatroom.find(params[:id])
+    @related_booking = @chatroom.booking_id
+    @other_user = @related_booking.teacher
+    # @chatroom.subscriptions.create(user_id: current_user.id)
+    # @chatroom.subscriptions.create(user_id: @other_user.id)
   end
 
   def show
-    @other_user = User.find(params[:other_user])
+    # @other_user = User.find(params[:other_user])
     @chatroom = Chatroom.find_by(id: params[:id])
-    @message = Message.new
+    # @message = Message.new
   end
   
   private
