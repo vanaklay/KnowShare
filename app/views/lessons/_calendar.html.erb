@@ -1,31 +1,12 @@
 <div class="card-body">
-  <h3 class="text-center">Disponibilité du prof</h2>
-    <table class="table table-hover w-50 mx-auto">
-      <tbody>
-        <% @schedules.each do |schedule| %>
-    
-          <tr class="table-dark">
-            <td class="text-center"><%= schedule.start_time.strftime("%d/%m/%y") %></td>
-            <td class="d-flex align-self-center justify-content-center">
-              <% if schedule.title == "booked" %>
-                <button class="btn btn-danger " disabled id="schedule_id_<%=schedule.id%>"><%= schedule.start_time.strftime("%H:%M") %></button>
-              <% else %>
-                <button class="btn btn-info" id="schedule_id_<%=schedule.id%>"><%= schedule.start_time.strftime("%H:%M") %></button>
-              <% end %>
-            </td>
-          </tr>
-
-          <script type="text/javascript">
-            document.getElementById("schedule_id_<%=schedule.id%>").addEventListener('click',function () {
-                let target = document.getElementById("target_calendar");
-                target.style.color = "green";
-                target.textContent = "Horaire choisi : <%= schedule.start_time.strftime("%d %m %y - %k:%M") %>";
-                document.getElementById("form-target").removeAttribute("hidden");
-                });
-          </script>
-        <% end %>
-      </tbody>
-    </table>
+  <h5 class="card-title text-center">Voici les disponibiltés du prof</h5>
+  <ul class="list-group" >
+    <div class="rounded schedule-items" id="schedule-container">
+    <% @schedules.each do |schedule| %>
+      <%= render "schedules/schedule_object", schedule: schedule %>
+    <% end %>
+    </div>
+  </ul>
 </div>
 
 

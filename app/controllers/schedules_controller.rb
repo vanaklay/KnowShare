@@ -2,10 +2,7 @@ class SchedulesController < ApplicationController
   before_action :find_user
 
   def index
-    @schedules = Schedule.where(user_id: params[:user_id]).all
-  end
-
-  def new
+    @schedules = Schedule.where(user_id: params[:user_id]).all.order("start_time")
     @schedule = Schedule.new
   end
 
@@ -13,10 +10,13 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
     if @schedule.save
-        redirect_to user_schedules_path
+      respond_to do |format|
+        format.html { redirect_to user_schedules_path }
+        format.js { }
+      end
     else
       flash.now[:danger] = "L'horaire n'a pas pu être créé"
-      render :new
+      render :index
     end
   end
 
@@ -27,7 +27,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:start_time)
+    params.require(:schedule).permit(:start_time, :end_time)
   end
 
 end
