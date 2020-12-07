@@ -1,2 +1,23 @@
 <h1>Salut t'es sur le chatroom</h1>
 <%= @chatroom.id %>
+
+<div>
+  <h5>Chat with denis</h5>
+  <% if @chatroom.messages.any? %>
+    <div id="messages">
+      <%= render partial: 'messages/message', collection: @chatroom.messages.order(id: :asc)%>
+    </div>
+  <%else%>
+    <div id="messages">
+    </div>
+  <%end%>
+</div>
+<%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+</div>
+
+<script>
+  createMessageChannel();
+  // app/assets/javascripts/channels/messages.js 
+  messageForm();
+  // app/assets/javascripts/messages_form.js
+</script>
