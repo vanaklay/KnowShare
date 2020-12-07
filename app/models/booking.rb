@@ -40,7 +40,7 @@ class Booking < ApplicationRecord
   end
 
   def display_start_date_time
-    start_date.strftime("%d/%m/%Y à %I:%M%p")
+    start_date.strftime("%d/%m/%Y à %H:%M")
   end 
   
   def student_is_teacher?
@@ -50,6 +50,24 @@ class Booking < ApplicationRecord
   def future?
     start_date > DateTime.now
   end
+
+  # ------- Validation methods class instance ------- #
+
+  def start_must_be_in_schedule
+    all_schedules = Schedule.where(user_id: self.lesson.user_id).all
+    end_date = self.start_date + self.duration.minute
+
+    found = false
+    all_schedules.each do |schedule|
+      start_date_schedule = schedule.start_time
+      end_date_schedule = schedule.end_time
+      if start_date.between?(start_date_schedule, end_date_schedule) && end_date.between?(start_date_schedule, end_date_schedule)
+        found = true
+      end
+    end
+    return found
+  end
+
   
   private
   

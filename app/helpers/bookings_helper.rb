@@ -12,4 +12,18 @@ module BookingsHelper
     redirect_back(fallback_location: root_path)
   end
 
+  def create_booking
+    if teacher?
+      prevent_teacher_booking
+    else
+      if @booking.save
+        flash[:success] = "Votre réservation a bien été prise en compte"
+        redirect_to(user_path(current_user))
+      else
+        flash[:danger] = "Votre réservation n'a pas pu aboutir"
+        redirect_back(fallback_location: root_path)
+      end
+    end
+  end
+
 end
