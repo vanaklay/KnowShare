@@ -9,14 +9,17 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
-    if @schedule.save
-      respond_to do |format|
-        format.html { redirect_to user_schedules_path }
-        format.js { }
+    if @schedule.start_must_be_outside_other_schedule(@schedule.start_time, @schedule.user_id)
+      flash[:danger] = "Tu ne peux pas créer d'horaire dans une plage horaire existante"
+      redirect_to user_schedules_path
+    else 
+      if @schedule.save
+        flash[:success] = "Horaire créé avec succès"
+        redirect_to user_schedules_path
+      else
+        flash[:danger] = "L'horaire n'a pas pu être créé"
+        redirect_to user_schedules_path
       end
-    else
-      flash.now[:danger] = "L'horaire n'a pas pu être créé"
-      render :index
     end
   end
 
