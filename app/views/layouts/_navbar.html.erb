@@ -14,7 +14,11 @@
     </ul>
 
     <% if user_signed_in? %>
-      <div class="nav-item">
+      <div class="nav-item mx-2">
+          <i class="fas fa-coins fa-2x"></i>
+          <span class="badge badge-pill"><strong id="badge-number"><%= current_user.personal_credit %></strong></span>
+      </div>
+      <div class="nav-item mx-2">
       <div class="nav-item dropdown">
         <a class="dropdown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if current_user.avatar.attached? %>
