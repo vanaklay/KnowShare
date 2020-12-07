@@ -1,0 +1,25 @@
+<ul>
+ <% if @existing_chatrooms_users %>
+   <% @existing_chatrooms_users.each do |other_user| %>
+    <% if other_user != current_user %>
+      <li>
+        <%= link_to(user_chatrooms_path(current_user, :other_user => other_user.id), method: :post) do %>
+        <%= other_user.username %>
+        <% end %>
+      </li>
+     <% end %>
+   <% end %>
+  <% end %>
+</ul>
+All Users:
+<ul>
+  <% User.all.each do |other_user| %>
+   <% if other_user != current_user %>
+     <li>
+       <%= link_to(user_chatrooms_path(current_user, :other_user => other_user.id), method: :post) do %>
+       <%= other_user.username %>
+       <% end %>
+     </li>
+    <% end %>
+  <% end %>
+</ul>

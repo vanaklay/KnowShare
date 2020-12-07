@@ -5,7 +5,8 @@ class ChatroomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    
+    chatrooms = current_user.chatrooms
+    @existing_chatrooms_users = current_user.existing_chatrooms_users
   end
 
   def create

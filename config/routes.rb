@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'chatrooms#index'
   
   devise_for :users
   resources :lessons do
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :users do 
     resources :schedules
-    resources :chats, only: [:index, :show, :create]
+    resources :chatrooms, only: [:index, :show, :create]
   end
   
 
