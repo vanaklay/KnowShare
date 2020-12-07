@@ -1,3 +1,6 @@
-<li id="schedule_id_<%= schedule.id %>" class="<%= schedule.is_booked? ? "table-light" : "table-dark"%> list-group-item">
-  Le <%= schedule.start_time.strftime("%d/%m/%y") %> de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %>
+<li id="schedule_id_<%= schedule.id %>" class="<%= schedule.is_booked? ? "table-light" : "table-dark"%> list-group-item d-flex align-items-center">
+  <p class="mb-0">Le <%= schedule.start_time.strftime("%d/%m/%y") %> de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %></p>
+  <%= link_to user_schedule_path(schedule.user.id, schedule.id), class: "ml-auto text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cet horaire ?"}  do %>
+    <i class="fas fa-times fa-2x"></i>
+  <% end %>
 </li>
