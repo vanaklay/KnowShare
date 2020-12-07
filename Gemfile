@@ -74,3 +74,8 @@ gem 'rubocop'
 gem 'mailjet'
 gem "aws-sdk-s3", require: false
 gem 'local_time'
+
+# Needed to launch a scheduling job widh sidekiq-cron
+gem 'redis'
+gem 'sidekiq'
+gem 'sidekiq-cron'
