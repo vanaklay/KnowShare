@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :find_user
+  before_action :find_schedule, only: [:destroy]
 
   def index
     @schedules = Schedule.where(user_id: params[:user_id]).all.order("start_time")
@@ -23,10 +24,22 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def destroy
+    @schedule.destroy
+    respond_to do |format|
+      format.html { redirect_to user_schedules_path, notice: "L'horaire a bien été annulé" }
+      format.js {}
+    end
+  end
+
   private
 
   def find_user
     @user = User.find(params[:user_id])
+  end
+
+  def find_schedule
+    @schedule = Schedule.find(params[:id])
   end
 
   def schedule_params
