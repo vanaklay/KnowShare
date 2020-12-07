@@ -7,7 +7,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.lesson_id = params[:lesson_id]
     @booking.user_id = current_user.id
-    create_booking
+    if @booking.start_must_be_in_schedule(@booking)
+      create_booking
+    else 
+      flash[:danger] = "Aucun créneau horaire ne correspond"
+        redirect_back(fallback_location: root_path)
+    end
   end 
 
   def destroy
