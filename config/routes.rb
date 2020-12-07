@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
   resources :users do 
     resources :schedules
+    resources :chats, only: [:index, :show, :create]
   end
+  
 
   get '/contact' => 'static_pages#contact'
   
