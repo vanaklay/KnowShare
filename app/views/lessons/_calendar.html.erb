@@ -1,6 +1,6 @@
 <div class="card-body">
-  <h3 class="text-center">Disponibilité du prof</h2>
-  <ul class="list-group p-3" >
+  <h5 class="card-title text-center">Voici les disponibiltés du prof</h5>
+  <ul class="list-group" >
     <div class="rounded schedule-items" id="schedule-container">
     <% @schedules.each do |schedule| %>
       <%= render "schedules/schedule_object", schedule: schedule %>
