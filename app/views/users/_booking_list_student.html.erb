@@ -16,5 +16,6 @@
       <%= link_to lesson, class: "mx-2 text-info"  do %>
         <i class="fas fa-eye fa-2x"></i>
       <% end %>
+      <%= link_to  "Ouvrir la messagerie", lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"btn btn-info" %>
   </div>
 </div>

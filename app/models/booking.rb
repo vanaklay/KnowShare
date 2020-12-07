@@ -9,6 +9,8 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :lesson
 
+  has_one :chatroom, dependent: :destroy
+
   validate :student_enough_credit?, :prevent_teacher_booking
   after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user, :send_email_new_booking_teacher
   
@@ -51,9 +53,9 @@ class Booking < ApplicationRecord
 
   # ------- Validation methods class instance ------- #
 
-  def start_must_be_in_schedule(booking)
-    all_schedules = Schedule.where(user_id: booking.lesson.user_id).all
-    end_date = booking.start_date + booking.duration.minute
+  def start_must_be_in_schedule
+    all_schedules = Schedule.where(user_id: self.lesson.user_id).all
+    end_date = self.start_date + self.duration.minute
 
     found = false
     all_schedules.each do |schedule|
