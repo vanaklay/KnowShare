@@ -14,8 +14,20 @@ class User < ApplicationRecord
             foreign_key: 'followed_lesson_id',
             class_name: 'Lesson',
             dependent: :destroy
-
+  has_many :messages
+  has_many :chatrooms, through: :bookings
+        
   has_one_attached :avatar
+
+
+  # ActionCable method
+  def existing_chatrooms_users
+    existing_chatroom_users = []
+    self.chatrooms.each do |chatroom|
+    existing_chatroom_users.concat(chatroom.subscriptions.where.not(user_id: self.id).map {|subscription| subscription.user})
+    end
+    existing_chatroom_users.uniq
+  end
 
   def role?
     role.class == String
