@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   resources :users do 
     resources :schedules
   end
+
+  get '/contact' => 'static_pages#contact'
+  get '/tarifs' => 'static_pages#pricing'
   
   resources :lessons do
     resources :bookings do 
-      resources :chatrooms, only: [:index, :show, :create]
+      resources :chatrooms, only: [:show, :create]
     end 
   end
   
