@@ -48,6 +48,10 @@ class Booking < ApplicationRecord
   def future?
     start_date > DateTime.now
   end
+
+  def paid?
+    paid
+  end
   
   private
   
