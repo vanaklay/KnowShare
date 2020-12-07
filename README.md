@@ -33,7 +33,7 @@ Or you can run the following commands in your terminal:
 
 1) Clone this repository 
 ```shell
-$ git clone https://github.com/colinebrlt/online-shop-thp
+$ git clone https://github.com/vanaklay/KnowShare
 ```
 
 2) Prepare the initialization of the repository
