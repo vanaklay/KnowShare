@@ -159,4 +159,12 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome_send(self).deliver_now
   end
+
+  def not_admin
+    self.is_admin = false
+  end
+
+  def is_admin?
+    self.is_admin == true
+  end
 end
