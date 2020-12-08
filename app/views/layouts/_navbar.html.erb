@@ -29,7 +29,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <% if current_user.is_admin? %>
-            <%= link_to "Dashboard admin", root_path, class: "nav-link btn btn-warning mx-2 my-2" %>
+            <%= link_to "Dashboard admin", admin_root_path, class: "nav-link btn btn-warning mx-2 my-2" %>
           <% end %>
           <%= link_to "Mon profil", user_path(current_user), class: "nav-link btn btn-primary mx-2 my-2" %>
           <%= link_to "Déconnexion", destroy_user_session_path, class: "nav-link btn btn-danger mx-2 my-2", method: :delete %>
