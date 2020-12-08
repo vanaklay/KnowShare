@@ -16,7 +16,7 @@ It allows people to share their knowledge with one another: they can offer a cou
 
 ## Objectives of this project
 
-This is a final projects required to validate the first 3 months of a 6 months-long coding bootcamp. It was all coded in pair programming by 4 students: @Rudyar @vanaklay @Mtwod @colinebrlt
+This is a final projects required to validate the 3 months-long coding bootcamp on Ruby on Rails. It was all coded in pair programming by 4 students: @Rudyar @vanaklay @Mtwod @colinebrlt
 
 The main objectives of this project were to:
 * learn the importance of the agile methodology and comprehend its importance when it comes to teamwork
@@ -27,7 +27,7 @@ The main objectives of this project were to:
 
 ## How to open the website
 
-The quickest and easiest way to do it would be to open it on Heroku: https://knowshare-thp.herokuapp.com/
+The quickest and easiest way to do it would be to open on your favorite browser the following link: https://knowshare-thp.herokuapp.com/
 
 Or you can run the following commands in your terminal:
 
