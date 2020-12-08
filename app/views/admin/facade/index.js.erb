@@ -1,0 +1,11 @@
+document.getElementById("dashboard-show").innerHTML = "";
+
+if(document.getElementById('button-user').clicked == true)
+{
+   document.getElementById("dashboard-show").insertAdjacentHTML("beforeend", "<%= j render 'list_of_users');
+}
+
+if(document.getElementById('button-course').clicked == true)
+{
+   document.getElementById("dashboard-show").insertAdjacentHTML("beforeend", "<%= j render 'list_of_courses');
+}
