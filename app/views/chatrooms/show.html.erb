@@ -1,5 +1,10 @@
 <div>
-  <h5>Chat with denis</h5>
+  <% if current_user == @chatroom.booking.teacher %>
+    <h3 class="text-center mb-3">Discussion avec <%= @chatroom.booking.student.username%></h3>
+  <% else %>
+    <h3 class="text-center mb-3">Discussion avec <%= @chatroom.booking.teacher.username%></h3>
+  <% end %>
+
   <% if @chatroom.messages.any? %>
     <div id="messages" style="overflow: scroll; height: 300px" class="bg-white text-dark">
       <%= render partial: 'messages/message', collection: @chatroom.messages.order(id: :asc)%>
@@ -11,9 +16,7 @@
 </div>
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 
-<script>
-  createMessageChannel();
-  // app/assets/javascripts/channels/messages.js 
-  messageForm();
-  // app/assets/javascripts/messages_form.js
-</script>
+<%= javascript_tag 'messageForm()' %>
+<%= javascript_tag 'createMessageChannel()' %>
+
+
