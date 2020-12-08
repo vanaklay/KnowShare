@@ -1,0 +1,51 @@
+<div class="card my-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-chalkboard-teacher fa-3x"></i>
+      </div>
+      <div class="d-flex mx-2">
+          <h3><strong>Liste des utilisateurs en ligne</strong></h3>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" style="overflow: scroll; height: 300px;">    
+    <div class="bg-white rounded box-shadow">
+        <div class="row border-bottom border-gray py-2 mb-2 mr-2">
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Pseudo</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Email</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Date d'inscription</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Actions</strong>
+          </div>
+        </div>
+        <% @users.each do |user| %>
+          <div class="row border-bottom border-gray pb-2 mb-2 mr-2 align-items-center">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <%= user.username %>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <%= user.email %>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <%= user.email %>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <%= link_to user_path(user.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cet utilisateur ?"}  do %>
+                  <i class="fas fa-times fa-2x"></i>
+                <% end %>
+                <%= link_to user, class: "mx-2 text-info"  do %>
+                  <i class="fas fa-eye fa-2x"></i>
+                <% end %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
