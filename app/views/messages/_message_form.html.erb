@@ -1,5 +1,7 @@
-<%=form_for message, remote: true, authenticity_token: true do |f|%>
-  <%= f.text_area :content, data: {textarea: "message"}%>
-<!-- this hidden field is for the MessagesController and Action Cable to keep track of what chat this message belongs to -->
-<%= f.hidden_field :chatroom_id, value: chatroom.id %>
-<%end%>
+<div class="container-fluid text-center my-4">
+  <%=form_for message, remote: true, authenticity_token: true do |f|%>
+    <%= f.text_area :content, data: {textarea: "message"}, placeholder:"Ton message", id:"message-text-area" %>
+  <!-- this hidden field is for the MessagesController and Action Cable to keep track of what chat this message belongs to -->
+  <%= f.hidden_field :chatroom_id, value: chatroom.id %>
+  <%end%>
+</div>
