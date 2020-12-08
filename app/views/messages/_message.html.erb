@@ -1,11 +1,11 @@
 <div class="container">
   <% if message.user == current_user %>
     <div class="row">
-      <p class="ml-auto"><%= message.user.username %>: <%= message.content %></p>
+      <p id="message" class="ml-auto bg-secondary p-2"><%= message.user.username %>: <%= message.content %></p>
     </div>
   <% else %>
     <div class="row">
-      <p><%= message.user.username %>: <%=message.content %></p>
+      <p id="message" class="bg-info p-2"><%= message.user.username %>: <%=message.content %></p>
     </div>
   <% end %>
 </div>

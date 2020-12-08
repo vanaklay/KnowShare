@@ -8,7 +8,7 @@ function createMessageChannel() {
           return $('#messages').append(this.renderMessage(data));
         },
         renderMessage: function(data) {
-    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+    return "<p class='bg-info p-2 ml-auto' id='message'> <b>" + data.user + ": </b>" + data.message + "</p>";
   },
       });
 return App.messages;

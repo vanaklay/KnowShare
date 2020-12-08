@@ -1,5 +1,4 @@
 function messageForm(){
-  console.log("helloooo");
   var shiftDown = false;
   var chatroomForm = $("#new_message");
   var messageBox = chatroomForm.children("textarea");

@@ -131,3 +131,24 @@ font-size: 18px;
   height: 300px;
 
 }
+
+#messages {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 400px;
+  width: 60vw;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#message-text-area {
+  padding: 5px;  width: 50vw;
+  height: 10vh;
+  border-radius: 5px;
+  resize: none;
+}
+
+#message{
+  border-radius: 20px;
+}
