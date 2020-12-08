@@ -27,14 +27,14 @@
       </thead>
       <tbody id="myTable">
         <% @users.each do |user| %>
-        <tr>
+        <tr id="user-<%= user.id %>">
           <td><%= user.username %></td>
           <td><%= user.display_first_name %></td>
           <td><%= user.display_last_name %></td>
           <td><%= user.email %></td>
           <td><%= user.created_at.strftime('%d/%m/%Y') %></td>
           <td>
-            <%= link_to admin_user_path(user.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cet utilisateur ?"}  do %>
+            <%= link_to admin_user_path(user.id), class: "mx-2 text-danger", method: :delete, remote: :true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cet utilisateur ?"} do %>
               <i class="fas fa-times fa-1x"></i>
             <% end %>
             <%= link_to admin_user_path(user.id), class: "mx-2 text-info"  do %>
