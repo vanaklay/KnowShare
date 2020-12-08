@@ -51,6 +51,10 @@ class Booking < ApplicationRecord
     start_date > DateTime.now
   end
 
+  def paid?
+    paid
+  end
+  
   # ------- Validation methods class instance ------- #
 
   def start_must_be_in_schedule
