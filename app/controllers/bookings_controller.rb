@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
         prevent_teacher_booking
       else
         if @booking.save
+          @booking.split_and_create_schedule
           Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
           flash[:success] = "Votre réservation a bien été prise en compte"
           redirect_to current_user
@@ -32,6 +33,7 @@ class BookingsController < ApplicationController
   end 
 
   def destroy
+    @booking.create_schedule_after_cancelling
     @booking.destroy
     respond_to do |format|
       format.html { redirect_to current_user, notice: "Le cours a bien été annulé" }

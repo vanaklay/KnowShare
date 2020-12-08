@@ -59,7 +59,6 @@ class Booking < ApplicationRecord
 
   def start_must_be_in_schedule
     all_schedules = Schedule.where(user_id: self.lesson.user_id).all
-    end_date = self.start_date + self.duration.minute
 
     found = false
     all_schedules.each do |schedule|
@@ -72,6 +71,34 @@ class Booking < ApplicationRecord
     return found
   end
 
+  # ------- Method that created new schedule following booking ------- #
+  def split_and_create_schedule
+    schedule = Schedule.where('start_time < ? AND end_time > ?', self.start_date, end_date)[0]
+    start_time_from_schedule = start_time(schedule)
+    end_time_from_schedule = end_time(schedule)
+    user = User.find(self.lesson.user_id)
+
+    if schedule.start_time != self.start_date 
+      schedule.destroy
+      Schedule.create(start_time: start_time_from_schedule, end_time: self.start_date, user: user)
+      if end_date != end_time_from_schedule
+        Schedule.create(start_time: end_date, end_time: end_time_from_schedule, user: user)
+      end
+
+    elsif schedule.start_time == self.start_date 
+      schedule.destroy
+      Schedule.create(start_time: end_date, end_time: end_time_from_schedule, user: user)
+
+    elsif schedule.start_time == self.start_date && end_date == end_time_from_schedule
+      schedule.destroy
+    end
+
+  end
+
+  def create_schedule_after_cancelling
+    user = User.find(self.lesson.user_id)
+    Schedule.create(start_time: self.start_date, end_time: end_date, user: user)
+  end
   
   private
   
@@ -116,6 +143,19 @@ class Booking < ApplicationRecord
   def multiple_of_thirty?
     errors.add(:duration, ": Les cours se font par tranche de 30min") unless (duration % 30).zero?
   end
+
+  def end_date
+    self.start_date + self.duration.minute
+  end
+
+  def start_time(schedule)
+    schedule.start_time
+  end
+
+  def end_time(schedule)
+    schedule.end_time
+  end
+
 
   def payment_from_student
     Credit::Remove.new(amount: price, user: student).call
