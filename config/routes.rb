@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'facade#index'
     resources :users
-    resources :bookings
+    resources :lessons
   end
 
 end

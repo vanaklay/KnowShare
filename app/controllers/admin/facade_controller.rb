@@ -6,5 +6,10 @@ class Admin::FacadeController < ApplicationController
     @lessons = Lesson.all
     @users = User.all
     @bookings = Booking.all
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 end
