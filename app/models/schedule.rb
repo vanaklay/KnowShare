@@ -4,6 +4,7 @@ class Schedule < ApplicationRecord
   validates :start_time, presence: true, if: :start_in_future
   
   validates :end_time, presence: true, if: :end_must_be_after_start_time
+  validates :end_time, presence: true, if: :end_must_be_today
 
   belongs_to :user
 
@@ -33,6 +34,10 @@ class Schedule < ApplicationRecord
 
   def end_must_be_after_start_time
     errors.add(:end_time, ": Impossible d'avoir un horaire de fin débutant avant l'horaire de début") unless end_time > start_time + 28.minute
+  end
+
+  def end_must_be_today
+    errors.add(:end_time, ": Impossible d'avoir une fin d'un autre jour") unless end_time < start_time - (start_time.hour).hour + 24.hour
   end
 
 end

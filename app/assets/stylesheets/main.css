@@ -128,7 +128,7 @@ font-size: 18px;
 
 .schedule-items {
   overflow: scroll;
-  height: 300px;
+  max-height: 19rem;
 
 }
 
