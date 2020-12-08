@@ -5,7 +5,9 @@
         <br><br><br>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-signin mt-3" }) do |f| %>
           <%= render "users/shared/error_messages", resource: resource %>
+
           <h1 class="h3 mb-5 font-weight-normal text-center">Mot de passe oublié ?</h1>
+          
           <div class="form-group">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", required: true %>
           </div>

@@ -1,9 +1,9 @@
 <div class="bg-white">
   <div class="container my-5 py-3">
-    <%= devise_error_messages! %>
     <div class="row">
       <div class="col-md-6 offset-md-3 text-dark">
         <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
           <h1 class="h3 mb-5 font-weight-normal text-center">Se connecter</h1>
           
           <div class="form-group">
@@ -31,7 +31,3 @@
     </div>
   </div>
 <div>
-
-
-
-
