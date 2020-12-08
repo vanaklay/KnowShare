@@ -124,7 +124,7 @@ class Booking < ApplicationRecord
 
   # Will disappear after finding out how to launch method at a certain date : the credit won't be given until the lesson start
   def refund_from_teacher
-    Credit::Remove.new(amount: price, user: student).call
+    Credit::Remove.new(amount: price, user: teacher).call
   end
 
   def refund_to_student
