@@ -75,10 +75,10 @@ font-size: 18px;
 /* CONCEPT */
 
 .number {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   margin-right: 80px;
-  font-size: 22px;
+  font-size: 2.4rem;
   display: flex;
   position: relative;
   align-items: center;
@@ -91,7 +91,8 @@ font-size: 18px;
 }
 
 .p-concept {
-  font-size: 18px;
+  font-size: 1.3rem;
+  padding-top: 1rem;
 }
 
 .row-footer {
@@ -159,4 +160,15 @@ font-size: 18px;
 .message{
   border-radius: 20px;
 
+}
+
+/* HOMEPAGE */
+.custom-section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.p-lead {
+  font-size: 1.25rem;
+  font-weight: 400;
 }
