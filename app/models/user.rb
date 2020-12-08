@@ -14,7 +14,9 @@ class User < ApplicationRecord
             foreign_key: 'followed_lesson_id',
             class_name: 'Lesson',
             dependent: :destroy
-
+  has_many :messages
+  has_many :chatrooms, through: :bookings
+        
   has_one_attached :avatar
 
   def role?
@@ -91,16 +93,6 @@ class User < ApplicationRecord
     else
       "Pas encore de bio, édite vite ton profil pour en rajouter une !"
     end
-  end
-
-  def add_credit(number_of_credit)
-    new_personal_credit = personal_credit + number_of_credit
-    update(personal_credit: new_personal_credit)
-  end
-
-  def remove_credit(number_of_credit)
-    new_personal_credit = personal_credit - number_of_credit
-    update(personal_credit: new_personal_credit)
   end
 
   def past_bookings

@@ -7,15 +7,15 @@
   </div>
   <div class="card-body container">
     
-    <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" }, remote: true  do |f| %>
+    <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" } do |f| %>
         
       <div class="form-group">
         <%= f.label "Date et horaire de départ :" %><br/>
-        <%= f.datetime_select :start_time, :default => 24.hours.from_now, :minute_step => 30, class: "form-control" %>
+        <%= f.datetime_select :start_time, :minute_step => 30, class: "form-control", require: true %>
       </div>
       <div class="form-group">
         <%= f.label "Date et horaire de fin :" %><br/>
-        <%= f.datetime_select :end_time, :default => 24.hours.from_now, :minute_step => 30, class: "form-control" %>
+        <%= f.datetime_select :end_time, :minute_step => 30, class: "form-control", require: true %>
       </div>
       <div class="text-center">
         <%= f.submit "Créer", class: "btn btn-primary px-5" %>
