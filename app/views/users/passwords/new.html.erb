@@ -1,15 +1,15 @@
 <div class="bg-white">
   <div class="container my-5 py-3">
-    <%= devise_error_messages! %>
     <div class="row">
       <div class="col-md-6 offset-md-3 text-dark">
         <br><br><br>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-signin mt-3" }) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
           <h1 class="h3 mb-5 font-weight-normal text-center">Mot de passe oublié ?</h1>
           <div class="form-group">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", required: true %>
           </div>
-          <p>Un email vous sera envoyé avec les instructions pour changer votre mot de passe </p>
+          <p class='text-center'>Un email te sera envoyé avec les instructions pour changer ton mot de passe.</p>
 
           <div class="actions mt-5">
             <%= f.submit "Envoyer les instructions", class: "btn btn-primary d-flex mx-auto mb-3" %>

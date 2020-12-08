@@ -5,14 +5,13 @@
       <div class="col-md-6 offset-md-3 text-dark">
         <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
           <h1 class="h3 mb-5 font-weight-normal text-center">Se connecter</h1>
-          <%= devise_error_messages! %>
           
           <div class="form-group">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", required: true %>
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe", required: true %>
           </div>
 
           <% if devise_mapping.rememberable? %>
@@ -26,7 +25,7 @@
             <%= f.submit "Se connecter", class: "btn btn-primary d-flex mx-auto mb-3 px-5" %>
           </div>
         <% end %>
-        <p>Vous n'avez pas encore de compte ?</p>
+        <p>Tu n'as pas encore de compte ?</p>
         <%= render "users/shared/links" %>
       </div>
     </div>
