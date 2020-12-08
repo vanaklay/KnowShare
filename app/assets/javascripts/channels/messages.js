@@ -5,8 +5,9 @@ function createMessageChannel() {
     {
     
     received: function(data) {
-      $("#messages").removeClass('hidden')
-      return $('#messages').append(this.renderMessage(data));
+      $("#messages").removeClass('hidden');
+      $('#messages').append(this.renderMessage(data));
+      scroll_bottom();
     },
     renderMessage: function(data) {
       if(data.user.id == data.booking.id){
@@ -17,4 +18,10 @@ function createMessageChannel() {
     },
   });
 return App.messages;
-}
+};
+
+function scroll_bottom(){
+  if ($('#messages').length > 0) {
+  $('#messages').scrollTop($('#messages')[0].scrollHeight);
+  }
+};

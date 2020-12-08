@@ -9,7 +9,7 @@ function messageForm(){
       chatroomForm.submit();
       $(chatroomForm).trigger('reset');
           }
-      }
+        }
   });
 $(document).keydown(function (e) {
       if(e.keyCode == 16) shiftDown = true;
@@ -17,4 +17,5 @@ $(document).keydown(function (e) {
 $(document).keyup(function (e) {
       if(e.keyCode == 16) shiftDown = false;
   });
+  scroll_bottom();
 }
