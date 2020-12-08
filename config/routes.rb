@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     root 'facade#index'
     resources :users
     resources :lessons
+    resources :bookings
   end
 
 end
