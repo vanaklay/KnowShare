@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   include UsersHelper
   before_action :authenticate_user!
   before_action :redirect_if_user_not_admin
