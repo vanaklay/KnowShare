@@ -164,6 +164,6 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    self.is_admin = true
+    self.is_admin == true
   end
 end
