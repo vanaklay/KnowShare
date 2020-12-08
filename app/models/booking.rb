@@ -51,7 +51,11 @@ class Booking < ApplicationRecord
     start_date > DateTime.now
   end
 
-  # ------- Check if booking dates is inside at least one schedule ------- #
+  def paid?
+    paid
+  end
+  
+  # ------- Validation methods class instance ------- #
 
   def start_must_be_in_schedule
     all_schedules = Schedule.where(user_id: self.lesson.user_id).all
