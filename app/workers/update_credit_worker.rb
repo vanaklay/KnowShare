@@ -1,12 +1,9 @@
-class HardWorker
+class UpdateCreditWorker
   include Sidekiq::Worker
 
-  def initialize
+  def perform
     @user = User.first
     @amount = 100
-  end
-
-  def perform()
     p "*" * 100
     p "********First_job*******"
     Credit::Add.new(amount: @amount, user: @user).call
