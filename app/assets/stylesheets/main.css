@@ -7,28 +7,21 @@
   background-size: cover;
 }
 
-.h1-jumbo {
+.custom-section-jumbo {
+  padding-top: 11rem;
+}
+
+.h2-jumbo {
   font-size: 4rem;
 }
 
-  
-.subTitleIndex {
-font-size: 18px;
-}
-
-.subTitleJumbo {
-  display: inline-block;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  margin-right: 1rem;
-  font-size: 5rem;
-  line-height: inherit;
-  white-space: nowrap;
-  font-family: 'Permanent Marker', cursive;
-}
-
-.text-subTitleJumbo {
-  font-size: 1rem;
+@media (max-width: 702px) {
+  .h2-jumbo {
+    font-size: 3rem;
+  }
+  .h1-jumbo {
+    font-size: 2.5rem;
+  }
 }
 
 .avatar {
