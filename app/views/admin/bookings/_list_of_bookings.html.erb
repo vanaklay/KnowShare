@@ -1,0 +1,48 @@
+<div class="card my-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-list fa-3x"></i>
+      </div>
+      <div class="d-flex mx-2">
+          <h3><strong>Liste des réservations</strong></h3>
+          <h3><span class="badge badge-dark mx-3"> <%= @bookings.count %></span></h3>
+      </div>
+      <div class="d-flex ml-auto mx-2">
+        <input class="form-control" id="myInput" type="text" placeholder="Rechercher">
+      </div>
+    </div>
+  </div>
+  <div class="card-body" style="overflow: scroll; height: 75vh;">  
+    <table class="table table-bordered table-striped text-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Professeur</th>
+          <th>Elève</th>
+          <th>Date et heure du cours</th>
+          <th>Durée du cours</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %></td>
+          <td><%= booking.title %></td>
+          <td><%= booking.student.username %></td>
+          <td><%= booking.teacher.username %></td>
+          <td><%= booking.display_start_date_time %></td>
+          <td><%= booking.duration %></td>
+          <td>
+            <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
+              <i class="fas fa-times fa-1x"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

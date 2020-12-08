@@ -1,0 +1,71 @@
+<div class="card my-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-chalkboard-teacher fa-3x"></i>
+      </div>
+      <div class="d-flex mx-2">
+          <h3><strong>Son dashboard prof</strong></h3>
+      </div>
+      <div class="pb-0 ml-auto mr-2">
+        <%= link_to "Editer mon planning", user_schedules_path(@user.id), class: "btn btn-outline-primary disabled" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card-body">
+    <h4>Ses cours à venir</h4>
+    
+    <div class="bg-white rounded box-shadow">
+      <% if @user.future_given_bookings? %>
+        <div class="row border-bottom border-gray py-2 mb-2 mr-2">
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Date du cours</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Titre du cours</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Nom de l'élève</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Actions</strong>
+          </div>
+        </div>
+        <% @user.future_given_bookings.each do |booking| %>
+          <%= render 'booking_list_teacher', booking: booking %>
+        <% end %>
+      <% else %>
+        <p>Cet utilisateur n'a encore aucun cours de prévu !</p>
+        <hr>
+      <% end %>
+    </div>
+  
+    <h4>Ses cours passés</h4>
+
+    <div class="bg-white rounded box-shadow">
+      <% if @user.past_given_bookings? %>
+        <div class="row border-bottom border-gray py-2 mb-2 mr-2">
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Date du cours</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Titre du cours</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Nom du professeur</strong>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <strong>Actions</strong>
+          </div>
+        </div>
+        <% @user.past_given_bookings.each do |booking| %>
+          <%= render 'booking_list_teacher', booking: booking %>
+        <% end %>
+      <% else %>
+        <p>Cet utilisateur n'a encore jamais pris de cours</p>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
