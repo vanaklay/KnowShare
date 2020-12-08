@@ -128,6 +128,35 @@ font-size: 18px;
 
 .schedule-items {
   overflow: scroll;
-  height: 300px;
+  max-height: 19rem;
+
+}
+
+#messages {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 50vh;
+  width: 50vw;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#message-text-area {
+  padding: 10px;
+  width: 50vw;
+  height: 10vh;
+  border-radius: 5px;
+  resize: none;
+}
+
+#message-text-area:focus {
+  outline: none !important;
+  border-color: #adb5bd;
+  box-shadow: 0 0 10px #adb5bd;
+}
+
+.message{
+  border-radius: 20px;
 
 }
