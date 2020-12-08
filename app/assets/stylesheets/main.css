@@ -149,6 +149,13 @@ font-size: 18px;
   resize: none;
 }
 
-#message{
+#message-text-area:focus {
+  outline: none !important;
+  border-color: #adb5bd;
+  box-shadow: 0 0 10px #adb5bd;
+}
+
+.message{
   border-radius: 20px;
+
 }

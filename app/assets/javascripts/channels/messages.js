@@ -5,11 +5,16 @@ function createMessageChannel() {
         {
         received: function(data) {
           $("#messages").removeClass('hidden')
+
           return $('#messages').append(this.renderMessage(data));
         },
         renderMessage: function(data) {
-    return "<p class='bg-info p-2 ml-auto' id='message'> <b>" + data.user + ": </b>" + data.message + "</p>";
-  },
+          if(data.user.id == data.booking.id){
+            return "<div class='row'><p class='bg-secondary message ml-auto mr-3 p-2 '> <b>" + data.username + ": </b>" + data.message + "</p></div>";
+          } else {
+            return "<div class='row'><p class='bg-info message ml-3 p-2'> <b>" + data.username + ": </b>" + data.message + "</p></div>";
+          }
+        },
       });
 return App.messages;
 }
