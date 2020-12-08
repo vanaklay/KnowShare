@@ -1,8 +1,16 @@
-<div class="container" id="all-lessons">
-  <h2 class="font-weight-bold mt-5 mb-0 text-center">Les cours à la une</h2>
-  <p class="subTitleIndex text-center mb-5">Découvres les cours les plus populaires</p>
-  <%= render "shared/index_cards", local: @lessons %>
-  <div class="row justify-content-center my-5">
-    <%= link_to "Tous les cours", lessons_path, :class => "btn-lg btn-primary" %>
+<section class="custom-section">
+  <div class="container" id="all-lessons">
+    <div class="row justify-content-center text-center">
+      <div class="col-xl-8 col-lg-9">
+      <h2 class="font-weight-bold text-center">Les cours à la une</h2>
+      <p class="subTitleIndex text-center mb-5">Découvres les cours les plus populaires</p>
+      </div>
+    </div>
+    
+    <%= render "shared/index_cards", local: @lessons %>
+    
+    <div class="row justify-content-center mt-5">
+      <%= link_to "Tous les cours", lessons_path, :class => "btn-lg btn-primary" %>
+    </div>
   </div>
-</div>
+</section>
