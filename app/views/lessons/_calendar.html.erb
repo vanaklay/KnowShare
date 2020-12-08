@@ -1,9 +1,11 @@
 <div class="card-body">
-  <h5 class="card-title text-center">Voici les disponibiltés du prof</h5>
+  <h5 class="card-title text-center">Voici les disponibilités du prof</h5>
   <ul class="list-group" >
     <div class="rounded schedule-items" id="schedule-container">
     <% @schedules.each do |schedule| %>
-      <%= render "schedules/schedule_object", schedule: schedule %>
+      <li id="schedule_id_<%= schedule.id %>" class="<%= schedule.is_booked? ? "table-light" : "table-dark"%> list-group-item d-flex align-items-center">
+        <p class="mb-0">Le <%= schedule.start_time.strftime("%d/%m/%y") %> de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %></p>
+      </li>
     <% end %>
     </div>
   </ul>

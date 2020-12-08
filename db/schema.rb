@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 2020_12_07_161740) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "identifier"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -55,6 +63,14 @@ ActiveRecord::Schema.define(version: 2020_12_07_161740) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "chatroom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schedules", force: :cascade do |t|

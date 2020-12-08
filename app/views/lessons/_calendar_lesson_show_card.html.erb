@@ -11,8 +11,8 @@
       </div>
       <div class="form-group">
         <%= f.label "Choisis une durée : " %><br/>
-        <%= f.time_select :duration, :minute_step => 30, class: "form-control" %><br/>
-        <small class="text-danger">* par tranche de 30 minutes et maximum 2 heures</small>
+        <%= f.select :duration, [30, 60, 90, 120, 150, 180], class: "form-control" %><br/>
+        <p><small class="text-danger">* 60 = 1h; 90 = 1h30; 120 = 2h; 150 = 2h30; 180 = 3h</small></p>
       </div>
       <div class="form-group d-flex">
         <%= button_to "Je m'inscris", lesson_bookings_path(@lesson), :class => "btn btn-warning mx-auto px-5" %>

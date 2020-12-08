@@ -9,6 +9,8 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :lesson
 
+  has_one :chatroom, dependent: :destroy
+
   validate :student_enough_credit?, :prevent_teacher_booking
   after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user, :send_email_new_booking_teacher
   
@@ -38,7 +40,7 @@ class Booking < ApplicationRecord
   end
 
   def display_start_date_time
-    start_date.strftime("%d/%m/%Y à %I:%M%p")
+    start_date.strftime("%d/%m/%Y à %H:%M")
   end 
   
   def student_is_teacher?
@@ -52,6 +54,24 @@ class Booking < ApplicationRecord
   def paid?
     paid
   end
+  
+  # ------- Validation methods class instance ------- #
+
+  def start_must_be_in_schedule
+    all_schedules = Schedule.where(user_id: self.lesson.user_id).all
+    end_date = self.start_date + self.duration.minute
+
+    found = false
+    all_schedules.each do |schedule|
+      start_date_schedule = schedule.start_time
+      end_date_schedule = schedule.end_time
+      if start_date.between?(start_date_schedule, end_date_schedule) && end_date.between?(start_date_schedule, end_date_schedule)
+        found = true
+      end
+    end
+    return found
+  end
+
   
   private
   
@@ -98,21 +118,21 @@ class Booking < ApplicationRecord
   end
 
   def payment_from_student
-    BookingService::RemoveCredit.new(amount: price, user: student).call
+    Credit::Remove.new(amount: price, user: student).call
   end
 
   # Will change after finding out how to launch method at a certain date
   def payment_to_teacher
-    BookingService::AddCredit.new(amount: price, user: teacher).call
+    Credit::Add.new(amount: price, user: teacher).call
   end
 
   # Will disappear after finding out how to launch method at a certain date : the credit won't be given until the lesson start
   def refund_from_teacher
-    BookingService::RemoveCredit.new(amount: price, user: student).call
+    Credit::Remove.new(amount: price, user: teacher).call
   end
 
   def refund_to_student
-    BookingService::AddCredit.new(amount: price, user: student).call
+    Credit::Add.new(amount: price, user: student).call
   end
 
   # -------- Email section -------- #

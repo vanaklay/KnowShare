@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class BookingsController < ApplicationController
   include BookingsHelper
   before_action :authenticate_user!, only: [:create]
@@ -6,9 +8,27 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.lesson_id = params[:lesson_id]
-    @booking.duration = 30
     @booking.user_id = current_user.id
-    create_booking
+    
+    if @booking.start_must_be_in_schedule
+      
+      if teacher?
+        prevent_teacher_booking
+      else
+        if @booking.save
+          Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
+          flash[:success] = "Votre réservation a bien été prise en compte"
+          redirect_to current_user
+        else
+          flash[:danger] = "Votre réservation n'a pas pu aboutir"
+          redirect_back(fallback_location: root_path)
+        end
+      end
+    else
+      flash[:danger] = "Aucun créneau horaire ne correspond"
+      redirect_back(fallback_location: root_path)
+
+    end
   end 
 
   def destroy
@@ -23,7 +43,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date)
+    params.require(:booking).permit(:start_date, :duration)
   end
 
 end

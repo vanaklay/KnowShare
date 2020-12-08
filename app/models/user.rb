@@ -14,7 +14,9 @@ class User < ApplicationRecord
             foreign_key: 'followed_lesson_id',
             class_name: 'Lesson',
             dependent: :destroy
-
+  has_many :messages
+  has_many :chatrooms, through: :bookings
+        
   has_one_attached :avatar
 
   def role?

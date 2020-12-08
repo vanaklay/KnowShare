@@ -10,7 +10,7 @@ module Credit
 
     def call
       new_personal_credit = @user.personal_credit - @amount
-      user.update(personal_credit: new_personal_credit)
+      @user.update(personal_credit: new_personal_credit)
     end
   end
 end
