@@ -5,11 +5,12 @@
         <i class="fas fa-tachometer-alt fa-3x"></i>
       </div>
       <div class="d-flex mx-2">
-          <h3><strong>Dashboard admin</strong></h3>
+          <h3><strong>Dashboard</strong></h3>
       </div>
     </div>
   </div>
-  <%= link_to "Liste des utilisateurs", admin_users_path, class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
-  <%= link_to "Liste des cours", admin_lessons_path, class:"list-group-item list-group-item-action text-dark", id:"button-course", remote: :true %>
+  <%= link_to "Gérer les utilisateurs", admin_users_path, class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
+  <%= link_to "Gérer les cours", admin_lessons_path, class:"list-group-item list-group-item-action text-dark", id:"button-course", remote: :true %>
+  <%= link_to "Gérer les réservations", admin_root_path, class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
   <%= link_to "Historique des commandes", admin_root_path, class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
 </div>
