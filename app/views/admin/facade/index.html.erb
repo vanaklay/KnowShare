@@ -1,5 +1,22 @@
-<div class="container">
-  <h3 class="text-center mt-4">Bonjour <%= current_user.first_name %>, et bienvenue dans votre espace administrateur</h3>
-  <%= render "list_of_courses" %>
-  <%= render "list_of_users" %>
+<div class="container user-container">
+  <div class="row min-vh-100">
+    <div class="col-sm-12 col-md-3 col-lg-3">
+      <%= render "numbers" %>
+    </div>
+    <div class="col-sm-12 col-md-9 col-lg-9">
+      <%= render "list_of_courses" %>
+      <%= render "list_of_users" %>
+    </div>
+  </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

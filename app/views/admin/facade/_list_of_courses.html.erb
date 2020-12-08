@@ -2,44 +2,47 @@
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
-        <i class="fas fa-chalkboard-teacher fa-3x"></i>
+        <i class="fas fa-list fa-3x"></i>
       </div>
       <div class="d-flex mx-2">
           <h3><strong>Liste des cours en ligne</strong></h3>
       </div>
+      <div class="d-flex ml-auto mx-2">
+          <input class="form-control" id="myInput" type="text" placeholder="Rechercher" aria-label="Search">
+      </div>
     </div>
   </div>
-  <div class="card-body" style="overflow: scroll; height: 300px;">    
-    <div class="bg-white rounded box-shadow">
-        <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <strong>Titre</strong>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <strong>Enseigné par :</strong>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <strong> Actions </strong>
-          </div>
-        </div>
+  <div class="card-body" style="overflow: scroll; height: 300px;">  
+    <table class="table table-bordered table-striped text-dark">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Professeur</th>
+          <th>Email du professeur</th>
+          <th>Date de création</th>
+          <th>Nombre d'inscrits</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
         <% @lessons.each do |lesson| %>
-          <div class="row border-bottom border-gray pb-2 mb-2 mr-2 align-items-center">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <%= lesson.title %>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <%= lesson.teacher.display_name %>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <%= link_to lesson_path(lesson.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
-                  <i class="fas fa-times fa-2x"></i>
-                <% end %>
-                <%= link_to lesson, class: "mx-2 text-info"  do %>
-                  <i class="fas fa-eye fa-2x"></i>
-                <% end %>
-            </div>
-          </div>
+        <tr>
+          <td><%= lesson.title %></td>
+          <td><%= lesson.teacher.display_name %></td>
+          <td><%= lesson.teacher.email %></td>
+          <td><%= lesson.created_at.strftime('%d/%m/%Y') %></td>
+          <td><%= "who knows" %></td>
+          <td>
+            <%= link_to lesson_path(lesson.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
+              <i class="fas fa-times fa-1x"></i>
+            <% end %>
+            <%= link_to lesson, class: "mx-2 text-info"  do %>
+              <i class="fas fa-eye fa-1x"></i>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-    </div>
+      </tbody>
+    </table>
   </div>
 </div>
