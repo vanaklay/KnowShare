@@ -21,7 +21,7 @@
     <% end %>
     <div class="text-center">
     <% unless @lesson.teacher?(current_user)%>
-      <%= link_to "Voir son profil", @lesson.teacher, class:"btn btn-outline-info disabled" %>
+      <%= link_to "Voir son profil", lesson_teacher_path(@lesson), class:"btn btn-outline-info" %>
     <% end %>
     </div>
   </div>

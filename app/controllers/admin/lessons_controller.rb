@@ -2,6 +2,7 @@ class Admin::LessonsController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_if_user_not_admin
   before_action :all_lessons, only: [:index]
+  before_action :find_lesson, only: [:show, :destroy]
 
   def index
     respond_to do |format|
@@ -45,6 +46,15 @@ class Admin::LessonsController < ApplicationController
     end
   end
 
+  def destroy
+    @lesson.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_lessons_path, notice: "Le cours a bien été supprimé" }
+      format.json { head :no_content }
+      format.js {}
+    end
+  end 
+
   private
 
   def lesson_params
@@ -53,6 +63,10 @@ class Admin::LessonsController < ApplicationController
 
   def all_lessons
     @lessons = Lesson.all.sort
+  end
+
+  def find_lesson
+    @lesson = Lesson.find(params[:id])
   end
   
 end

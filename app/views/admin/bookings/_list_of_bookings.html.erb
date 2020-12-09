@@ -28,7 +28,7 @@
       </thead>
       <tbody id="myTable">
       <% @bookings.each do |booking| %>
-        <tr>
+        <tr id="booking-<%= booking.id %>">
           <td><%= booking.id %></td>
           <td><%= booking.title %></td>
           <td><%= booking.student.username %></td>
@@ -36,7 +36,7 @@
           <td><%= booking.display_start_date_time %></td>
           <td><%= booking.duration %></td>
           <td>
-            <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
+            <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
               <i class="fas fa-times fa-1x"></i>
             <% end %>
           </td>

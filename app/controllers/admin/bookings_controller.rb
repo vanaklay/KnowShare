@@ -12,7 +12,7 @@ class Admin::BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to current_user, notice: "Le cours a bien été annulé" }
+      format.html { redirect_to admin_bookings_path, notice: "La réservation a bien été annulée" }
       format.json { head :no_content }
       format.js {}
     end
