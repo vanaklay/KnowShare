@@ -8,7 +8,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
+    @schedule = Schedule.new(start_params)
     @schedule.user_id = current_user.id
     if @schedule.start_must_be_outside_other_schedule(@schedule.start_time, @schedule.user_id)
       flash[:danger] = "Tu ne peux pas créer d'horaire dans une plage horaire existante"
@@ -42,7 +42,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
 
-  def schedule_params
+  def start_params
     params.require(:schedule).permit(:start_time, :end_time)
   end
 
