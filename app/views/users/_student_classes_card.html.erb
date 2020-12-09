@@ -16,7 +16,7 @@
   
   <div class="card-body">
     <h4>Mes cours à venir</h4>
-    <% if !current_user.has_future_bookings? %>
+    <% if !current_user.future_student_bookings.any? %>
       <p>Tu n'as encore aucun cours de prévu !</p>
       <hr>
     <% else %>
@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <% current_user.future_bookings.each do |booking| %>
+          <% current_user.future_student_bookings.each do |booking| %>
             <%= render 'booking_list_student', booking: booking %>
           <% end %>
       </table>
@@ -39,7 +39,7 @@
 
     <h4>Mes cours passés</h4>
 
-    <% if !current_user.has_past_bookings? %>
+    <% if !current_user.past_student_bookings.any? %>
       <p>Tu n'as encore jamais pris de cours</p>
       <hr>
     <% else %>
@@ -53,7 +53,7 @@
           </tr>
         </thead>
         <tbody>
-          <% current_user.past_bookings.each do |booking| %>
+          <% current_user.past_student_bookings.each do |booking| %>
             <%= render 'booking_list_student', booking: booking %>
           <% end %>
       </table>

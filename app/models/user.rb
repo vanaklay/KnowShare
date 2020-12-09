@@ -115,4 +115,27 @@ class User < ApplicationRecord
   def is_admin?
     self.is_admin == true
   end
+
+  def past_student_bookings
+    @past_student_bookings = bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_student_bookings
+    @future_student_bookings = bookings.select { |booking| booking.start_date > DateTime.now }
+  end
+
+  def teacher_bookings
+    teacher_bookings = []
+    lessons.each do |lesson|
+      lesson.bookings.each { |booking| teacher_bookings << booking }
+    end
+  end
+
+  def past_teacher_bookings
+    teacher_bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_teacher_bookings
+    teacher_bookings.select { |booking| booking.start_date > DateTime.now }
+  end
 end

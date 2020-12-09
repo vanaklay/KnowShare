@@ -17,7 +17,7 @@
     <h4>Mes cours à venir</h4>
     
     <div class="bg-white rounded box-shadow">
-      <% if current_user.future_given_bookings? %>
+      <% if current_user.future_teacher_bookings.any? %>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
           <div class="col-lg-3 col-md-3 col-sm-12">
             <strong>Date du cours</strong>
@@ -32,7 +32,7 @@
             <strong>Actions</strong>
           </div>
         </div>
-        <% current_user.future_given_bookings.each do |booking| %>
+        <% current_user.future_teacher_bookings.each do |booking| %>
           <%= render 'booking_list_teacher', booking: booking %>
         <% end %>
       <% else %>
@@ -44,7 +44,7 @@
     <h4>Mes cours passés</h4>
 
     <div class="bg-white rounded box-shadow">
-      <% if current_user.past_given_bookings? %>
+      <% if current_user.past_given_bookings.any? %>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
           <div class="col-lg-3 col-md-3 col-sm-12">
             <strong>Date du cours</strong>
@@ -59,7 +59,7 @@
             <strong>Actions</strong>
           </div>
         </div>
-        <% current_user.past_given_bookings.each do |booking| %>
+        <% current_user.past_teacher_bookings.each do |booking| %>
           <%= render 'booking_list_teacher', booking: booking %>
         <% end %>
       <% else %>

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :schedules
-    resources :student_bookings
-    resources :teacher_bookings
+    resources :student_bookings, only: [:index]
+    resources :teacher_bookings, only: [:index]
   end
   
   resources :lessons do
