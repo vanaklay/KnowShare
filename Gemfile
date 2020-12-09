@@ -78,3 +78,4 @@ gem 'local_time'
 # Needed to launch a scheduling job widh sidekiq-cron
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'rails-i18n', '~> 5.1'
