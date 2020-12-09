@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/contact' => 'static_pages#contact'
   get '/tarifs' => 'static_pages#pricing'
+  get '/terms' => 'static_pages#terms'
 
   devise_for :users
 
