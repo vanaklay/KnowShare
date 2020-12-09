@@ -18,10 +18,10 @@
 
   <body>
     <div class="footer-container">
-      <%= render "layouts/navbar"%>
+      <%= render "layouts/navbar" unless current_page?(new_user_registration_path) || current_page?(new_user_session_path) || current_page?(new_user_password_path) || current_page?(edit_user_password_path)%>
       <%= render 'layouts/flash' %>
       <%= yield %>
-      <%= render "layouts/footer"%>
+      <%= render "layouts/footer" unless current_page?(new_user_registration_path) || current_page?(new_user_session_path) || current_page?(new_user_password_path) || current_page?(edit_user_password_path) %>
     </div>
   </body>
 </html>

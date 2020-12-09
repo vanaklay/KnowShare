@@ -235,3 +235,18 @@
     width: 100%;
   }
 }
+
+.bg-devise {
+  background-image: url("https://abaforlawstudents.com/wp-content/uploads/2020/03/online-study-tips.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-new-class {
+  background-image: url("https://www.northeastern.edu/graduate/blog/wp-content/uploads/2016/08/Online-Learning-Hero-1.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -3637,7 +3637,7 @@
  
  .input-group-prepend,
  .input-group-append {
-   display: -ms-flexbox;
+   /* display: -ms-flexbox; */
    display: flex;
  }
  
@@ -3752,6 +3752,36 @@
    border-top-left-radius: 0;
    border-bottom-left-radius: 0;
  }
+
+ .input-group-transparent .input-group-text
+{
+    color: #adb5bd;
+    border: .0625rem solid #ced4da; 
+    background-color: transparent;
+}
+
+.input-group-transparent .form-control
+{
+    box-shadow: none;
+}
+.input-group-transparent .form-control:not(:first-child)
+{
+    padding-left: 0; 
+
+    border-left: 0;
+}
+.input-group-transparent .form-control:not(:last-child)
+{
+    padding-right: 0; 
+
+    border-right: 0;
+}
+
+.focused .input-group-transparent .input-group-text
+{
+    border-color: rgba(81, 15, 168, .5); 
+    background-color: #fff;
+}
  
  .custom-control {
    position: relative;
