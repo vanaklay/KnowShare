@@ -10,9 +10,6 @@ class CreditOrdersController < ApplicationController
   end
 
   def create
-    @credits = params[:data][:credits]
-    @amount = params[:data][:amount]
-    @stripe_amount = (@amount * 100).to_i
 
     begin
       customer = Stripe::Customer.create({
@@ -35,12 +32,13 @@ class CreditOrdersController < ApplicationController
   private
 
   def find_amount
-    @amount = params[:data][:amount]
+    @amount = params[:amount]
     
   end
 
   def number_of_credits_purchased
-    @credits = params[:data][:credits]
+    @credits = params[:credits]
+    
   end
 
   def amounts # Make amount in eur, not in cent
