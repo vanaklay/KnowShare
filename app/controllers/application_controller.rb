@@ -11,11 +11,14 @@ class ApplicationController < ActionController::Base
 
   # Configure the authorization of params for controller devise only on sign up and update pages 
   def configure_permitted_params
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation)}
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+  end
 
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password)}
-
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :current_password) }
-
+  def redirect_if_user_not_admin
+    unless current_user.is_admin
+      redirect_to root_path, danger: "Vous n'êtes pas administrateur de ce site !"
+    end
   end
 
 end

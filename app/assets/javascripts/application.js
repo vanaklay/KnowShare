@@ -20,3 +20,4 @@
 //= require local-time
 //= require_tree ./channels
 //= stub 'jumbo_typed_text'
+//= require admin/admin

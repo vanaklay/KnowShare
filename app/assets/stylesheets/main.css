@@ -7,28 +7,21 @@
   background-size: cover;
 }
 
-.h1-jumbo {
+.custom-section-jumbo {
+  padding-top: 11rem;
+}
+
+.h2-jumbo {
   font-size: 4rem;
 }
 
-  
-.subTitleIndex {
-font-size: 18px;
-}
-
-.subTitleJumbo {
-  display: inline-block;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  margin-right: 1rem;
-  font-size: 5rem;
-  line-height: inherit;
-  white-space: nowrap;
-  font-family: 'Permanent Marker', cursive;
-}
-
-.text-subTitleJumbo {
-  font-size: 1rem;
+@media (max-width: 702px) {
+  .h2-jumbo {
+    font-size: 3rem;
+  }
+  .h1-jumbo {
+    font-size: 2.5rem;
+  }
 }
 
 .avatar {
@@ -57,7 +50,8 @@ font-size: 18px;
   background-size: contain;
   width: 6vw;
   height: 6vw;
-  border-radius: 50px
+  border-radius: 50px;
+  object-fit: cover;
 }
 
 .footer-container {
@@ -75,10 +69,10 @@ font-size: 18px;
 /* CONCEPT */
 
 .number {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   margin-right: 80px;
-  font-size: 22px;
+  font-size: 2.4rem;
   display: flex;
   position: relative;
   align-items: center;
@@ -91,7 +85,8 @@ font-size: 18px;
 }
 
 .p-concept {
-  font-size: 18px;
+  font-size: 1.3rem;
+  padding-top: 1rem;
 }
 
 .row-footer {
@@ -128,6 +123,115 @@ font-size: 18px;
 
 .schedule-items {
   overflow: scroll;
-  height: 300px;
+  max-height: 19rem;
 
+}
+
+#messages {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 50vh;
+  width: 50vw;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#message-text-area {
+  padding: 10px;
+  width: 50vw;
+  height: 10vh;
+  border-radius: 5px;
+  resize: none;
+}
+
+#message-text-area:focus {
+  outline: none !important;
+  border-color: #adb5bd;
+  box-shadow: 0 0 10px #adb5bd;
+}
+
+.message{
+  border-radius: 20px;
+
+}
+
+/* HOMEPAGE */
+.custom-section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+/* TESTIMONIALS */
+
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .box {
+  background: #fff;
+  width: calc(33% - 10px);
+  padding: 25px;
+  border-radius: 3px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+}
+.wrapper .box i.quote {
+  font-size: 20px;
+  color: #17a2b8;
+}
+.wrapper .box .content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.box .info .name {
+  font-weight: 600;
+  font-size: 17px;
+}
+.box .info .job {
+  font-size: 16px;
+  font-weight: 500;
+  color: #17a2b8;
+}
+.box .info .stars {
+  margin-top: 2px;
+}
+.box .info .stars i {
+  color: #17a2b8;
+}
+.box .content .image {
+  height: 75px;
+  width: 75px;
+  padding: 3px;
+  background: #17a2b8;
+  border-radius: 50%;
+}
+.content .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.box:hover .content .image img {
+  border-color: #fff;
+}
+
+@media (max-width: 1045px) {
+  .wrapper .box{
+    width: calc(50% - 10px);
+    margin: 10px 0;
+  }
+}
+@media (max-width: 702px) {
+  .wrapper .box{
+    width: 100%;
+  }
 }

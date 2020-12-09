@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
   root 'home#index'
   get '/contact' => 'static_pages#contact'
+  get '/tarifs' => 'static_pages#pricing'
 
   devise_for :users
 
   resources :users do 
     resources :schedules
   end
-
-  get '/contact' => 'static_pages#contact'
-  get '/tarifs' => 'static_pages#pricing'
   
   resources :lessons do
+    resources :teachers, only: [:show]
     resources :bookings do 
       resources :chatrooms, only: [:show, :create]
     end 
@@ -21,5 +20,13 @@ Rails.application.routes.draw do
 
   # ActionCable
   mount ActionCable.server => '/cable'
+
+  # Admin 
+  namespace :admin do
+    root 'facade#index'
+    resources :users
+    resources :lessons
+    resources :bookings
+  end
 
 end

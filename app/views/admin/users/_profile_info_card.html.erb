@@ -1,0 +1,61 @@
+<div class="card my-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, alt: "profile picture", class: "p-1 profile-avatar" %>
+        <% else %>
+          <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class: "p-1 profile-avatar" %>
+        <% end %>
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <h2><strong>Son profil</strong></h2>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <h4>Son prénom</h4>
+        <%= @user.display_first_name %>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <h4>Son nom</h4>
+        <%= @user.display_last_name %>
+      </div>
+       <div class="col-lg-4 col-md-4 col-sm-12">
+        <h4>Son pseudo</h4>
+        <p><%= @user.username %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4>Son email</h4>
+        <p><%= @user.email %></p>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4>Ses crédits</h4>
+        <p>Tu as actuellement <strong><%= @user.personal_credit %> crédits</strong></p>
+        <p>Besoin de plus de crédits ? Donnes des cours <%= link_to "ici", new_lesson_path, class:"text-primary" %>, ou achètes-en <%= link_to "là", tarifs_path, class:"text-primary" %> !</p>
+      </div> 
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4>Sa bio</h4>
+        <p><%= @user.display_description %></p>
+      </div> 
+    </div>
+    <hr>
+
+    <div class="mx-2 align-self-center">
+      <%= link_to "Editer son email et mot de passe", edit_user_registration_path, class: "btn btn-outline-primary mx-2 disabled" %>
+      <%= link_to "Éditer son profil", edit_user_path(@user.id), class: "btn btn-outline-primary mx-2 disabled" %>
+    </div>
+  </div>
+</div>

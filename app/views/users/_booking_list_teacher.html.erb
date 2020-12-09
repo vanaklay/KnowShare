@@ -10,12 +10,14 @@
     <%= booking.student.display_name %>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?"}  do %>
-      <i class="fas fa-times fa-2x"></i>
+    <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning" do %>
+      <i class="fas fa-comment-dots fa-2x"></i>
     <% end %>
     <%= link_to lesson, class: "mx-2 text-info"  do %>
       <i class="fas fa-eye fa-2x"></i>
     <% end %>
-    <%= link_to  "Ouvrir la messagerie", lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"btn btn-info" %>
+    <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?"}  do %>
+      <i class="fas fa-times fa-2x"></i>
+    <% end %>
   </div>
 </div>

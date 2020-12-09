@@ -8,7 +8,9 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast( "messages_#{message_params[:chatroom_id]}",
       #message and user hold the data we render on the page using javascript 
       message: message.content,
-      user: message.user.username
+      user: message.user, 
+      booking: message.chatroom.booking.user,
+      username: message.user.username
       )
     else
       redirect_to root_path

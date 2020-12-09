@@ -12,17 +12,18 @@ class User < ApplicationRecord
   has_many  :followed_lessons,
             through: :bookings,
             foreign_key: 'followed_lesson_id',
-            class_name: 'Lesson',
+            source: :lesson,
             dependent: :destroy
   has_many :messages
-  has_many :chatrooms, through: :bookings
-        
+  has_many :chatrooms, through: :bookings, dependent: :destroy
+  has_many :schedules, dependent: :destroy
+
   has_one_attached :avatar
 
   def role?
-    role.class == String
+    role.instance_of?(String)
   end
-  
+
   after_create :send_welcome_email
 
   def role_include?(searched_role)
@@ -46,7 +47,7 @@ class User < ApplicationRecord
     if first_name?
       first_name
     else
-      "Pas encore de prénom !"
+      'Pas encore de prénom !'
     end
   end
 
@@ -58,7 +59,7 @@ class User < ApplicationRecord
     if last_name?
       last_name
     else
-      "Pas encore de nom !"
+      'Pas encore de nom !'
     end
   end
 
@@ -79,7 +80,7 @@ class User < ApplicationRecord
       avatar
     else
       # url to picture of cute cat
-      "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697"
+      'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697'
     end
   end
 
@@ -91,7 +92,7 @@ class User < ApplicationRecord
     if description?
       description
     else
-      "Pas encore de bio, édite vite ton profil pour en rajouter une !"
+      'Pas encore de bio, édite vite ton profil pour en rajouter une !'
     end
   end
 
@@ -104,12 +105,12 @@ class User < ApplicationRecord
   end
 
   def has_past_bookings?
-    past_bookings.count > 0
-  end 
+    past_bookings.count.positive?
+  end
 
   def has_future_bookings?
-    future_bookings.count > 0
-  end 
+    future_bookings.count.positive?
+  end
 
   def past_lessons
     past_lessons = []
@@ -122,14 +123,14 @@ class User < ApplicationRecord
     future_bookings.each { |booking| future_lessons << booking.lesson }
     future_lessons
   end
-  
+
   def students
     students = []
     lessons.each do |lesson|
       lesson.students.each { |student| students << student }
     end
     students
-  end 
+  end
 
   def given_bookings
     given_bookings = []
@@ -137,25 +138,33 @@ class User < ApplicationRecord
       lesson.bookings.each { |booking| given_bookings << booking }
     end
     given_bookings
-  end 
+  end
 
   def past_given_bookings?
-    past_given_bookings.count > 0
-  end 
+    past_given_bookings.count.positive?
+  end
 
   def future_given_bookings?
-    future_given_bookings.count > 0
-  end 
+    future_given_bookings.count.positive?
+  end
 
   def past_given_bookings
     given_bookings.select { |given_booking| given_booking.start_date < DateTime.now }
-  end 
+  end
 
   def future_given_bookings
     given_bookings.select { |given_booking| given_booking.start_date > DateTime.now }
-  end 
+  end
 
   def send_welcome_email
     UserMailer.welcome_send(self).deliver_now
+  end
+
+  def not_admin
+    self.is_admin = false
+  end
+
+  def is_admin?
+    self.is_admin == true
   end
 end
