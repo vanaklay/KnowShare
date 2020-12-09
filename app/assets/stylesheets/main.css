@@ -50,7 +50,8 @@
   background-size: contain;
   width: 6vw;
   height: 6vw;
-  border-radius: 50px
+  border-radius: 50px;
+  object-fit: cover;
 }
 
 .footer-container {

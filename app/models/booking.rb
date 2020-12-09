@@ -12,7 +12,7 @@ class Booking < ApplicationRecord
   has_one :chatroom, dependent: :destroy
 
   validate :student_enough_credit?, :prevent_teacher_booking
-  after_create :payment_from_student, :payment_to_teacher, :send_email_new_booking_user, :send_email_new_booking_teacher
+  after_create :payment_from_student, :send_email_new_booking_user, :send_email_new_booking_teacher
   
   before_destroy :destroy_booking
 
@@ -159,16 +159,6 @@ class Booking < ApplicationRecord
 
   def payment_from_student
     Credit::Remove.new(amount: price, user: student).call
-  end
-
-  # Will change after finding out how to launch method at a certain date
-  def payment_to_teacher
-    Credit::Add.new(amount: price, user: teacher).call
-  end
-
-  # Will disappear after finding out how to launch method at a certain date : the credit won't be given until the lesson start
-  def refund_from_teacher
-    Credit::Remove.new(amount: price, user: teacher).call
   end
 
   def refund_to_student
