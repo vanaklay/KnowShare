@@ -11,23 +11,27 @@
             <% end %>
           </div>
           <div class="mx-2 d-flex align-self-center">
-              <h3><strong>À propose du professeur</strong></h3>
+            <h3><strong>À propose de <%= @user.username %></strong></h3>
           </div>
         </div>
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="col-lg-3 col-md-3 col-sm-12">
             <h4>Prénom</h4>
-            <%= @user.display_first_name %>
+            <p><%= @user.display_first_name %></p>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="col-lg-3 col-md-3 col-sm-12">
             <h4>Nom</h4>
-            <%= @user.display_last_name %>
+            <p><%= @user.display_last_name %></p>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <h4>Pseudo</h4>
-            <p><%= @user.username %></p>
+          <div class="col-lg-3 col-md-3 col-sm-12 text-lg-center text-md-center">
+            <h4>Cours créés</h4>
+            <p><%= @lessons.count %></p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 text-lg-center text-md-center">
+            <h4>Cours suivis</h4>
+            <p><%= @user.bookings.count %></p>
           </div>
         </div>
         <hr class="border-light">
