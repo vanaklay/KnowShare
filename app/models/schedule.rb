@@ -20,7 +20,11 @@ class Schedule < ApplicationRecord
       start_date = schedule.start_time
       end_date = schedule.end_time
       if start_time.between?(start_date, end_date) || end_time.between?(start_date, end_date)
-        found = true
+        if start_time.between?(start_date, end_date) && start_time < end_date
+          found = true
+        elsif end_time.between?(start_date, end_date) && end_time > start_date
+          found = true
+        end
       end
     end
     return found
