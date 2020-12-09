@@ -1,0 +1,14 @@
+<div class="card mb-3 bg-white text-dark text-center">
+  <% if @lesson.user.has_schedules? %>
+    <div class="card-body">
+      <%= link_to "Voir un planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+    </div>
+  <% else %>
+  <div class="card-body">
+    <h5 class="card-title">Tu n'as pas encore de disponibilité</h5>
+    <p>Pour qu'un autre utilisateur puisse réserver un de tes supers cours, 
+    tu dois créer ton planning de disponibilité</p>
+    <%= link_to "Créer un planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+  </div>
+  <% end %>
+</div>
