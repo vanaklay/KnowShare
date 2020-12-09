@@ -28,7 +28,10 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to @user, success: "Le profil de cet utilisateur a bien été supprimé"
+    respond_to do |format|
+      format.js { }
+      format.html { redirect_to admin_users_path, success: "Le profil de cet utilisateur a bien été supprimé" }
+    end
   end
 
   private
