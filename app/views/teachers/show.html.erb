@@ -1,0 +1,1 @@
+<h1>Salut mec</h1>

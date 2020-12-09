@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   
   resources :lessons do
+    resources :teachers, only: [:show]
     resources :bookings do 
       resources :chatrooms, only: [:show, :create]
     end 
