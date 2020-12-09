@@ -29,15 +29,27 @@ class Schedule < ApplicationRecord
   private
 
   def start_in_future
-    errors.add(:start_time, ": Impossible de réserver un horaire dans le passé") unless start_time > DateTime.now
+    errors.add(:start_time, ": Impossible de réserver un horaire dans le passé") unless start_after_now?
   end
 
   def end_must_be_after_start_time
-    errors.add(:end_time, ": Impossible d'avoir un horaire de fin débutant avant l'horaire de début") unless end_time > start_time + 28.minute
+    errors.add(:end_time, ": Impossible d'avoir un horaire de fin débutant avant l'horaire de début") unless end_after?
   end
 
   def end_must_be_today
-    errors.add(:end_time, ": Impossible d'avoir une fin d'un autre jour") unless end_time < start_time - (start_time.hour).hour + 24.hour
+    errors.add(:end_time, ": Impossible d'avoir une fin d'un autre jour") unless end_today?
+  end
+
+  def start_after_now?
+    self.start_time > DateTime.now
+  end
+
+  def end_after?
+    self.end_time > self.start_time + 28.minute
+  end
+
+  def end_today?
+    self.end_time < self.start_time - (self.start_time.hour).hour + 24.hour
   end
 
 end
