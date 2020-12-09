@@ -9,6 +9,17 @@
       </div>
     </div>
   </div>
+  <div class="bg-dark text-white p-3">
+    <%= week_calendar(events: @schedules) do |date, schedules| %>
+
+      <% schedules.each do |schedule| %>
+        <div>
+          <p class="text-dark text-center"><%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
+          
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <ul class="list-group p-3" >
     <div class="rounded schedule-items" id="schedule-container">
     <% @schedules.each do |schedule| %>

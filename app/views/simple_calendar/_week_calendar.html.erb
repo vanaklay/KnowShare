@@ -1,0 +1,39 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <div class="row justify-content-center py-3">
+    <%= link_to '<i class="fas fa-arrow-circle-left"></i> &nbsp; Précédent'.html_safe, calendar.url_for_previous_view, class: "btn text-info" %>
+    <p class="pt-2">
+      <%monday =  Date.commercial(start_date.year, start_date.cweek, 1)%>
+      Semaine du <%= monday.strftime("%d") %> au <%= (monday + 6.days).strftime("%d")+" "+I18n.t("date.month_names")[(monday + 6.days).strftime("%-m").to_i - 1]  %>
+    </p>
+    <%= link_to 'Suivant &nbsp; <i class="fas fa-arrow-circle-right"></i>'.html_safe, calendar.url_for_next_view, class: "btn text-info" %>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= I18n.t("date.day_names")[day.wday]+" "+day.strftime("%e") %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+              <% else %>
+                <% passed_block.call day, sorted_events.fetch(day, []) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+    
+  </table>
+</div>
