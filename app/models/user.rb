@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :chatrooms, through: :bookings, dependent: :destroy
   has_many :schedules, dependent: :destroy
+  has_many :credits_orders, dependent: :destroy
 
   has_one_attached :avatar
 
