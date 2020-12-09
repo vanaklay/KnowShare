@@ -45,15 +45,15 @@ class Schedule < ApplicationRecord
   end
 
   def start_after_now?
-    self.start_time > DateTime.now
+    start_time > DateTime.now
   end
 
   def end_after?
-    self.end_time > self.start_time + 28.minute
+    end_time > start_time + 28.minute
   end
 
   def end_today?
-    self.end_time < self.start_time - (self.start_time.hour).hour + 24.hour
+    end_time < start_time - (start_time.hour).hour + 24.hour
   end
 
 end
