@@ -4,9 +4,6 @@ class UsersController < ApplicationController
   before_action :find_user, :all_users
   before_action :redirect_not_author_to_dashboard, only: [:show, :edit, :update, :destroy]
 
-  def index
-  end
-
   def show
   end
   
