@@ -11,12 +11,12 @@
           <h4 class="my-0 font-weight-normal">Free</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">6€</h1>
+          <h1 class="card-title pricing-card-title">5€</h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li>4 crédits</li>
-            <li>(équivalent à 2h de cours)</li>
+            <li>1 crédits</li>
+            <li>(équivalent à 30mins de cours)</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-warning">Acheter</button>
+          <%= link_to  "Acheter", new_credit_order_path(data: {amount: 5, credits: 1}), class:"btn btn-lg btn-block btn-outline-warning" %>
         </div>
       </div>
       <div class="card mb-4 shadow-sm bg-white text-dark border-success">
@@ -24,12 +24,12 @@
           <h4 class="my-0 font-weight-normal">Pro</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">6€</h1>
+          <h1 class="card-title pricing-card-title">40€</h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li>8 crédits</li>
-            <li>(équivalent à 4h de cours)</li>
+            <li>10 crédits</li>
+            <li>(équivalent à 5h de cours)</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-warning">Acheter</button>
+          <%= link_to  "Acheter", new_credit_order_path(data: {amount: 40, credits: 10}), class:"btn btn-lg btn-block btn-warning" %>
         </div>
       </div>
       <div class="card mb-4 shadow-sm bg-white text-dark border-success">
@@ -37,12 +37,12 @@
           <h4 class="my-0 font-weight-normal">Enterprise</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">6€</h1>
+          <h1 class="card-title pricing-card-title">60€</h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li>20 crédits</li>
-            <li>(équivalent à 10h de cours)</li>
+            <li>(équivalent à 20h de cours)</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-warning">Acheter</button>
+          <%= link_to  "Acheter", new_credit_order_path(data: {amount: 60, credits: 20}), class:"btn btn-lg btn-block btn-warning" %>
         </div>
       </div>
     </div>
