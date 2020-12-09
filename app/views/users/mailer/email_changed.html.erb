@@ -1,10 +1,9 @@
 <p>Bonjour <%= @email %>!</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
-  <p>Nous te contactons pour t'informer que ton email à été changer, voici le nouvel email enregistré: <%= @resource.unconfirmed_email %>.</p>
+  <p>Nous te contactons pour t'informer que ton email à été changé, voici le nouvel email enregistré: <%= @resource.unconfirmed_email %>.</p>
 <% else %>
-  <p>Nous te contactons pour t'informer que ton email à été changer, voici le nouvel email enregistré: <%= @resource.email %>.</p>
+  <p>Nous te contactons pour t'informer que ton email à été changé, voici le nouvel email enregistré: <%= @resource.email %>.</p>
 <% end %>
 
 <p>L'équipe KnowShare</p>
-
