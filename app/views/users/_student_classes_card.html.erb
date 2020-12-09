@@ -1,4 +1,4 @@
-<div class="card my-3 bg-white text-dark">
+<div class="card my-3 bg-white text-dark" style="overflow: scroll; height: 80vh;">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
@@ -16,57 +16,47 @@
   
   <div class="card-body">
     <h4>Mes cours à venir</h4>
-    
-    <div class="bg-white rounded box-shadow">
-      <% if current_user.has_future_bookings? %>
-        <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Date du cours</strong>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Titre du cours</strong>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Nom du professeur</strong>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-12 text-center">
-            <strong>Actions</strong>
-          </div>
-        </div>
-        <% current_user.future_bookings.each do |booking| %>
-          <%= render 'booking_list_student', booking: booking %>
-        <% end %>
-      <% else %>
-        <p>Tu n'as encore aucun cours de prévu !</p>
-        <hr>
-      <% end %>
-    </div>
-  
+    <% if !current_user.has_future_bookings? %>
+      <p>Tu n'as encore aucun cours de prévu !</p>
+      <hr>
+    <% else %>
+      <table class="table table-bordered table-striped text-dark">
+        <thead>
+          <tr>
+            <th>Date du cours</th>
+            <th>Titre du cours</th>
+            <th>Nom du professeur</th>
+            <th>Durée du cours</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.future_bookings.each do |booking| %>
+            <%= render 'booking_list_student', booking: booking %>
+          <% end %>
+      </table>
+    <% end %>
+
     <h4>Mes cours passés</h4>
 
-    <div class="bg-white rounded box-shadow">
-      <% if current_user.has_past_bookings? %>
-        <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Date du cours</strong>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Titre du cours</strong>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Nom du professeur</strong>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <strong>Actions</strong>
-          </div>
-        </div>
-        <% current_user.past_bookings.each do |booking| %>
-          <%= render 'booking_list_student', booking: booking %>
-        <% end %>
-      <% else %>
-        <p>Tu n'as encore jamais pris de cours</p>
-        <hr>
-      <% end %>
-    </div>
+    <% if !current_user.has_past_bookings? %>
+      <p>Tu n'as encore jamais pris de cours</p>
+      <hr>
+    <% else %>
+      <table class="table table-bordered table-striped text-dark">
+        <thead>
+          <tr>
+            <th>Date du cours</th>
+            <th>Titre du cours</th>
+            <th>Nom du professeur</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.past_bookings.each do |booking| %>
+            <%= render 'booking_list_student', booking: booking %>
+          <% end %>
+      </table>
+    <% end %>
   </div>
 </div>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :schedules
+    resources :student_bookings
+    resources :teacher_bookings
   end
   
   resources :lessons do
@@ -29,5 +31,4 @@ Rails.application.routes.draw do
     resources :lessons
     resources :bookings
   end
-
 end
