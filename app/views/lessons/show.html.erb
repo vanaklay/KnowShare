@@ -11,7 +11,11 @@
       <% if @lesson.teacher?(current_user) %>
         <%= render "schedule_card", local: @lesson %>
       <% else %>
-        <%= render "calendar_lesson_show_card" %>
+        <% if @lesson.user.has_schedules? %>
+          <%= render "calendar_lesson_show_card" %>
+        <% else %>
+          <%= render "wait_schedules_card" %>
+        <% end %>
       <% end %>
     </div>
   </div>
