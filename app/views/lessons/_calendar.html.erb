@@ -1,14 +1,16 @@
-<div class="card-body">
-  <h5 class="card-title text-center">Voici les disponibilités du prof</h5>
-  <ul class="list-group" >
-    <div class="rounded schedule-items" id="schedule-container">
-    <% @schedules.each do |schedule| %>
-      <li id="schedule_id_<%= schedule.id %>" class="<%= schedule.is_booked? ? "table-light" : "table-dark"%> list-group-item d-flex align-items-center">
-        <p class="mb-0">Le <%= schedule.start_time.strftime("%d/%m/%y") %> de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %></p>
-      </li>
-    <% end %>
+<div class="card mb-3 bg-white text-dark">
+  <h4 class="card-header bg-white text-center mt-3">Voici les disponibilités du prof</h4>
+  <div class="card-body">
+    <div class="bg-dark text-white p-3 rounded">
+      <%= week_calendar(events: @schedules) do |date, schedules| %>
+
+        <% schedules.each do |schedule| %>
+          <div>
+            <p class="text-dark text-center"><%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
+            
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  </ul>
+  </div>
 </div>
-
-
