@@ -54,8 +54,6 @@ class Booking < ApplicationRecord
   def paid?
     paid
   end
-  
-  # ------- Validation methods class instance ------- #
 
   def start_must_be_in_schedule
     all_schedules = Schedule.where(user_id: self.lesson.user_id).all
@@ -71,11 +69,10 @@ class Booking < ApplicationRecord
     return found
   end
 
-  # ------- Method that created new schedule following booking ------- #
   def split_and_create_schedule
-    schedule = Schedule.where('start_time < ? AND end_time > ?', self.start_date, end_date)[0]
-    start_time_from_schedule = start_time(schedule)
-    end_time_from_schedule = end_time(schedule)
+    schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
+    start_time_from_schedule = start_time(schedule) == 10
+    end_time_from_schedule = end_time(schedule) == 20
     user = User.find(self.lesson.user_id)
 
     if schedule.start_time != self.start_date 
@@ -149,6 +146,7 @@ class Booking < ApplicationRecord
   end
 
   def start_time(schedule)
+    now 
     schedule.start_time
   end
 

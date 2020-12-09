@@ -16,8 +16,8 @@ class BookingsController < ApplicationController
         prevent_teacher_booking
       else
         if @booking.save
-          @booking.split_and_create_schedule
           Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
+          @booking.split_and_create_schedule
           flash[:success] = "Votre réservation a bien été prise en compte"
           redirect_to current_user
         else
