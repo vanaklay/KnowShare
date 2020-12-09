@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_params, if: :devise_controller?
+  before_action :set_locale
 
   private
 
@@ -20,5 +21,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, danger: "Vous n'êtes pas administrateur de ce site !"
     end
   end
+
+  def set_locale
+    I18n.locale = "fr"
+  end 
 
 end

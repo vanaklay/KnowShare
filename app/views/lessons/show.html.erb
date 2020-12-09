@@ -1,11 +1,23 @@
 <div class="container pt-4">
   <div class="row min-vh-100">
     <div class="col-sm-12 col-md-8 col-lg-8">
-      <%= render "main_lesson_show_card"%>
+      <%= render "main_lesson_show_card" %>
+        <% if @lesson.user.has_schedules? %>
+          <%= render "calendar", local: @schedules %>
+        <% end %>
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4">
-      <%= render "teacher_lesson_show_card"%>
-      <%= render "calendar_lesson_show_card"%>
+      <%= render "teacher_lesson_show_card" %>
+      <% if @lesson.teacher?(current_user) %>
+        <%= render "schedule_card", local: @lesson %>
+      <% else %>
+        <% if @lesson.user.has_schedules? %>
+          <%= render "calendar_lesson_show_card" %>
+        <% else %>
+          <%= render "wait_schedules_card" %>
+        <% end %>
+      <% end %>
+      <%= render "all_lessons_card" %>
     </div>
   </div>
 </div>
