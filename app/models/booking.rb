@@ -146,7 +146,6 @@ class Booking < ApplicationRecord
   end
 
   def start_time(schedule)
-    now 
     schedule.start_time
   end
 
