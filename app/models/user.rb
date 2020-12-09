@@ -167,4 +167,9 @@ class User < ApplicationRecord
   def is_admin?
     self.is_admin == true
   end
+
+  def has_schedules?
+    self.schedules.length > 0
+  end
+
 end
