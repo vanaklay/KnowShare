@@ -104,7 +104,42 @@ class Booking < ApplicationRecord
 
   def create_schedule_after_cancelling
     user = User.find(self.lesson.user_id)
-    Schedule.create(start_time: self.start_date, end_time: end_date, user: user)
+    all_schedules = Schedule.where(user_id: self.lesson.user_id).all.order("start_time")
+    self_schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
+    found = all_schedules.select { |schedule| (self.start_date == schedule.end_time && !schedule.is_booked?) || (end_date == schedule.start_time && !schedule.is_booked?) }
+    if found.length > 0
+      if found.length > 1
+        start_of_schedule = found[0].start_time
+        end_of_schedule = found[1].end_time
+        found[1].destroy
+        found[0].destroy
+        self_schedule.destroy
+        if start_of_schedule < DateTime.now && self.start_date > (DateTime.now + 0.5/24)
+          Schedule.create(start_time: start_time_now, end_time: end_of_schedule, user: user)
+        else
+          Schedule.create(start_time: start_of_schedule, end_time: end_of_schedule, user: user)
+        end
+      elsif found[0].end_time == self.start_date
+        start_of_schedule = found[0].start_time
+        found[0].destroy
+        self_schedule.destroy
+        if start_of_schedule < DateTime.now && self.start_date > (DateTime.now + 0.5/24)
+          Schedule.create(start_time: start_time_now, end_time: end_date, user: user)
+        else
+          Schedule.create(start_time: start_of_schedule, end_time: end_date, user: user)
+        end
+      elsif found[0]
+        end_of_schedule = found[0].end_time
+        found[0].destroy
+        self_schedule.destroy
+        Schedule.create(start_time: self.start_date, end_time: end_of_schedule, user: user)
+      else 
+        return
+      end
+    else
+      self_schedule.destroy
+      Schedule.create(start_time: self.start_date, end_time: end_date, user: user)
+    end
   end
   
   private
