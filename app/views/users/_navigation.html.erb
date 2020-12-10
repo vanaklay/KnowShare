@@ -17,6 +17,6 @@
   <% if current_user.teacher? %>
     <li class="list-group-item bg-info text-center py-2">Dashboard prof</li>
     <%= link_to "Voir mes réservations", user_teacher_bookings_path(current_user.id), class:"list-group-item list-group-item-action text-dark", remote: true %>
-    <%= link_to "Voir la liste de mes cours", user_teacher_lessons_path(current_user.id), class:"list-group-item list-group-item-action text-dark" %>
+    <%= link_to "Voir la liste de mes cours", user_teacher_lessons_path(current_user.id), class:"list-group-item list-group-item-action text-dark", remote: true %>
   <% end %>
 </div>
