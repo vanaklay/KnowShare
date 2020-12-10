@@ -3,8 +3,8 @@
     <div class="row justify-content-center py-3">
     <%= link_to '<i class="fas fa-arrow-circle-left"></i> &nbsp; Précédent'.html_safe, calendar.url_for_previous_view, class: "btn text-info" %>
     <p class="pt-2">
-      <%monday =  Date.commercial(start_date.year, start_date.cweek, 1)%>
-      Semaine du <%= monday.strftime("%d") %> au <%= (monday + 6.days).strftime("%d")+" "+I18n.t("date.month_names")[(monday + 6.days).strftime("%-m").to_i]  %>
+      <% monday =  Date.commercial(start_date.year, start_date.cweek, 1) %>
+      Semaine du <%= monday.strftime("%d") %> au <%= (monday + 6.days).strftime("%d")%> <%= I18n.t("date.month_names")[(DateTime.now).strftime("%-m").to_i] %>
     </p>
     <%= link_to 'Suivant &nbsp; <i class="fas fa-arrow-circle-right"></i>'.html_safe, calendar.url_for_next_view, class: "btn text-info" %>
     </div>
