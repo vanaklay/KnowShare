@@ -26,6 +26,6 @@ class Admin::BookingsController < ApplicationController
   end
 
   def all_bookings
-    @bookings = Booking.all.sort
+    @bookings = Booking.all.sort.reverse
   end
 end

@@ -44,7 +44,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def all_user
-    @users = User.all.sort
+  def all_users
+    @users = User.where(is_admin: false).all.sort.reverse
   end
 end

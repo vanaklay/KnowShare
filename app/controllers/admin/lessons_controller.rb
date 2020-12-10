@@ -62,7 +62,7 @@ class Admin::LessonsController < ApplicationController
   end
 
   def all_lessons
-    @lessons = Lesson.all.sort
+    @lessons = Lesson.all.sort.reverse
   end
 
   def find_lesson
