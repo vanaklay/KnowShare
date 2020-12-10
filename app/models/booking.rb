@@ -12,7 +12,7 @@ class Booking < ApplicationRecord
   has_one :chatroom, dependent: :destroy
 
   validate :student_enough_credit?, :prevent_teacher_booking
-  after_create :payment_from_student, :send_email_new_booking_user, :send_email_new_booking_teacher
+  after_create :send_email_new_booking_user, :send_email_new_booking_teacher
   
   before_destroy :destroy_booking
 
@@ -115,22 +115,12 @@ class Booking < ApplicationRecord
 
   def destroy_booking
     if start_date > DateTime.now
-      action_destroy_booking
+      after_destroy_booking_email
     else
       errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.")
       # Cancels the destroy action
       :abort
     end
-  end
-
-  def refund
-    refund_from_teacher
-    refund_to_student
-  end
-
-  def action_destroy_booking
-    refund
-    after_destroy_booking_email
   end
 
   def start_in_future
@@ -151,15 +141,6 @@ class Booking < ApplicationRecord
 
   def end_time(schedule)
     schedule.end_time
-  end
-
-
-  def payment_from_student
-    Credit::Remove.new(amount: price, user: student).call
-  end
-
-  def refund_to_student
-    Credit::Add.new(amount: price, user: student).call
   end
 
   # -------- Email section -------- #

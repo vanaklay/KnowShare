@@ -4,9 +4,10 @@ class Admin::BookingsController < ApplicationController
   include BookingsHelper
   before_action :authenticate_user!
   before_action :redirect_if_user_not_admin
+  before_action :find_booking, only: [:destroy]
+  before_action :all_bookings, only: [:index]
   
   def index
-    @bookings = Booking.all
   end 
   
   def destroy
@@ -24,4 +25,7 @@ class Admin::BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :duration)
   end
 
+  def all_bookings
+    @bookings = Booking.all.sort
+  end
 end
