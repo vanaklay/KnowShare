@@ -5,10 +5,16 @@
       <%= week_calendar(events: @schedules) do |date, schedules| %>
 
         <% schedules.each do |schedule| %>
-          <div>
-            <p class="text-dark text-center"><%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
-            
-          </div>
+          <% if schedule.is_booked? %>
+            <div class="bg-info text-white">
+              <p class="text-center">Réservé : <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
+            </div>
+          <% else %>
+            <div class="bg-warning text-white">
+              <p class="text-center">Disponible : <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
+            </div>
+          <% end %>
+          
         <% end %>
       <% end %>
     </div>
