@@ -30,7 +30,7 @@
       <% @bookings.each do |booking| %>
         <tr id="booking-<%= booking.id %>">
           <td><%= booking.id %></td>
-          <td><%= booking.title %></td>
+          <td><%= booking.lesson_title %></td>
           <td><%= booking.student.username %></td>
           <td><%= booking.teacher.username %></td>
           <td><%= booking.display_start_date_time %></td>

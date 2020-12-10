@@ -17,6 +17,7 @@
     <table class="table table-bordered table-striped text-dark">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Titre</th>
           <th>Professeur</th>
           <th>Email du professeur</th>
@@ -28,6 +29,7 @@
       <tbody id="myTable">
         <% @lessons.each do |lesson| %>
         <tr id="lesson-<%= lesson.id %>">
+          <td><%= lesson.id %></td>
           <td><%= lesson.title %></td>
           <td><%= lesson.teacher.display_name %></td>
           <td><%= lesson.teacher.email %></td>

@@ -24,7 +24,7 @@
           <strong>Dernier cours crée</strong>
         </div>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <%= Lesson.last.title if @lessons.count.positive? %>      
+          <%= @lessons.nil? ? 'Encore aucun cours' : Lesson.last.title  %>      
         </div>
 
         <div class="row pt-2 mb-2 mr-2">
