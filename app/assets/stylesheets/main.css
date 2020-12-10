@@ -28,10 +28,16 @@
 .avatar {
   width: 3vw;
   height: 3vw;
-  border-radius: 50%;
   object-fit: cover;
-
 }
+
+@media (max-width: 992px) {
+  .avatar {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
 
 .navbar-avatar{
   background-position: center;
@@ -41,7 +47,7 @@
   width: 4vw;
   height: 4vw;
   border-radius: 50%;
-  /* object-fit: contain; */
+  object-fit: cover;
 
 }
 
@@ -99,9 +105,11 @@
   padding-left: 4px;
 }
 
+/* Lessons */
+
 .img-lesson{
   max-height: 50vh;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .teacher-avatar{
@@ -111,10 +119,18 @@
   border-radius: 50px
 }
 
+@media (max-width: 960px) {
+  .teacher-avatar {
+    width: 12vw;
+    height: 12vw;
+  }
+}
+
+
 .img-lesson-card{
   height: 200px;
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 /* USER PROFILE */
