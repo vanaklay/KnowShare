@@ -2,6 +2,7 @@
 
 .jumbo {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -9,6 +10,7 @@
 
 .custom-section-jumbo {
   padding-top: 11rem;
+  padding-bottom: 5rem;
 }
 
 .h2-jumbo {
