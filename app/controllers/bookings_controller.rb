@@ -16,12 +16,13 @@ class BookingsController < ApplicationController
         prevent_teacher_booking
       else
         if @booking.save
+          Credit::Remove.new(amount: @booking.price, user: @booking.student).call
           Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
           @booking.split_and_create_schedule
-          flash[:success] = "Votre réservation a bien été prise en compte"
+          flash[:success] = "La réservation a bien été prise en compte"
           redirect_to current_user
         else
-          flash[:danger] = "Votre réservation n'a pas pu aboutir"
+          flash[:danger] = "La réservation n'a pas pu aboutir"
           redirect_back(fallback_location: root_path)
         end
       end
@@ -33,12 +34,18 @@ class BookingsController < ApplicationController
   end 
 
   def destroy
-    @booking.create_schedule_after_cancelling
-    @booking.destroy
-    respond_to do |format|
-      format.html { redirect_to current_user, notice: "Le cours a bien été annulé" }
-      format.json { head :no_content }
-      format.js {}
+    if @booking.future?
+      Credit::Add.new(amount: @booking.price, user: @booking.student).call
+      @booking.create_schedule_after_cancelling
+      @booking.destroy
+      respond_to do |format|
+        format.html { redirect_to current_user, notice: "La réservation a bien été annulée" }
+        format.json { head :no_content }
+        format.js {}
+      end
+    else
+      flash[:danger] = "Impossible de supprimer une réservation passée"
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -47,5 +54,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :duration)
   end
-
 end

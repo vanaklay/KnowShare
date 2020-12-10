@@ -122,22 +122,12 @@ class Booking < ApplicationRecord
 
   def destroy_booking
     if start_date > DateTime.now
-      action_destroy_booking
+      after_destroy_booking_email
     else
       errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.")
       # Cancels the destroy action
       :abort
     end
-  end
-
-  def refund
-    refund_from_teacher
-    refund_to_student
-  end
-
-  def action_destroy_booking
-    refund
-    after_destroy_booking_email
   end
 
   def start_in_future
@@ -169,15 +159,6 @@ class Booking < ApplicationRecord
       day_start = day_start + (DateTime.now.hour.hour) + 1.hour 
       day_start
     end
-  end
-
-
-  def payment_from_student
-    Credit::Remove.new(amount: price, user: student).call
-  end
-
-  def refund_to_student
-    Credit::Add.new(amount: price, user: student).call
   end
 
   # -------- Email section -------- #
