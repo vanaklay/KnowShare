@@ -8,7 +8,6 @@ class CreditOrdersController < ApplicationController
   end
 
   def create
-
     begin
       customer = Stripe::Customer.create({
       email: params[:stripeEmail],
@@ -26,6 +25,8 @@ class CreditOrdersController < ApplicationController
     end
     Credit::Add.new(amount: @credits.to_i, user: current_user).call
     CreditOrder.create(price: @amount.to_i, number_of_credit: @credits.to_i, user: current_user)
+    CreditOrderMailer.send_email_confirm_credit_order(current_user, @amount, @credits).deliver_now
+
   end
 
   private
