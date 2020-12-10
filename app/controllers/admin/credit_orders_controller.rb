@@ -1,6 +1,4 @@
-class Admin::CreditOrdersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :redirect_if_user_not_admin
+class Admin::CreditOrdersController < Admin::FacadeController
   before_action :find_all_orders, only: [:index]
   before_action :find_amount, only: [:index]
   before_action :number_of_credits_purchased, only: [:index]
