@@ -250,3 +250,10 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* Stripe Button */
+button.stripe-button-el,
+button.stripe-button-el>span, .btn-succes {
+  background-color: #31dc12 !important;
+  background-image: none;
+}

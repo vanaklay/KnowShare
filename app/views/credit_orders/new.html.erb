@@ -1,10 +1,13 @@
-<div class="container">
-  <div class="card border-secondary mx-auto w-50 text-center">
-    <div class="card-header bg-dark">
-      <h3>Validation de la commande</h3>
-    </div>
+<div class="container-fluid">
+  <h3 class="text-center">Validation de la commande</h3>
+  <div class="card border-secondary mx-auto w-25 mt-5">
     <div class="card-body bg-white text-dark">
-      <h4 class="card-title">Achat de <%= @credits %> crédits</h4>
+      <h4 class="card-title text-center">Récapitulatif</h4>
+      <div class="my-4">
+        <h6>Nombre de crédit(s) : <%= @credits %></h6>
+        <span><strong>Montant de la commande: <%= @amount %> € </strong></span>
+      </div>
+      <div class="text-center">
         <%= form_tag credit_orders_path do %>
           <%= hidden_field_tag 'amount', @amount %>
           <%= hidden_field_tag 'credits', @credits %>
@@ -14,23 +17,17 @@
                 <p><%= flash[:error] %></p>
               </div>
             <% end %>
-            <label class="amount">
-              <span><strong>Prix: <%= @amount %> € </strong></span>
-            </label>
           </article>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-description="Achat de crédits"
+            data-label="Payer par carte"
             data-amount= <%= @stripe_amount %>
             data-currency="eur"
             data-locale="auto">
           </script>
-          <script>
-            // Hide and change default stripe button
-            document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-          </script>
-          <button type="submit" class="btn btn-success">Proceder au paiement</button>
         <% end %>
+      </div>
     </div>
   </div>
 </div>

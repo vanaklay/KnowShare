@@ -1,1 +1,13 @@
-<h1>Cimer</h1>
+<div class="container">
+  <h2 class="text-center">Paiement accepté</h2>
+  <div class="container my-5">
+    <p>Tu as payé <u><%= @amount %></u> € par carte bleue.</p>
+    <p>Tu vas recevoir un email de confirmation à cette adresse : <u><%= current_user.email %></u>.</p>
+    <p>N'attend plus pour aller découvrir et réserver des cours créés par des passionnés.</p>
+  </div>
+  <h4 class="text-center">Merci, à bientôt</h4>
+  <div class="container text-center my-2">
+    <%= link_to  "Accueil", root_path, class:"btn btn-primary m-2" %>
+    <%= link_to  "Voir tous les cours du moment", lessons_path, class:"btn btn-info m-2" %>
+  </div>
+</div>
