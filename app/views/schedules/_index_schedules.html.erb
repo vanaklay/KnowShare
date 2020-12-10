@@ -23,7 +23,11 @@
   <ul class="list-group p-3" >
     <div class="rounded schedule-items" id="schedule-container">
     <% @schedules.each do |schedule| %>
-      <%= render "schedule_object", schedule: schedule %>
+      <% if schedule.is_booked? %>
+        <%= render "schedule_booked", schedule: schedule %>
+      <% else %>
+        <%= render "schedule_object", schedule: schedule %>
+      <% end %>
     <% end %>
     </div>
   </ul>
