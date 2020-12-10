@@ -1,13 +1,25 @@
-<div class="container">
-  <h2 class="text-center">Paiement accepté</h2>
-  <div class="container my-5">
-    <p>Tu as payé <u><%= @amount %></u> € par carte bleue.</p>
-    <p>Tu vas recevoir un email de confirmation à cette adresse : <u><%= current_user.email %></u>.</p>
-    <p>N'attend plus pour aller découvrir et réserver des cours créés par des passionnés.</p>
-  </div>
-  <h4 class="text-center">Merci, à bientôt</h4>
-  <div class="container text-center my-2">
-    <%= link_to  "Accueil", root_path, class:"btn btn-primary m-2" %>
-    <%= link_to  "Voir tous les cours du moment", lessons_path, class:"btn btn-info m-2" %>
+<div class="bg-white text-dark">
+  <div class="container">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="pb-3">Paiement accepté !</h1>
+      <hr>
+      <p class="lead pt-3">Tu as payé <u><%= @amount %></u> € par carte bleue.</p>
+      <p class="lead pt-3">Tu vas recevoir un email de confirmation à cette adresse : <u><%= current_user.email %></u>.</p>
+      <p class="lead pt-3">Tu as payé <u><%= @amount %></u> € par carte bleue.</p>
+    </div>
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-sm bg-white text-dark border-dark">
+        <div class="card-header bg-dark text-white">
+          <h6 class="my-0 font-weight-normal">N'attend plus pour aller découvrir et réserver des cours créés par des passionnés !</h6>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title">Merci, à bientôt</h3>
+          <ul class="list-unstyled mt-3 mb-3">
+            <%= link_to  "Accueil", root_path, class:"btn btn-primary m-2" %>
+            <%= link_to  "Voir tous les cours du moment", lessons_path, class:"btn btn-info m-2" %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

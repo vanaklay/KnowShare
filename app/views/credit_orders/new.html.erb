@@ -1,14 +1,21 @@
-<div class="container-fluid">
-  <h3 class="text-center">Validation de la commande</h3>
-  <div class="card border-secondary mx-auto w-25 mt-5">
-    <div class="card-body bg-white text-dark">
-      <h4 class="card-title text-center">Récapitulatif</h4>
-      <div class="my-4">
-        <h6>Nombre de crédit(s) : <%= @credits %></h6>
-        <span><strong>Montant de la commande: <%= @amount %> € </strong></span>
-      </div>
-      <div class="text-center">
-        <%= form_tag credit_orders_path do %>
+<div class="bg-white text-dark">
+  <div class="container">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="pb-3">Validation et paiement</h1>
+      <hr>
+      <p class="lead pt-3">Les crédits te permettent de prendre des cours sur KnowShare. Pour en acquérir, tu peux donner des cours à ton tour - mais tu peux aussi en acheter !</p>
+    </div>
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-sm bg-white text-dark border-dark">
+        <div class="card-header bg-dark text-white">
+          <h4 class="my-0 font-weight-normal">Récapitulatif</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title">Montant de la commande: <%= @amount %> €</h3>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Nombre de crédit(s) : <%= @credits %></li>
+          </ul>
+          <%= form_tag credit_orders_path do %>
           <%= hidden_field_tag 'amount', @amount %>
           <%= hidden_field_tag 'credits', @credits %>
           <article>
@@ -27,6 +34,7 @@
             data-locale="auto">
           </script>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
