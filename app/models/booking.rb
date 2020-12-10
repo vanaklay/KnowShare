@@ -12,7 +12,7 @@ class Booking < ApplicationRecord
   has_one :chatroom, dependent: :destroy
 
   validate :student_enough_credit?, :prevent_teacher_booking
-  after_create :payment_from_student, :send_email_new_booking_user, :send_email_new_booking_teacher
+  after_create :send_email_new_booking_user, :send_email_new_booking_teacher
   
   before_destroy :destroy_booking
 
