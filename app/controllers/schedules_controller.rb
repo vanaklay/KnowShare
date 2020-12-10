@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
   before_action :find_schedule, only: [:destroy]
 
   def index
-    @schedules = Schedule.where(user_id: params[:user_id]).all.order("start_time")
+    @schedules = Schedule.where(user_id: @user.id).all.order("start_time")
     @schedule = Schedule.new
   end
 
@@ -35,7 +35,7 @@ class SchedulesController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by(username: params[:user_username])
   end
 
   def find_schedule

@@ -28,4 +28,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description, :avatar)
   end
+
+  def author?
+    current_user.id == @user.id
+  end
+
+  def redirect_not_author_to_dashboard
+    redirect_to current_user, danger: "Vous n'êtes pas le propriétaire de ce compte !" unless author?
+  end
 end

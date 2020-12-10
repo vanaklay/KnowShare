@@ -2,7 +2,7 @@
   <p class="mb-0">Supprimer cet horaire : 
   <%= I18n.t("date.day_names")[schedule.start_time.strftime("%u").to_i] + " " + schedule.start_time.strftime("%d") + " " + I18n.t("date.month_names")[schedule.start_time.strftime("%m").to_i] + " " + schedule.start_time.strftime("%Y") %>
   de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %></p>
-  <%= link_to user_schedule_path(schedule.user.id, schedule.id), class: "ml-auto text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cet horaire ?"}  do %>
+  <%= link_to user_schedule_path(schedule.user.username, schedule.id), class: "ml-auto text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cet horaire ?"}  do %>
     <i class="fas fa-times fa-2x"></i>
   <% end %>
 </li>

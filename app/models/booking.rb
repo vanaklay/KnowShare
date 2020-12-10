@@ -70,7 +70,7 @@ class Booking < ApplicationRecord
     schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
     start_time_from_schedule = start_time(schedule) 
     end_time_from_schedule = end_time(schedule)
-    user = User.find(self.lesson.user_id)
+    user = User.find_by(username: self.lesson.user.username)
 
     if schedule.start_time == self.start_date && end_date == end_time_from_schedule
       schedule.update(title: "booked")
@@ -103,7 +103,7 @@ class Booking < ApplicationRecord
   end
 
   def create_schedule_after_cancelling
-    user = User.find(self.lesson.user_id)
+    user = User.find_by(username: self.lesson.user.username)
     all_schedules = Schedule.where(user_id: self.lesson.user_id).all.order("start_time")
     self_schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
     found = all_schedules.select { |schedule| (self.start_date == schedule.end_time && !schedule.is_booked?) || (end_date == schedule.start_time && !schedule.is_booked?) }
