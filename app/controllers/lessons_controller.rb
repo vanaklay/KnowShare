@@ -1,6 +1,10 @@
 class LessonsController < ApplicationController
-  def index
-    @lessons = Lesson.all
+  before_action :authenticate_user!,        except: [:index, :show]
+  before_action :find_lesson,               only: [:edit, :update, :destroy]
+  before_action :redirect_if_not_author,    only: [:edit, :update, :destroy]
+  before_action :all_lessons,               only: [:index]
+
+  def index 
   end
 
   def show
@@ -25,16 +29,22 @@ class LessonsController < ApplicationController
   end
 
   def edit
-    @lesson = Lesson.find(params[:id])
   end
 
   def update
-    @lesson = Lesson.find(params[:id])
     if @lesson.update(lesson_params)
-      redirect_to @lesson, success: "Le cours à été édité "
+      redirect_to @lesson, success: "Le cours a bien été édité"
     else
-      flash[:danger] = "Le cours n'as pas pu être édité"
+      flash[:danger] = "Le cours n'a pas pu être édité"
       render :edit
+    end
+  end
+
+  def destroy
+    @lesson.destroy
+    respond_to do |format|
+      format.html { redirect_to lessons_path, success: "Le cours a bien été supprimé" }
+      format.js { }
     end
   end
 
@@ -43,5 +53,18 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:title, :description, :picture)
   end
-  
+
+  def all_lessons
+    @lessons = Lesson.all.sort.reverse
+  end
+
+  def find_lesson
+    @lesson = Lesson.find(params[:id])
+  end
+
+  def redirect_if_not_author
+    unless current_user == @lesson.user
+      redirect_to lessons_path, warning: "Tu n'es pas le créateur de cette leçon !"
+    end
+  end
 end

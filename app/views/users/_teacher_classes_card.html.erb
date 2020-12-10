@@ -5,7 +5,7 @@
         <i class="fas fa-chalkboard-teacher fa-3x"></i>
       </div>
       <div class="mx-2 d-flex align-self-center">
-          <h3><strong>Mon dashboard prof</strong></h3>
+          <h3><strong>Voir mes réservations</strong></h3>
       </div>
       <div class="row pb-0 ml-auto mr-2 align-self-center">
         <div><input class="form-control mr-4" id="myInput" type="text" placeholder="Rechercher"> </div>
@@ -52,7 +52,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="myTable">
+        <tbody id="myTable2">
           <% current_user.past_teacher_bookings.each do |booking| %>
             <%= render 'users/booking_list_teacher', booking: booking %>
           <% end %>

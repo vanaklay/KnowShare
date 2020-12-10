@@ -32,7 +32,7 @@
       </tbody>
     </table>
     <% if @all_users_orders.count.zero? %>
-      <h5>Tu n'as encore jamais commandé de crédit, découvre nos formules <%= link_to 'ici', tarifs_path, class: "text-primary" %> !</h5>
+      <p>Tu n'as encore jamais commandé de crédit, découvre nos formules <%= link_to 'ici', tarifs_path, class: "text-primary" %> !</p>
       <% end %>
   </div>
 </div>

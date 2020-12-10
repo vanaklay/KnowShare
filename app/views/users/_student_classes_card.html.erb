@@ -53,7 +53,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="myTable">
+        <tbody id="myTable2">
           <% current_user.past_student_bookings.each do |booking| %>
             <%= render 'users/booking_list_student', booking: booking %>
           <% end %>

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :schedules
     resources :student_bookings, only: [:index]
     resources :teacher_bookings, only: [:index]
-  end
+    resources :teacher_lessons, only: [:index]
+end
+  
   
   resources :lessons do
     resources :teachers, only: [:show]
