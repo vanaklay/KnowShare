@@ -1,5 +1,25 @@
-<div class="card mb-3 bg-white text-dark text-center">
+<div class="card mb-3 bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-info-circle fa-3x"></i>
+      </div>
+      <div class="mx-2 d-flex align-self-center ml-2">
+          <strong>Infos générales</strong>
+      </div>
+    </div>
+  </div>
   <div class="card-body">
-    <%= link_to "Voir un autre cours", lessons_path, class: "btn btn-outline-primary" %>
+    <span>Ce cours est enseigné depuis le <%= @lesson.created_at%></span>
+    <p>
+      <% if @lesson.bookings.count == 1%>
+        <span>1 personne a suivi ce cours !</span>
+      <% elsif @lesson.bookings.count < 1 %>
+        <span>Soit le premier à réserver ce cours !</span>
+      <% else %>
+        <span><%= @lesson.bookings.count %> personnes ont déjà suivi ce cours !</span>
+      <% end %>
+    </p>
+    
   </div>
 </div>
