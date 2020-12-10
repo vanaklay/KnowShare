@@ -11,7 +11,7 @@
   </div>
   <%= link_to "Voir mes informations de profil", current_user, class:"list-group-item list-group-item-action text-dark", remote: true %>
   <%= link_to "Modifier mes informations de profil", edit_user_path(current_user.id), class:"list-group-item list-group-item-action text-dark", remote: true %>
-  <%= link_to "Historique de mes commandes", credit_orders_path, class:"list-group-item list-group-item-action text-dark" %>
+  <%= link_to "Historique de mes commandes", user_user_credit_orders_path(current_user.id), class:"list-group-item list-group-item-action text-dark", remote: true %>
   <li class="list-group-item bg-info text-center py-2">Dashboard élève</li>
   <%= link_to "Voir mes réservations", user_student_bookings_path(current_user.id), class:"list-group-item list-group-item-action text-dark", remote: true %>
   <% if current_user.teacher? %>

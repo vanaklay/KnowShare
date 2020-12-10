@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :student_bookings, only: [:index]
     resources :teacher_bookings, only: [:index]
     resources :teacher_lessons, only: [:index]
+    resources :user_credit_orders, only: [:index]
 end
   
   
