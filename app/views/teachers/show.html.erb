@@ -1,11 +1,10 @@
 <section class="bg-white text-dark">
   <%= render "about_teacher" %>
-
 </section>
 
 <section class="mb-5">
   <div class="container">
-    <h2 class="text-center my-4"><strong>Les cours proposés par <%= @user.username %></strong></h2>
+    <h3 class="text-center my-4"><strong>Les cours proposés par <%= @user.username %></strong></h3>
     <%= render "shared/index_cards", local: @lessons %>
   </div>
-</section>
+</section> 
