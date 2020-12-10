@@ -34,7 +34,7 @@
           <td><%= booking.student.username %></td>
           <td><%= booking.teacher.username %></td>
           <td><%= booking.display_start_date_time %></td>
-          <td><%= booking.duration %></td>
+          <td><%= booking.duration %> minutes</td>
           <td>
             <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cette réservation ?"}  do %>
               <i class="fas fa-times fa-2x"></i>
