@@ -62,7 +62,7 @@ class Booking < ApplicationRecord
     all_schedules.each do |schedule|
       start_date_schedule = schedule.start_time
       end_date_schedule = schedule.end_time
-      if start_date.between?(start_date_schedule, end_date_schedule) && end_date.between?(start_date_schedule, end_date_schedule)
+      if start_date.between?(start_date_schedule, end_date_schedule) && end_date.between?(start_date_schedule, end_date_schedule) && !schedule.is_booked?
         found = true
       end
     end
@@ -77,6 +77,7 @@ class Booking < ApplicationRecord
 
     if schedule.start_time == self.start_date && end_date == end_time_from_schedule
       schedule.update(title: "booked")
+
     elsif schedule.start_time < self.start_date 
       schedule.destroy
       if start_time_from_schedule < DateTime.now && self.start_date > (DateTime.now + 0.5/24)
@@ -88,9 +89,14 @@ class Booking < ApplicationRecord
           Schedule.create(start_time: start_time_now, end_time: self.start_date, user: user)
           Schedule.create(title: "booked", start_time: self.start_date, end_time: end_time_from_schedule, user: user)
         end
+      elsif end_date == end_time_from_schedule
+        Schedule.create(start_time: start_time_from_schedule, end_time: self.start_date, user: user)
+        Schedule.create(title: "booked", start_time: self.start_date, end_time: end_time_from_schedule, user: user)
       else
+        Schedule.create(start_time: start_time_from_schedule, end_time: self.start_date, user: user)
         Schedule.create(title: "booked", start_time: self.start_date, end_time: end_date, user: user)
         Schedule.create(start_time: end_date, end_time: end_time_from_schedule, user: user)
+
       end
     elsif schedule.start_time == self.start_date
       schedule.destroy
