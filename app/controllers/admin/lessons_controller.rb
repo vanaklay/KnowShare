@@ -1,7 +1,4 @@
-class Admin::LessonsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :redirect_if_user_not_admin
-  before_action :all_lessons, only: [:index]
+class Admin::LessonsController < Admin::FacadeController
   before_action :find_lesson, only: [:show, :destroy]
 
   def index
@@ -61,12 +58,7 @@ class Admin::LessonsController < ApplicationController
     params.require(:lesson).permit(:title, :description, :picture)
   end
 
-  def all_lessons
-    @lessons = Lesson.all.sort
-  end
-
   def find_lesson
     @lesson = Lesson.find(params[:id])
   end
-  
 end

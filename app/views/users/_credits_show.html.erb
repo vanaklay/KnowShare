@@ -12,9 +12,9 @@
   <div class="card-body" style="overflow: scroll; height: auto">    
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
-        <p><strong>Tu as actuellement <%= current_user.personal_credit %> crédit(s)</strong></p>
-        <p>Les crédits te servent à réservers des cours sur KnowShare 😇</p>
-        <p>30 minutes de cours = 1 crédit</p>
+        <h5><strong>Tu as actuellement <%= current_user.personal_credit %> crédit(s)</strong></h5>
+        <hr/>
+        <p>Les crédits te servent à réserver des cours sur KnowShare (30min = 1 crédit) 😇</p>
         <p>Besoin de plus de crédits ? Donnes des cours <%= link_to "ici", new_lesson_path, class:"text-primary" %>, ou achètes-en <%= link_to "là", tarifs_path, class:"text-primary" %> !</p>
       </div> 
     </div>

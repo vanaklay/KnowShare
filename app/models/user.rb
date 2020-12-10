@@ -128,8 +128,9 @@ class User < ApplicationRecord
   def teacher_bookings
     teacher_bookings = []
     lessons.each do |lesson|
-      lesson.bookings.each { |booking| teacher_bookings << booking }
+    lesson.bookings.each { |booking| teacher_bookings << booking }
     end
+    teacher_bookings
   end
 
   def past_teacher_bookings

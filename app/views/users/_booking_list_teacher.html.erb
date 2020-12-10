@@ -2,17 +2,17 @@
 <tr>
   <td><%= booking.display_start_date_time %></td>
   <td><%= lesson.title %></td>
-  <td><%= lesson.student.display_name %></td>
+  <td><%= booking.student.display_name %></td>
   <td><%= booking.duration %> minutes</td>
   <td>
     <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning" do %>
-      <i class="fas fa-comment-dots fa-2x"></i>
+      <i class="fas fa-comment-dots fa-1x"></i>
     <% end %>
     <%= link_to lesson, class: "mx-2 text-info"  do %>
-      <i class="fas fa-eye fa-2x"></i>
+      <i class="fas fa-eye fa-1x"></i>
     <% end %>
     <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?"}  do %>
-      <i class="fas fa-times fa-2x"></i>
+      <i class="fas fa-times fa-1x"></i>
     <% end %>
   </td>
 </tr>

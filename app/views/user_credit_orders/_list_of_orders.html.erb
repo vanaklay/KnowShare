@@ -1,0 +1,41 @@
+<div class="card my-3 bg-white text-dark dashboard-right-card">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-shopping-cart fa-3x"></i>
+      </div>
+      <div class="d-flex mx-2">
+          <h3><strong>Historique de mes commandes</strong></h3>
+          <h3><span class="badge badge-dark mx-3"> <%= @all_users_orders.count %></span></h3>
+      </div>
+      <div class="d-flex ml-auto mx-2">
+        <input class="form-control" id="myInput" type="text" placeholder="Rechercher">
+      </div>
+    </div>
+  </div>
+  <div class="card-body">  
+    <table class="table table-bordered table-striped text-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Formule</th>
+          <th>Montant</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+      <% @all_users_orders.each do |order| %>
+        <tr id="oder-<%= order.id %>">
+          <td><%= order.id %></td>
+          <td><%= order.display_start_date_time %></td>
+          <td><%= Display::PricingOptions.new(credit_order: order).call %></td>
+          <td><%= order.price %>0 €</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% if @all_users_orders.count.zero? %>
+      <p>Tu n'as encore jamais commandé de crédit, découvre nos formules <%= link_to 'ici', tarifs_path, class: "text-primary" %> !</p>
+      <% end %>
+  </div>
+</div>

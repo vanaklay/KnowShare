@@ -1,9 +1,6 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::FacadeController
   include UsersHelper
-  before_action :authenticate_user!
-  before_action :redirect_if_user_not_admin
   before_action :find_user, only: [:show, :destroy]
-  before_action :all_users, only: [:index]
 
   def index
     respond_to do |format|
@@ -42,9 +39,5 @@ class Admin::UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
-  end
-
-  def all_user
-    @users = User.all.sort
   end
 end
