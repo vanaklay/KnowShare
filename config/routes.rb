@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     resources :schedules
     resources :student_bookings, only: [:index]
     resources :teacher_bookings, only: [:index]
-  end
+    resources :teacher_lessons, only: [:index]
+    resources :user_credit_orders, only: [:index]
+end
+  
   
   resources :lessons do
     resources :teachers, only: [:show]
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
   end
   
   resources :messages, only:[:create]
-  resources :credit_orders, only:[:new, :create]
+  resources :credit_orders, only:[:index, :new, :create]
   resources :contacts, only:[:create, :new]
 
   # ActionCable
@@ -33,5 +36,6 @@ Rails.application.routes.draw do
     resources :users
     resources :lessons
     resources :bookings
+    resources :credit_orders, only:[:index]
   end
 end

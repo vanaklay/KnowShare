@@ -17,21 +17,21 @@
           <strong>Dernier utilisateur inscrit</strong>
         </div>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <%= User.last.display_name %>        
+          <%= @users.nil? ? 'Aucun utilisateur' : User.last.display_name %>        
         </div>
 
         <div class="row pt-2 mb-2 mr-2">
-          <strong>Dernier cours crée</strong>
+          <strong>Dernier cours créé</strong>
         </div>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <%= Lesson.last.title if @lessons.count.positive? %>      
+          <%= @lessons.nil? ? 'Encore aucun cours' : Lesson.last.title  %>      
         </div>
 
         <div class="row pt-2 mb-2 mr-2">
           <strong>Nombre de réservations de cours</strong>
         </div>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
-          <%= @bookings.count %>        
+          <%= @bookings.nil? ? 'Aucune réservation' : @bookings.count %>        
         </div>
       </div>
     </div>

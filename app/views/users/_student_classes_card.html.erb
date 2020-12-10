@@ -1,4 +1,4 @@
-<div class="card my-3 bg-white text-dark" style="overflow: scroll; height: 80vh;">
+<div class="card my-3 bg-white text-dark dashboard-right-card">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
@@ -7,10 +7,10 @@
       <div class="mx-2 d-flex align-self-center">
           <h3><strong>Mon dashboard élève</strong></h3>
       </div>
-      <div class="pb-0 ml-auto mr-2 align-self-center">
-        <%= link_to "S'inscrire à un cours", lessons_path, class: "btn btn-outline-primary" %>
+      <div class="row pb-0 ml-auto mr-2 align-self-center">
+        <div><input class="form-control mr-4" id="myInput" type="text" placeholder="Rechercher"> </div>
+        <div><%= link_to "S'inscrire à un cours", lessons_path, class: "btn btn-outline-primary mr-2 ml-4" %> </div>
       </div>
-      
     </div>
   </div>
   
@@ -30,7 +30,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
           <% current_user.future_student_bookings.each do |booking| %>
             <%= render 'users/booking_list_student', booking: booking %>
           <% end %>
@@ -53,7 +53,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable2">
           <% current_user.past_student_bookings.each do |booking| %>
             <%= render 'users/booking_list_student', booking: booking %>
           <% end %>

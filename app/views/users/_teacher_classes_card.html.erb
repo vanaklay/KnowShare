@@ -1,15 +1,15 @@
-<div class="card my-3 bg-white text-dark" style="overflow: scroll; height: 80vh;">
+<div class="dashboard-right-card card my-3 bg-white text-dark">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
         <i class="fas fa-chalkboard-teacher fa-3x"></i>
       </div>
       <div class="mx-2 d-flex align-self-center">
-          <h3><strong>Mon dashboard prof</strong></h3>
+          <h3><strong>Voir mes réservations</strong></h3>
       </div>
-      <div class="pb-0 ml-auto mr-2 align-self-center">
-        <%= link_to "Editer mon planning de disponibilités", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
-      </div>
+      <div class="row pb-0 ml-auto mr-2 align-self-center">
+        <div><input class="form-control mr-4" id="myInput" type="text" placeholder="Rechercher"> </div>
+        <div><%= link_to "Editer mon planning de disponibilités", user_schedules_path(current_user.id), class: "btn btn-outline-primary mr-2 ml-4" %></div>
     </div>
   </div>
   
@@ -29,7 +29,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
           <% current_user.future_teacher_bookings.each do |booking| %>
             <%= render 'users/booking_list_teacher', booking: booking %>
           <% end %>
@@ -52,7 +52,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable2">
           <% current_user.past_teacher_bookings.each do |booking| %>
             <%= render 'users/booking_list_teacher', booking: booking %>
           <% end %>
