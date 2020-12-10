@@ -59,7 +59,7 @@ class Booking < ApplicationRecord
     all_schedules.each do |schedule|
       start_date_schedule = schedule.start_time
       end_date_schedule = schedule.end_time
-      if start_date.between?(start_date_schedule, end_date_schedule) && end_date.between?(start_date_schedule, end_date_schedule)
+      if start_date.between?(start_date_schedule, end_date_schedule) && end_date.between?(start_date_schedule, end_date_schedule) && !schedule.is_booked?
         found = true
       end
     end
@@ -68,25 +68,38 @@ class Booking < ApplicationRecord
 
   def split_and_create_schedule
     schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
-    start_time_from_schedule = start_time(schedule)
+    start_time_from_schedule = start_time(schedule) 
     end_time_from_schedule = end_time(schedule)
     user = User.find(self.lesson.user_id)
 
-    if schedule.start_time != self.start_date 
+    if schedule.start_time == self.start_date && end_date == end_time_from_schedule
+      schedule.update(title: "booked")
+
+    elsif schedule.start_time < self.start_date 
       schedule.destroy
-      Schedule.create(start_time: start_time_from_schedule, end_time: self.start_date, user: user)
-      if end_date != end_time_from_schedule
+      if start_time_from_schedule < DateTime.now && self.start_date > (DateTime.now + 0.5/24)
+        if end_date != end_time_from_schedule
+          Schedule.create(start_time: start_time_now, end_time: self.start_date, user: user)
+          Schedule.create(title: "booked", start_time: self.start_date, end_time: end_date, user: user)
+          Schedule.create(start_time: end_date, end_time: end_time_from_schedule, user: user)
+        else
+          Schedule.create(start_time: start_time_now, end_time: self.start_date, user: user)
+          Schedule.create(title: "booked", start_time: self.start_date, end_time: end_time_from_schedule, user: user)
+        end
+      elsif end_date == end_time_from_schedule
+        Schedule.create(start_time: start_time_from_schedule, end_time: self.start_date, user: user)
+        Schedule.create(title: "booked", start_time: self.start_date, end_time: end_time_from_schedule, user: user)
+      else
+        Schedule.create(start_time: start_time_from_schedule, end_time: self.start_date, user: user)
+        Schedule.create(title: "booked", start_time: self.start_date, end_time: end_date, user: user)
         Schedule.create(start_time: end_date, end_time: end_time_from_schedule, user: user)
+
       end
-
-    elsif schedule.start_time == self.start_date 
+    elsif schedule.start_time == self.start_date
       schedule.destroy
+      Schedule.create(title: "booked", start_time: self.start_date, end_time: end_date, user: user) 
       Schedule.create(start_time: end_date, end_time: end_time_from_schedule, user: user)
-
-    elsif schedule.start_time == self.start_date && end_date == end_time_from_schedule
-      schedule.destroy
     end
-
   end
 
   def create_schedule_after_cancelling
@@ -128,5 +141,16 @@ class Booking < ApplicationRecord
 
   def end_time(schedule)
     schedule.end_time
+  end
+
+  def start_time_now
+    day_start = Date.today
+    if DateTime.now.minute < 30 
+      day_start = day_start + (DateTime.now.hour.hour) + 30.minute 
+      day_start
+    else
+      day_start = day_start + (DateTime.now.hour.hour) + 1.hour 
+      day_start
+    end
   end
 end

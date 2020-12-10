@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :chatrooms, through: :bookings, dependent: :destroy
   has_many :schedules, dependent: :destroy
+  has_many :credit_orders, dependent: :destroy
 
   has_one_attached :avatar
 
@@ -96,64 +97,12 @@ class User < ApplicationRecord
     end
   end
 
-  def past_bookings
-    bookings.select { |booking| booking.start_date < DateTime.now }
-  end
-
-  def future_bookings
-    bookings.select { |booking| booking.start_date > DateTime.now }
-  end
-
-  def has_past_bookings?
-    past_bookings.count.positive?
-  end
-
-  def has_future_bookings?
-    future_bookings.count.positive?
-  end
-
-  def past_lessons
-    past_lessons = []
-    past_bookings.each { |booking| past_lessons << booking.lesson }
-    past_lessons
-  end
-
-  def future_lessons
-    future_lessons = []
-    future_bookings.each { |booking| future_lessons << booking.lesson }
-    future_lessons
-  end
-
   def students
     students = []
     lessons.each do |lesson|
       lesson.students.each { |student| students << student }
     end
     students
-  end
-
-  def given_bookings
-    given_bookings = []
-    lessons.each do |lesson|
-      lesson.bookings.each { |booking| given_bookings << booking }
-    end
-    given_bookings
-  end
-
-  def past_given_bookings?
-    past_given_bookings.count.positive?
-  end
-
-  def future_given_bookings?
-    future_given_bookings.count.positive?
-  end
-
-  def past_given_bookings
-    given_bookings.select { |given_booking| given_booking.start_date < DateTime.now }
-  end
-
-  def future_given_bookings
-    given_bookings.select { |given_booking| given_booking.start_date > DateTime.now }
   end
 
   def send_welcome_email
@@ -166,6 +115,29 @@ class User < ApplicationRecord
 
   def is_admin?
     self.is_admin == true
+  end
+
+  def past_student_bookings
+    @past_student_bookings = bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_student_bookings
+    @future_student_bookings = bookings.select { |booking| booking.start_date > DateTime.now }
+  end
+
+  def teacher_bookings
+    teacher_bookings = []
+    lessons.each do |lesson|
+      lesson.bookings.each { |booking| teacher_bookings << booking }
+    end
+  end
+
+  def past_teacher_bookings
+    teacher_bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_teacher_bookings
+    teacher_bookings.select { |booking| booking.start_date > DateTime.now }
   end
 
   def has_schedules?

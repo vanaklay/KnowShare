@@ -1,4 +1,4 @@
-<div class="card my-3 bg-white text-dark">
+<div class="card my-3 bg-white text-dark" style="overflow: scroll; height: 80vh;">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
@@ -15,21 +15,19 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="col-lg-3 col-md-3 col-sm-12">
         <h4>Mon prénom</h4>
         <%= current_user.display_first_name %>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="col-lg-3 col-md-3 col-sm-12">
         <h4>Mon nom</h4>
         <%= current_user.display_last_name %>
       </div>
-       <div class="col-lg-4 col-md-4 col-sm-12">
+       <div class="col-lg-3 col-md-3 col-sm-12">
         <h4>Mon pseudo</h4>
         <p><%= current_user.username %></p>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-3 col-md-3 col-sm-12">
         <h4>Mon email</h4>
         <p><%= current_user.email %></p>
       </div>
@@ -38,24 +36,11 @@
 
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
-        <h4>Mes crédits</h4>
-        <p>Tu as actuellement <strong><%= current_user.personal_credit %> crédits</strong></p>
-        <p>Besoin de plus de crédits ? Donnes des cours <%= link_to "ici", new_lesson_path, class:"text-primary" %>, ou achètes-en <%= link_to "là", tarifs_path, class:"text-primary" %> !</p>
-      </div> 
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
         <h4>Ma bio</h4>
         <p><%= current_user.display_description %></p>
+        <p class="text-muted">Astuce : prends le temps d'écrire une petite bio, c'est toujours sympa d'en apprendre un peu plus sur la personne qui va nous donner un cours ou à l'inverse sur la personne à qui on va en donner un 😎</p>
       </div> 
     </div>
     <hr>
-
-    <div class="mx-2 align-self-center">
-      <%= link_to "Editer mon email et mot de passe", edit_user_registration_path, class: "btn btn-outline-primary mx-2" %>
-      <%= link_to "Éditer mon profil", edit_user_path(current_user.id), class: "btn btn-outline-primary mx-2" %>
-    </div>
   </div>
 </div>
