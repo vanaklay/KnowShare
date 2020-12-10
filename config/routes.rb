@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/tarifs' => 'static_pages#pricing'
   get '/terms' => 'static_pages#terms'
   get '/contact' => 'static_pages#contact'
+  get '/team' => 'static_pages#team'
 
   devise_for :users
 
