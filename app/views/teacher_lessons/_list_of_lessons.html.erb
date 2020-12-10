@@ -31,13 +31,13 @@
           <td><%= lesson.bookings.count %></td>
           <td>
             <%= link_to lesson_path(lesson.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
-              <i class="fas fa-times fa-1x"></i>
+              <i class="fas fa-2x fa-times"></i>
             <% end %>
             <%= link_to lesson, class: "mx-2 text-info"  do %>
-              <i class="fas fa-eye fa-1x"></i>
+              <i class="fas fa-2x fa-eye"></i>
             <% end %>
             <%= link_to edit_lesson_path(lesson.id), class: "mx-2 text-warning"  do %>
-              <i class="fas fa-pencil-alt fa-1x"></i>
+              <i class="fas fa-2x fa-pencil-alt"></i>
             <% end %>
           </td>
         </tr>

@@ -2,6 +2,7 @@
 
 .jumbo {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -9,6 +10,7 @@
 
 .custom-section-jumbo {
   padding-top: 11rem;
+  padding-bottom: 5rem;
 }
 
 .h2-jumbo {
@@ -28,10 +30,16 @@
 .avatar {
   width: 3vw;
   height: 3vw;
-  border-radius: 50%;
   object-fit: cover;
-
 }
+
+@media (max-width: 992px) {
+  .avatar {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
 
 .navbar-avatar{
   background-position: center;
@@ -41,7 +49,7 @@
   width: 4vw;
   height: 4vw;
   border-radius: 50%;
-  /* object-fit: contain; */
+  object-fit: cover;
 
 }
 
@@ -99,9 +107,11 @@
   padding-left: 4px;
 }
 
+/* Lessons */
+
 .img-lesson{
   max-height: 50vh;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .teacher-avatar{
@@ -111,10 +121,18 @@
   border-radius: 50px
 }
 
+@media (max-width: 960px) {
+  .teacher-avatar {
+    width: 12vw;
+    height: 12vw;
+  }
+}
+
+
 .img-lesson-card{
   height: 200px;
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 /* USER PROFILE */
@@ -274,8 +292,8 @@ button.stripe-button-el>span{
 /* Contact form */
 .contact-form{
   background: #fff;
-  margin-top: 10%;
-  margin-bottom: 5%;
+  margin-top: 6%;
+  margin-bottom: 2%;
   width: 70%;
 }
 .contact-form .form-control{
