@@ -281,7 +281,7 @@ button.stripe-button-el>span{
 
 .dashboard-right-card {
   overflow: scroll;
-  min-height: 80vh;
+  max-height: 80vh;
 }
 
 .admin-dashboard-user-profile-show {
