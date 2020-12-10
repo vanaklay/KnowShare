@@ -1,0 +1,68 @@
+<div class="card my-3 bg-white text-dark" style="overflow: scroll; height: 80vh;">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-pencil-alt fa-3x"></i>
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <h3><strong>Edite de tes informations personnelles</strong></h3>
+      </div>
+      <div class="pb-0 ml-auto mr-2 align-self-center">
+        <%= link_to "Modifier mon email et mot de passe", edit_user_registration_path, class: "btn btn-outline-warning" %>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="card-body">
+    <div class="container">
+      <%= form_for current_user do |f| %>
+        <div class="form-group">
+          <label class="form-control-label"><strong>Avatar</strong></label>
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, width: "10%" %>
+          <% end %>
+          <div class="input-group input-group-transparent">
+            <%= f.file_field :avatar, accept: "image/png, image/gif, image/jpeg" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label"><strong>Prénom</strong></label>
+          <div class="input-group input-group-transparent">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+          <%= f.text_field :first_name, class: "form-control", placeholder: "Prénom", autocomplete: "first_name" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label"><strong>Nom</strong></label>
+          <div class="input-group input-group-transparent">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :last_name, class: "form-control", placeholder: "Nom", autocomplete: "last_name" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label"><strong>Description</strong></label>
+          <div class="input-group input-group-transparent">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+            </div>
+            <%= f.text_area :description, class: "form-control", placeholder: "Bio", autocomplete: "description" %>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Mettre à jour à mes informations", class: "btn btn-primary d-flex mx-auto mb-3 px-5" %>
+          </div>
+        </div>
+      <% end %> 
+    </div> 
+  </div>
+</div>
