@@ -1,4 +1,4 @@
-<div class="card my-3 bg-white text-dark">
+<div class="card my-3 bg-white text-dark" style="overflow: scroll; height: 80vh;">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
@@ -8,7 +8,7 @@
           <h3><strong>Mon dashboard prof</strong></h3>
       </div>
       <div class="pb-0 ml-auto mr-2">
-        <%= link_to "Editer mon planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+        <%= link_to "Editer mon planning de disponibilités", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <% current_user.future_teacher_bookings.each do |booking| %>
-          <%= render 'booking_list_teacher', booking: booking %>
+          <%= render 'users/booking_list_teacher', booking: booking %>
         <% end %>
       <% else %>
         <p>Tu n'as encore aucun cours de prévu !</p>
@@ -44,7 +44,7 @@
     <h4>Mes cours passés</h4>
 
     <div class="bg-white rounded box-shadow">
-      <% if current_user.past_given_bookings.any? %>
+      <% if current_user.past_teacher_bookings.any? %>
         <div class="row border-bottom border-gray py-2 mb-2 mr-2">
           <div class="col-lg-3 col-md-3 col-sm-12">
             <strong>Date du cours</strong>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <% current_user.past_teacher_bookings.each do |booking| %>
-          <%= render 'booking_list_teacher', booking: booking %>
+          <%= render 'users/booking_list_teacher', booking: booking %>
         <% end %>
       <% else %>
         <p>Tu n'as encore jamais pris de cours</p>

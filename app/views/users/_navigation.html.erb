@@ -9,8 +9,8 @@
       </div>
     </div>
   </div>
-  <%= link_to "Voir mes informations de profil", root_path, class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
-  <%= link_to "Modifier mes informations de profil", edit_user_path, class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
-  <%= link_to "Accéder à mon dashboard élève", user_student_bookings_path(@user.id), class:"list-group-item list-group-item-action text-dark", id:"button-course", remote: :true %>
-  <%= link_to "Accéder à mon dashboard prof", user_student_bookings_path(@user.id), class:"list-group-item list-group-item-action text-dark", id:"button-user", remote: :true %>
+  <%= link_to "Voir mes informations de profil", root_path, class:"list-group-item list-group-item-action text-dark", remote: :true %>
+  <%= link_to "Modifier mes informations de profil", edit_user_path(@user.id), class:"list-group-item list-group-item-action text-dark", remote: :true %>
+  <%= link_to "Accéder à mon dashboard élève", user_student_bookings_path(@user.id), class:"list-group-item list-group-item-action text-dark", remote: :true %>
+  <%= link_to "Accéder à mon dashboard prof", user_teacher_bookings_path(@user.id), class:"list-group-item list-group-item-action text-dark", remote: :true %>
 </div>

@@ -32,7 +32,7 @@
         </thead>
         <tbody>
           <% current_user.future_student_bookings.each do |booking| %>
-            <%= render 'booking_list_student', booking: booking %>
+            <%= render 'users/booking_list_student', booking: booking %>
           <% end %>
       </table>
     <% end %>
@@ -49,12 +49,13 @@
             <th>Date du cours</th>
             <th>Titre du cours</th>
             <th>Nom du professeur</th>
+            <th>Durée du cours</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <% current_user.past_student_bookings.each do |booking| %>
-            <%= render 'booking_list_student', booking: booking %>
+            <%= render 'users/booking_list_student', booking: booking %>
           <% end %>
       </table>
     <% end %>
