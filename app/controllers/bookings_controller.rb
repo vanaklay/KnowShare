@@ -36,6 +36,8 @@ class BookingsController < ApplicationController
   def destroy
     if @booking.future?
       Credit::Add.new(amount: @booking.price, user: @booking.student).call
+      BookingMailer.send_cancel_booking_email_to_student(booking: @booking).deliver_now
+      BookingMailer.send_cancel_booking_email_to_teacher(booking: @booking).deliver_now
       @booking.create_schedule_after_cancelling
       @booking.destroy
       respond_to do |format|

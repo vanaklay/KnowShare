@@ -13,8 +13,6 @@ class Booking < ApplicationRecord
 
   validate :student_enough_credit?, :prevent_teacher_booking
   after_create :send_email_new_booking_user, :send_email_new_booking_teacher
-  
-  before_destroy :destroy_booking
 
   # ------- Easier to read and use ------- #
 
@@ -113,16 +111,6 @@ class Booking < ApplicationRecord
     errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.") unless start_date > DateTime.now
   end
 
-  def destroy_booking
-    if start_date > DateTime.now
-      after_destroy_booking_email
-    else
-      errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.")
-      # Cancels the destroy action
-      :abort
-    end
-  end
-
   def start_in_future
     errors.add(:start_date, ": Impossible de réserver une leçon dans le passé") unless start_date > DateTime.now
   end
@@ -152,10 +140,4 @@ class Booking < ApplicationRecord
   def send_email_new_booking_teacher
     BookingMailer.send_email_confirm_to_teacher(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
   end
-
-  def after_destroy_booking_email
-    BookingMailer.after_destroy_booking_email(self.teacher, self.display_start_date, self.lesson_title).deliver_now
-    BookingMailer.after_destroy_booking_email(self.student, self.display_start_date, self.lesson_title).deliver_now # Not DRY, but it works
-  end
-
 end
