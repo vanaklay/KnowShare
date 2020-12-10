@@ -1,9 +1,8 @@
 class TeacherBookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_current_user
+  before_action :redirect_if_not_teacher
   before_action :redirect_if_not_author
-  before_action :teacher_bookings
-  before_action :past_teacher_bookings, :future_teacher_bookings
 
   def index
   end
@@ -20,19 +19,10 @@ class TeacherBookingsController < ApplicationController
       redirect_to @user, warning: "Tu n'es pas propriétaire de ce compte"
     end
   end
-  
-  def teacher_bookings
-    @teacher_bookings = []
-    @user.lessons.each do |lesson|
-      lesson.bookings.each { |booking| @teacher_bookings << booking }
+
+  def redirect_if_not_teacher
+    unless @user.teacher?
+      redirect_to @user, warning: "Tu n'es pas professeur !"
     end
-  end
-
-  def past_teacher_bookings
-    @past_teacher_bookings = @teacher_bookings.select { |booking| booking.start_date < DateTime.now }
-  end
-
-  def future_teacher_bookings
-    @future_teacher_bookings = @teacher_bookings.select { |booking| booking.start_date > DateTime.now }
   end
 end
