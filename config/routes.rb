@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get '/contact' => 'static_pages#contact'
   get '/tarifs' => 'static_pages#pricing'
   get '/terms' => 'static_pages#terms'
+  get '/contact' => 'static_pages#contact'
+  get '/team' => 'static_pages#team'
 
   devise_for :users
 
@@ -24,6 +25,7 @@ end
   
   resources :messages, only:[:create]
   resources :credit_orders, only:[:index, :new, :create]
+  resources :contacts, only:[:create, :new]
 
   # ActionCable
   mount ActionCable.server => '/cable'
