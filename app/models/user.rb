@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :chatrooms, through: :bookings, dependent: :destroy
   has_many :schedules, dependent: :destroy
+  has_many :credit_orders, dependent: :destroy
 
   has_one_attached :avatar
 
@@ -138,4 +139,9 @@ class User < ApplicationRecord
   def future_teacher_bookings
     teacher_bookings.select { |booking| booking.start_date > DateTime.now }
   end
+
+  def has_schedules?
+    self.schedules.length > 0
+  end
+
 end

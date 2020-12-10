@@ -3665,6 +3665,7 @@
  
  .input-group-prepend {
    margin-right: -1px;
+   border-right: 0;
  }
  
  .input-group-append {
@@ -3756,8 +3757,9 @@
  .input-group-transparent .input-group-text
 {
     color: #adb5bd;
-    border: .0625rem solid #ced4da; 
+    border: 2px solid rgba(133, 129, 129, 0.815); 
     background-color: transparent;
+    border-right: 0;
 }
 
 .input-group-transparent .form-control
