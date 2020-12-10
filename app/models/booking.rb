@@ -71,8 +71,8 @@ class Booking < ApplicationRecord
 
   def split_and_create_schedule
     schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
-    start_time_from_schedule = start_time(schedule) == 10
-    end_time_from_schedule = end_time(schedule) == 20
+    start_time_from_schedule = start_time(schedule)
+    end_time_from_schedule = end_time(schedule)
     user = User.find(self.lesson.user_id)
 
     if schedule.start_time != self.start_date 
