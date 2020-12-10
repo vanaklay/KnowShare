@@ -18,6 +18,8 @@ class BookingsController < ApplicationController
         if @booking.save
           Credit::Remove.new(amount: @booking.price, user: @booking.student).call
           Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
+          BookingMailer.send_email_confirm_to_user(booking: @booking).deliver_now
+          BookingMailer.send_email_confirm_to_teacher(booking: @booking).deliver_now
           @booking.split_and_create_schedule
           flash[:success] = "La réservation a bien été prise en compte"
           redirect_to current_user
@@ -29,7 +31,6 @@ class BookingsController < ApplicationController
     else
       flash[:danger] = "Aucun créneau horaire ne correspond"
       redirect_back(fallback_location: root_path)
-
     end
   end 
 

@@ -1,18 +1,21 @@
 class BookingMailer < ApplicationMailer
 
-  def send_email_confirm_to_user(student, teacher, start_date, lesson_title)
-    @student = student 
-    @teacher = teacher
-    @start_date = start_date
-    @lesson_title = lesson_title
+  def send_email_confirm_to_user(booking:)
+    @booking = booking
+    @student = booking.student
+    @teacher = booking.teacher
+    @start_date = booking.display_start_date_time
+    @lesson_title = booking.lesson_title
+    @chatroom = booking.chatroom
     mail(to: @student.email, subject: 'Votre nouvelle réservation !') 
   end
 
-  def send_email_confirm_to_teacher(student, teacher, start_date, lesson_title)
-    @student = student 
-    @teacher = teacher
-    @start_date = start_date
-    @lesson_title = lesson_title
+  def send_email_confirm_to_teacher(booking:)
+    @booking = booking
+    @student = booking.student
+    @teacher = booking.teacher
+    @start_date = booking.display_start_date_time
+    @lesson_title = booking.lesson_title
     mail(to: @teacher.email, subject: 'Une nouvelle réservation de cours !') 
   end
 

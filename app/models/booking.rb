@@ -12,7 +12,6 @@ class Booking < ApplicationRecord
   has_one :chatroom, dependent: :destroy
 
   validate :student_enough_credit?, :prevent_teacher_booking
-  after_create :send_email_new_booking_user, :send_email_new_booking_teacher
 
   # ------- Easier to read and use ------- #
 
@@ -129,15 +128,5 @@ class Booking < ApplicationRecord
 
   def end_time(schedule)
     schedule.end_time
-  end
-
-  # -------- Email section -------- #
-
-  def send_email_new_booking_user
-    BookingMailer.send_email_confirm_to_user(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
-  end
-
-  def send_email_new_booking_teacher
-    BookingMailer.send_email_confirm_to_teacher(self.student, self.teacher, self.display_start_date, self.lesson_title).deliver_now
   end
 end

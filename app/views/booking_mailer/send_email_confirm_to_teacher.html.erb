@@ -1,14 +1,14 @@
 <%= render "header_mail" %>
 
-  <h1>Salut <%= @teacher.username %>!</h1>
+  <h1>Salut <%= @teacher.username %> !</h1>
   <p>
-    <%= @student.username %> s'est inscrit à ton cours <%= @lesson_title %> en utilisant l'e-mail suivant : <%= @student.email %>.
-    Contacte le via la messagerie de KnowShare ou par mail.
+    <%= @student.username %> s'est inscrit à ton cours <%= @lesson_title %> en utilisant l'e-mail suivant : <%= mail_to @student.email, @student.email %>.
+    <br/>
+    Contacte le via la <%= link_to 'messagerie de KnowShare', lesson_booking_chatroom_url(lesson_id: @booking.lesson.id, booking_id: @booking.id, id: @booking.chatroom.id) %>  ou par <%= mail_to @student.email, "mail" %>.
   </p>
   <p>
     Détails du cours :
-    Le cours commencera le <%= @start_date %>
-    
+    Le cours commencera le <%= @start_date %>.
   </p>
 
 <%= render "footer_mail" %>
