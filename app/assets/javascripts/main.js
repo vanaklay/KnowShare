@@ -1,4 +1,4 @@
-function adminSearch() {
+function inTableSearch() {
   $(document).ready(function(){
     $("#myInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();
@@ -9,4 +9,4 @@ function adminSearch() {
   });
 };
 
-adminSearch();
+inTableSearch();

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   
   resources :messages, only:[:create]
-  resources :credit_orders, only:[:new, :create]
+  resources :credit_orders, only:[:index, :new, :create]
 
   # ActionCable
   mount ActionCable.server => '/cable'
