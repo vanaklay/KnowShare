@@ -6,13 +6,13 @@
   <td><%= booking.duration %> minutes</td>
   <td>
     <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning" do %>
-      <i class="fas fa-comment-dots"></i>
+      <i class="fas fa-2x fa-comment-dots"></i>
     <% end %>
     <%= link_to lesson, class: "mx-2 text-info"  do %>
-      <i class="fas fa-eye"></i>
+      <i class="fas fa-2x fa-eye"></i>
     <% end %>
     <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir annuler ce cours ?"}  do %>
-      <i class="fas fa-times"></i>
+      <i class="fas fa-2x fa-times"></i>
     <% end %>
   </td>
 </tr>
