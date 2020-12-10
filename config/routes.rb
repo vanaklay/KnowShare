@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   get '/tarifs' => 'static_pages#pricing', as: 'pricing'
-  get '/terms' => 'static_pages#terms'
+  get '/cgv' => 'static_pages#terms', as: 'terms'
   get '/contact' => 'static_pages#contact'
-  get '/team' => 'static_pages#team'
+  get '/l-équipe' => 'static_pages#team', as: 'team'
 
   scope(path_names: { new: 'nouveau', edit: 'édition' }) do
   
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     
     resources :messages, only:[:create]
     resources :credit_orders, only:[:index, :new, :create], path: 'commandes-de-crédits'
-    resources :contacts, only:[:create, :new], path: 'contacte-nous'
+    resources :contacts, only:[:create, :new], path: 'contact'
 
     # ActionCable
     mount ActionCable.server => '/cable'
