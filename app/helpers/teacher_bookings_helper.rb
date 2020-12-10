@@ -1,0 +1,2 @@
+module TeacherBookingsHelper
+end

@@ -1,0 +1,14 @@
+<%= render "header_mail" %>
+
+  <h1>Salut !</h1>
+  <p>
+    Nous t'informons de l'annulation du cours <%= @lesson_title %> du <%= @start_date %>.
+  </p>
+  <p>
+    Par conséquent, un remboursement de <%= @credits %> crédit(s) a été effectué.
+  </p>
+  <p>
+    N'attends plus pour réserver un nouveau cours !
+  </p>
+
+<%= render "footer_mail" %>
