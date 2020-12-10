@@ -1,9 +1,13 @@
 class CreditOrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_amount, only: [:new, :create]
+  before_action :all_users_orders, only: [:index]
   before_action :number_of_credits_purchased, only: [:new, :create]
   before_action :stripe_amount, only: [:create, :new]
 
+  def index
+  end 
+  
   def new
   end
 
@@ -30,6 +34,10 @@ class CreditOrdersController < ApplicationController
   end
 
   private
+
+  def all_users_orders
+    @all_users_orders = CreditOrder.where(user: current_user).all.sort.reverse
+  end 
 
   def find_amount
     @amount = params[:amount]

@@ -1,4 +1,4 @@
-<div class="card my-3 bg-white text-dark">
+<div class="card my-3 bg-white text-dark dashboard-right-card">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
@@ -39,7 +39,7 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <h4>Ses crédits</h4>
-        <p>Tu as actuellement <strong><%= @user.personal_credit %> crédits</strong></p>
+        <p>Il a actuellement <strong><%= @user.personal_credit %> crédits</strong></p>
         <p>Besoin de plus de crédits ? Donnes des cours <%= link_to "ici", new_lesson_path, class:"text-primary" %>, ou achètes-en <%= link_to "là", tarifs_path, class:"text-primary" %> !</p>
       </div> 
     </div>
@@ -50,12 +50,6 @@
         <h4>Sa bio</h4>
         <p><%= @user.display_description %></p>
       </div> 
-    </div>
-    <hr>
-
-    <div class="mx-2 align-self-center">
-      <%= link_to "Editer son email et mot de passe", edit_user_registration_path, class: "btn btn-outline-primary mx-2 disabled" %>
-      <%= link_to "Éditer son profil", edit_user_path(@user.id), class: "btn btn-outline-primary mx-2 disabled" %>
     </div>
   </div>
 </div>

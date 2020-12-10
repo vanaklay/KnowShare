@@ -1,4 +1,4 @@
-<div class="card my-3 bg-white text-dark">
+<div class="card my-3 bg-white text-dark dashboard-right-card">
   <div class="card-header bg-white">
     <div class="row">
       <div class="mx-2">
@@ -13,26 +13,28 @@
       </div>
     </div>
   </div>
-  <div class="card-body" style="overflow: scroll; height: 75vh;">  
+  <div class="card-body">  
     <table class="table table-bordered table-striped text-dark">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Titre</th>
           <th>Professeur</th>
           <th>Email du professeur</th>
           <th>Date de création</th>
-          <th>Nombre d'inscrits</th>
+          <th>Nombre d'inscriptions</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody id="myTable">
         <% @lessons.each do |lesson| %>
         <tr id="lesson-<%= lesson.id %>">
+          <td><%= lesson.id %></td>
           <td><%= lesson.title %></td>
           <td><%= lesson.teacher.display_name %></td>
           <td><%= lesson.teacher.email %></td>
           <td><%= lesson.created_at.strftime('%d/%m/%Y') %></td>
-          <td><%= "who knows" %></td>
+          <td><%= lesson.bookings.count %></td>
           <td>
             <%= link_to admin_lesson_path(lesson.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
               <i class="fas fa-times fa-1x"></i>

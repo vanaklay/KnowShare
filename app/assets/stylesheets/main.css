@@ -261,6 +261,16 @@ button.stripe-button-el>span{
   background-image: none;
 }
 
+.dashboard-right-card {
+  overflow: scroll;
+  min-height: 80vh;
+}
+
+.admin-dashboard-user-profile-show {
+  overflow: scroll;
+  max-height: 40vh;
+}
+
 /* Contact form */
 .contact-form{
   background: #fff;
