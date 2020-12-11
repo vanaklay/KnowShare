@@ -15,7 +15,7 @@
   </div>
   <div class="card-body">
     <span><strong>Inscrit sur KnowShare depuis le</strong></span>
-    <p><%=@lesson.teacher.created_at%></p>
+    <p><%=@lesson.teacher.subscription_date %></p>
     <span><strong>Bio</strong></span>
     <% if @lesson.teacher.description? %>
       <p class="card-text"><%= truncate(@lesson.teacher.description, length: 150)%></p>
