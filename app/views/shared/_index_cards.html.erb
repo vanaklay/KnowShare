@@ -4,7 +4,7 @@
 
 <div class="row" id="myLessonSearch">
   <%@lessons.each do |lesson| %>
-  <div class="col-sm-12 col-md-6 col-lg-4 my-2">
+  <div class="col-sm-12 col-md-6 col-lg-4 my-2 lesson-to-search">
     <div class="card bg-white text-dark">
     <% if lesson.picture.attached? %>
       <%= image_tag lesson.picture, class:"img-fluid img-lesson-card" %>

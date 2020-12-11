@@ -14,15 +14,22 @@ function inTableSearch() {
 
 inTableSearch();
 
-function lessonSearch() {
-  $(document).ready(function(){
-    $("#myLessonInput").on("keyup", function() {
-      var lessonValue = $(this).val().toLowerCase();
-      $("#myLessonSearch *").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(lessonValue) > -1)
-      });
-    });
-  });
-};
+// function lessonSearch() {
+//   $(document).ready(function(){
+//     $("#myLessonInput").on("keyup", function() {
+//       var lessonValue = $(this).val().toLowerCase();
+//       $("#myLessonSearch *").filter(function() {
+//         $(this).toggle($(this).text().toLowerCase().indexOf(lessonValue) > -1)
+//       });
+//     });
+//   });
+// };
 
-lessonSearch();
+// lessonSearch();
+
+// var lessonToSearch = $('.lesson-to-search');
+// var count = lessonToSearch.length;
+
+// // for(i = 0; i < count; i++) {
+// //   lessonToSearch[i].includes(lessonValue);
+// // }
