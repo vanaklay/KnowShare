@@ -149,4 +149,8 @@ class User < ApplicationRecord
     self.schedules.length > 0
   end
 
+  def subscription_date
+    created_at.strftime("%d/%m/%Y")
+  end 
+
 end

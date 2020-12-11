@@ -1,3 +1,3 @@
 pay_booking_teacher_job:
-  cron: "*/30 * * * *" #it will retrieve data every 30 minutes
+  cron: "*/5 * * * *" #it will retrieve data every 5 minutes
   class: "PayBookingTeacherWorker"

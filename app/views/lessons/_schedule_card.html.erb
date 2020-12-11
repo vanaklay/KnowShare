@@ -1,14 +1,18 @@
-<div class="card mb-3 bg-white text-dark text-center">
+<div class="card mb-3 bg-white text-dark">
+  <h5 class="card-title mx-3 my-3"><strong>Mes disponibilités</strong></h5>
   <% if @lesson.user.has_schedules? %>
     <div class="card-body">
-      <%= link_to "Editer un planning", user_schedules_path(current_user.username), class: "btn btn-outline-primary" %>
+      <p>Tu as d'autres créneaux disponibles pour enseigner ce cours ? Mets vite à jour ton planning de disponibilités 😉</p>
+      <div class="text-center mt-4">
+        <%= link_to "Mettre à jour mon planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+      </div>
     </div>
   <% else %>
-  <div class="card-body">
-    <h5 class="card-title">Tu n'as pas encore de disponibilité</h5>
-    <p>Pour qu'un autre utilisateur puisse réserver un de tes supers cours, 
-    tu dois créer ton planning de disponibilité</p>
-    <%= link_to "Créer un planning", user_schedules_path(current_user.username), class: "btn btn-outline-primary" %>
-  </div>
+    <div class="card-body">
+      <p>Mets vite à jour ton planning de disponibilités, afin que des membres puissent réserver ton super cours 😇 </p>
+      <div class="text-center mt-4">
+        <%= link_to "Créer mon planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+      </div>
+    </div>
   <% end %>
 </div>

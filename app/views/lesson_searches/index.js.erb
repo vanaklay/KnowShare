@@ -1,0 +1,2 @@
+document.getElementById("lessons-index").innerHTML = "";
+document.getElementById("lessons-index").insertAdjacentHTML("beforeend", "<%= j render 'shared/index_cards', lessons: @searched_lessons %>");

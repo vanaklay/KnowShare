@@ -1,14 +1,10 @@
-<div class="container pt-4" id="lesson-show-page">
-  <div class="row min-vh-100">
+<div class="container pt-4">
+  <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-8">
       <%= render "main_lesson_show_card" %>
-        <% if @lesson.user.has_schedules? %>
-          <%= render "calendar", local: @schedules %>
-        <% end %>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-4">
       <%= render "teacher_lesson_show_card" %>
-      <%= render "all_lessons_card" %>
       <% if @lesson.teacher?(current_user) %>
         <%= render "schedule_card", local: @lesson %>
       <% else %>
@@ -18,7 +14,16 @@
           <%= render "wait_schedules_card" %>
         <% end %>
       <% end %>
-      
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 p-0">
+        <% if @lesson.user.has_schedules? %>
+          <%= render "calendar", local: @schedules %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
