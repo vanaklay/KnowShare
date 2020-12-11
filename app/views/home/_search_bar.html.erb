@@ -1,0 +1,13 @@
+<div class="mx-auto col-10 mb-5">
+  <%= form_tag lesson_searches_path, method: :get, class: "form-inline" do %>
+    <div class="row mx-auto justify-content-center w-75">
+      <i class="fas fa-search mr-3 align-self-center" aria-hidden="true"></i>
+      <div class="form-group w-50">
+        <%= text_field_tag 'search_input', nil, placeholder: 'Rechercher un cours', class: "form-control form-control-sm py-3 w-100 bg-dark", id: "lessonSearchBar" %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Rechercher", class:"btn btn-outline-secondary ml-3 py-1", id: "lessonSearchButton" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
     resources :credit_orders, only: %i[index new create], path: 'commandes-de-crédits'
     resources :contacts, only: %i[create new], path: 'contact'
+    resources :lesson_searches, only: [:index], path: 'recherche'
 
     # ActionCable
     mount ActionCable.server => '/cable'

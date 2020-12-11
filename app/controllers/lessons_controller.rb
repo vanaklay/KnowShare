@@ -1,14 +1,13 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!,        except: [:index, :show]
-  before_action :find_lesson,               only: [:edit, :update, :destroy]
+  before_action :find_lesson,               only: [:edit, :show, :update, :destroy]
   before_action :redirect_if_not_author,    only: [:edit, :update, :destroy]
   before_action :all_lessons,               only: [:index]
 
-  def index 
+  def index
   end
 
   def show
-    @lesson = Lesson.find(params[:id])
     @schedules = Schedule.where(user_id: @lesson.user.id).all.order("start_time")
     @booking = Booking.new
   end

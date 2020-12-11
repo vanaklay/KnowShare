@@ -1,0 +1,2 @@
+module LessonSearchesHelper
+end
