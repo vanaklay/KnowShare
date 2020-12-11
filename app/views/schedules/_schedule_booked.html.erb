@@ -1,5 +1,5 @@
 <li id="schedule_id_<%= schedule.id %>" class="table-info list-group-item d-flex align-items-center">
   <p class="mb-0 bg-warning px-1">Cet horaire : 
   <%= I18n.t("date.day_names")[schedule.start_time.strftime("%u").to_i] + " " + schedule.start_time.strftime("%d") + " " + I18n.t("date.month_names")[schedule.start_time.strftime("%m").to_i] + " " + schedule.start_time.strftime("%Y") %>
-  de <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %> est réservé</p>
+  de <%= schedule.start_time.strftime("%H:%M") %> - <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %> est réservé</p>
 </li>

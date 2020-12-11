@@ -4,12 +4,12 @@
     <%= week_calendar(events: @schedules) do |date, schedules| %>
       <% schedules.each do |schedule| %>
         <% if schedule.is_booked? %>
-          <div class="bg-info text-white rounded-pill mt-2">
-            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %></p>
+          <div class="bg-danger text-white rounded-pill mt-2">
+            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %> - <%= schedule.end_time.strftime("%H:%M") %></p>
           </div>
         <% else %>
-          <div class="bg-warning text-white rounded-pill mt-2">
-            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %></p>
+          <div class="bg-success text-white rounded-pill mt-2">
+            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %> - <%= schedule.end_time.strftime("%H:%M") %></p>
           </div>
         <% end %>
       <% end %>
