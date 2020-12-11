@@ -13,3 +13,16 @@ function inTableSearch() {
 };
 
 inTableSearch();
+
+function lessonSearch() {
+  $(document).ready(function(){
+    $("#myLessonInput").on("keyup", function() {
+      var lessonValue = $(this).val().toLowerCase();
+      $("#myLessonSearch *").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(lessonValue) > -1)
+      });
+    });
+  });
+};
+
+lessonSearch();
