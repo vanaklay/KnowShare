@@ -33,7 +33,15 @@
       </div>
     </div>
     <hr>
-
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4>Mes crédits</h4>
+        <p class="pt-2"><strong>Tu as actuellement <%= current_user.personal_credit %> crédit(s)</strong></p>
+        <p>Les crédits te servent à réserver des cours sur KnowShare (30min = 1 crédit) 😇</p>
+        <p>Besoin de plus de crédits ? Donnes des cours <%= link_to "ici", new_lesson_path, class:"text-primary" %>, ou achètes-en <%= link_to "là", pricing_path, class:"text-primary" %> !</p>
+      </div> 
+    </div>
+    <hr>
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <h4>Ma bio</h4>
