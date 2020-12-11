@@ -22,7 +22,7 @@
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= I18n.t("date.day_names")[day.wday]+" "+day.strftime("%e") %></th>
+          <th class="text-dark"><%= I18n.t("date.day_names")[day.wday]+" "+day.strftime("%e") %></th>
         <% end %>
       </tr>
     </thead>
