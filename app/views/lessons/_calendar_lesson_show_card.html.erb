@@ -12,7 +12,7 @@
   <div class="card-body">
     <p>Si tu veux plusieurs créneaux d'affilés, réserve un par un pour créer ta plage horaire.</p>
 
-    <%= form_for [ @lesson, @booking ], remote: true do |f| %>
+    <%= form_for [ @lesson, @booking ] do |f| %>
       <div class="form-group">
         <%= f.label "Choisis un horaire :" %><br/>
         <%= f.datetime_select :start_date, {:minute_step => 30} %>
