@@ -4,14 +4,14 @@
     <div class="card-body">
       <p>Tu as d'autres créneaux disponibles pour enseigner ce cours ? Mets vite à jour ton planning de disponibilités 😉</p>
       <div class="text-center mt-4">
-        <%= link_to "Mettre à jour mon planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+        <%= link_to "Mettre à jour mon planning", user_schedules_path(current_user.username), class: "btn btn-outline-primary" %>
       </div>
     </div>
   <% else %>
     <div class="card-body">
       <p>Mets vite à jour ton planning de disponibilités, afin que des membres puissent réserver ton super cours 😇 </p>
       <div class="text-center mt-4">
-        <%= link_to "Créer mon planning", user_schedules_path(current_user.id), class: "btn btn-outline-primary" %>
+        <%= link_to "Créer mon planning", user_schedules_path(current_user.username), class: "btn btn-outline-primary" %>
       </div>
     </div>
   <% end %>
