@@ -1,6 +1,10 @@
 class LessonSearchesController < ApplicationController
   before_action :searched_lessons
   def index
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
   end
 
   private

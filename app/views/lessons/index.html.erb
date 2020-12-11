@@ -1,4 +1,10 @@
 <div class="container mb-5">
   <h2 class="titleIndex my-5 mb-0 text-center">Tous les cours disponibles</h2>
+  <div class="mx-auto col-6 mb-5 row">
+    <%= form_tag lesson_searches_path, method: :get, remote: true do %>
+      <div><%= text_field_tag 'search_input', nil, placeholder: 'Rechercher un cours', class:"form-control mx-auto col-6" %></div>
+      <div><%= submit_tag "Rechercher", class:"mx-auto mb-5 btn btn-secondary text-dark" %></div>
+    <% end %>
+  </div>
   <%= render "shared/index_cards", lessons: @lessons %>
 </div>
