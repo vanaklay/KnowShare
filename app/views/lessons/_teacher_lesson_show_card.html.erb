@@ -13,8 +13,9 @@
       </div>
     </div>
   </div>
+
   <div class="card-body">
-    <span><strong>Inscrit sur KnowShare depuis le</strong></span>
+    <span><strong>Inscrit(e) sur KnowShare depuis le</strong></span>
     <p><%=@lesson.teacher.subscription_date %></p>
     <span><strong>Bio</strong></span>
     <% if @lesson.teacher.description? %>
@@ -30,6 +31,11 @@
     <div class="text-center mt-3">
       <% unless @lesson.teacher?(current_user)%>
         <%= link_to "Retour à la liste des cours", lessons_path, class:"btn btn-outline-info" %>
+      <% end %>
+    </div>
+    <div class="text-center mt-3">
+      <% if @lesson.teacher?(current_user)%>
+        <%= link_to "Editer mon cours", edit_lesson_path(@lesson), class:"btn btn-outline-warning" %>
       <% end %>
     </div>
   </div>
