@@ -14,7 +14,7 @@ class TeacherBookingsController < ApplicationController
   end
 
   def redirect_if_not_author
-    @find_user = User.find(params[:user_id])
+    @find_user = User.find_by(username: params[:user_username])
     unless @user == @find_user
       redirect_to @user, warning: "Tu n'es pas propriétaire de ce compte"
     end
