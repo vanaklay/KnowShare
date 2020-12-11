@@ -3,53 +3,50 @@ require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
   root 'home#index'
-  get '/tarifs' => 'static_pages#pricing', as: 'pricing'
-  get '/cgv' => 'static_pages#terms', as: 'terms'
+  get '/pricing' => 'static_pages#pricing'
+  get '/terms' => 'static_pages#terms'
   get '/contact' => 'static_pages#contact'
-  get '/l-équipe' => 'static_pages#team', as: 'team'
+  get '/team' => 'static_pages#team'
 
-  scope(path_names: { new: 'nouveau', edit: 'édition' }) do
-    devise_for :users, path: 'utilisateurs', param: :username
+  devise_for :users, param: :username
 
-    resources :users, path: 'utilisateurs', param: :username do
-      resources :schedules, path: 'horaires'
-      resources :student_bookings, only: [:index], path: 'réservations-côté-élève'
-      resources :teacher_bookings, only: [:index], path: 'réservations-côté-prof'
-      resources :teacher_lessons, only: [:index], path: 'leçons-prof'
-      resources :user_credit_orders, only: [:index], path: 'commandes-de-crédits'
+  resources :users, param: :username do
+    resources :schedules
+    resources :student_bookings, only: [:index]
+    resources :teacher_bookings, only: [:index]
+    resources :teacher_lessons, only: [:index]
+    resources :user_credit_orders, only: [:index]
+  end
+
+  resources :lessons, path: 'leçons' do
+    resources :teachers, only: [:show]
+    resources :bookings do
+      resources :chatrooms, only: %i[show create]
     end
+  end
 
-    resources :lessons, path: 'leçons' do
-      resources :teachers, only: [:show], path: 'professeurs'
-      resources :bookings, path: 'réservations' do
-        resources :chatrooms, only: %i[show create], path: 'tchat'
-      end
+  resources :messages, only: [:create]
+  resources :credit_orders, only: %i[index new create]
+  resources :contacts, only: %i[create new]
+  resources :lesson_searches, only: [:index]
+
+  # Only allow authenticated users to get access
+  # to the Sidekiq web interface
+  devise_scope :user do
+    authenticated :user do
+      mount Sidekiq::Web => '/sidekiq'
     end
+  end
 
-    resources :messages, only: [:create]
-    resources :credit_orders, only: %i[index new create], path: 'commandes-de-crédits'
-    resources :contacts, only: %i[create new], path: 'contact'
-    resources :lesson_searches, only: [:index], path: 'recherche'
+  # ActionCable
+  mount ActionCable.server => '/cable'
 
-    # Only allow authenticated users to get access
-    # to the Sidekiq web interface
-    devise_scope :user do
-      authenticated :user do
-        mount Sidekiq::Web => '/sidekiq'
-      end
-    end
-
-
-    # ActionCable
-    mount ActionCable.server => '/cable'
-
-    # Admin
-    namespace :admin do
-      root 'facade#index'
-      resources :users, path: 'utilisateurs', param: :username
-      resources :lessons, path: 'leçons'
-      resources :bookings, path: 'réservations'
-      resources :credit_orders, only: [:index], path: 'commandes-de-crédits'
-    end
+  # Admin
+  namespace :admin do
+    root 'facade#index'
+    resources :users, param: :username
+    resources :lessons
+    resources :bookings
+    resources :credit_orders, only: [:index]
   end
 end
