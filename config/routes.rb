@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
     resources :user_credit_orders, only: [:index]
   end
 
-  resources :lessons, path: 'leçons' do
+  resources :lessons do
     resources :teachers, only: [:show]
     resources :bookings do
       resources :chatrooms, only: %i[show create]
