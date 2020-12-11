@@ -18,5 +18,6 @@
 //= require bootstrap
 //= require typed
 //= require local-time
-//= require_tree .
+//= require_tree ./channels
 //= stub 'jumbo_typed_text'
+//= require main

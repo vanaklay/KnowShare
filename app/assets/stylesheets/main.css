@@ -2,42 +2,44 @@
 
 .jumbo {
   background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://i.ibb.co/WzM7bLW/jumbo-header.jpg");
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 
-.h1-jumbo {
+.custom-section-jumbo {
+  padding-top: 11rem;
+  padding-bottom: 10rem;
+}
+
+.h2-jumbo {
   font-size: 4rem;
 }
 
-  
-.subTitleIndex {
-font-size: 18px;
+@media (max-width: 702px) {
+  .h2-jumbo {
+    font-size: 3rem;
+  }
+  .h1-jumbo {
+    font-size: 2.5rem;
+  }
 }
 
-.subTitleJumbo {
-  display: inline-block;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  margin-right: 1rem;
-  font-size: 5rem;
-  line-height: inherit;
-  white-space: nowrap;
-  font-family: 'Permanent Marker', cursive;
-}
-
-.text-subTitleJumbo {
-  font-size: 1rem;
-}
-
+/* Avatar */
 .avatar {
   width: 3vw;
   height: 3vw;
-  border-radius: 50%;
   object-fit: cover;
-
 }
+
+@media (max-width: 992px) {
+  .avatar {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
 
 .navbar-avatar{
   background-position: center;
@@ -47,8 +49,14 @@ font-size: 18px;
   width: 4vw;
   height: 4vw;
   border-radius: 50%;
-  /* object-fit: contain; */
+  object-fit: cover;
+}
 
+@media (max-width: 992px) {
+  .navbar-avatar {
+    width: 8vw;
+    height: 8vw;
+  }
 }
 
 .profile-avatar{
@@ -57,9 +65,11 @@ font-size: 18px;
   background-size: contain;
   width: 6vw;
   height: 6vw;
-  border-radius: 50px
+  border-radius: 50px;
+  object-fit: cover;
 }
 
+/* Footer */
 .footer-container {
   min-height: 100vh;
   display: flex;
@@ -75,10 +85,10 @@ font-size: 18px;
 /* CONCEPT */
 
 .number {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   margin-right: 80px;
-  font-size: 22px;
+  font-size: 2.4rem;
   display: flex;
   position: relative;
   align-items: center;
@@ -91,7 +101,8 @@ font-size: 18px;
 }
 
 .p-concept {
-  font-size: 18px;
+  font-size: 1.3rem;
+  padding-top: 1rem;
 }
 
 .row-footer {
@@ -102,9 +113,11 @@ font-size: 18px;
   padding-left: 4px;
 }
 
+/* Lessons */
+
 .img-lesson{
   max-height: 50vh;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .teacher-avatar{
@@ -114,8 +127,227 @@ font-size: 18px;
   border-radius: 50px
 }
 
+@media (max-width: 960px) {
+  .teacher-avatar {
+    width: 12vw;
+    height: 12vw;
+  }
+}
+
+
 .img-lesson-card{
   height: 200px;
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+/* USER PROFILE */
+
+.user-container {
+  max-width: 99vw;
+}
+
+.schedule-items {
+  overflow: scroll;
+  max-height: 19rem;
+
+}
+
+/* Chat */
+#messages {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 50vh;
+  width: 50vw;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#message-text-area {
+  padding: 10px;
+  width: 50vw;
+  height: 10vh;
+  border-radius: 5px;
+  resize: none;
+}
+
+#message-text-area:focus {
+  outline: none !important;
+  border-color: #adb5bd;
+  box-shadow: 0 0 10px #adb5bd;
+}
+
+.message{
+  border-radius: 20px;
+
+}
+
+/* HOMEPAGE */
+.custom-section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+/* TESTIMONIALS */
+
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .box {
+  background: #fff;
+  width: calc(33% - 10px);
+  padding: 25px;
+  border-radius: 3px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+}
+.wrapper .box i.quote {
+  font-size: 20px;
+  color: #17a2b8;
+}
+.wrapper .box .content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.box .info .name {
+  font-weight: 600;
+  font-size: 17px;
+}
+.box .info .job {
+  font-size: 16px;
+  font-weight: 500;
+  color: #17a2b8;
+}
+.box .info .stars {
+  margin-top: 2px;
+}
+.box .info .stars i {
+  color: #17a2b8;
+}
+.box .content .image {
+  height: 75px;
+  width: 75px;
+  padding: 3px;
+  background: #17a2b8;
+  border-radius: 50%;
+}
+.content .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.box:hover .content .image img {
+  border-color: #fff;
+}
+
+@media (max-width: 1045px) {
+  .wrapper .box{
+    width: calc(50% - 10px);
+    margin: 10px 0;
+  }
+}
+@media (max-width: 702px) {
+  .wrapper .box{
+    width: 100%;
+  }
+}
+
+.bg-devise {
+  background-image: url("https://abaforlawstudents.com/wp-content/uploads/2020/03/online-study-tips.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-new-class {
+  background-image: url("https://www.northeastern.edu/graduate/blog/wp-content/uploads/2016/08/Online-Learning-Hero-1.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Stripe Button */
+button.stripe-button-el,
+button.stripe-button-el>span{
+  background-color: #31dc12 !important;
+  background-image: none;
+}
+
+.dashboard-right-card {
+  overflow: scroll;
+  max-height: 80vh;
+}
+
+.admin-dashboard-user-profile-show {
+  overflow: scroll;
+  max-height: 40vh;
+}
+
+/* Contact form */
+.contact-form{
+  background: #fff;
+  margin-top: 6%;
+  margin-bottom: 2%;
+  width: 70%;
+}
+.contact-form .form-control{
+  border-radius:1rem;
+}
+.contact-image{
+  text-align: center;
+}
+.contact-image img{
+  border-radius: 6rem;
+  width: 11%;
+  margin-top: -3%;
+  transform: rotate(29deg);
+}
+.contact-form form{
+  padding: 14%;
+}
+.contact-form form .row{
+  margin-bottom: -7%;
+}
+.contact-form h3{
+  margin-bottom: 8%;
+  margin-top: -10%;
+  text-align: center;
+  color: #0062cc;
+}
+.contact-form .btnContact {
+  width: 50%;
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5%;
+  background: #dc3545;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+.btnContactSubmit
+{
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  color: #fff;
+  background-color: #0062cc;
+  border: none;
+  cursor: pointer;
+}
+
+#contact-text-area{
+  width: 100%;
+  height: 150px;
 }

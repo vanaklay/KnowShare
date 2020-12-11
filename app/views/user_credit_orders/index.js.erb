@@ -1,0 +1,4 @@
+document.getElementById("user-dashboard-show").innerHTML = "";
+document.getElementById("user-dashboard-show").insertAdjacentHTML("beforeend", "<%= j render 'user_credit_orders/list_of_orders'%>");
+
+inTableSearch();

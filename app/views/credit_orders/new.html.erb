@@ -1,0 +1,41 @@
+<div class="bg-white text-dark">
+  <div class="container">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="pb-3">Validation et paiement</h1>
+      <hr>
+      <p class="lead pt-3">Les crédits te permettent de prendre des cours sur KnowShare. Pour en acquérir, tu peux donner des cours à ton tour - mais tu peux aussi en acheter !</p>
+    </div>
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-sm bg-white text-dark border-dark">
+        <div class="card-header bg-dark text-white">
+          <h4 class="my-0 font-weight-normal">Récapitulatif</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title">Montant de la commande: <%= @amount %> €</h3>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Nombre de crédit(s) : <%= @credits %></li>
+          </ul>
+          <%= form_tag credit_orders_path do %>
+            <%= hidden_field_tag 'amount', @amount %>
+            <%= hidden_field_tag 'credits', @credits %>
+            <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+            </article>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Achat de crédits"
+              data-label="Payer par carte"
+              data-amount= <%= @stripe_amount %>
+              data-currency="eur"
+              data-locale="auto">
+            </script>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

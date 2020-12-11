@@ -1,0 +1,23 @@
+<div class="card bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="ml-2 d-flex align-self-center flex-column">
+        <h2><strong>Ajouter une plage horaire</strong></h2>
+        <p>Indiques ici ta disponibilité à venir par période de 30 minutes.</p>
+        <p>Si tu veux créer une plage horaire, ajoute plusieurs périodes de 30 minutes.</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" } do |f| %>
+      <div class="row justify-content-center">
+        <div class="form-group text-center">
+          <%= f.label "Date et horaire de départ :" %><br/>
+          <%= f.datetime_select :start_time, {:minute_step => 30}, class: "p-1", require: true %>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Créer", class: "btn btn-primary px-5" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

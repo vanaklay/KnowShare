@@ -1,13 +1,12 @@
-<div class="container-fluid vh-100 jumbo">
-  <div class="px-4 h-100">
-    <div class="row align-items-center h-100 px-4">
-      <div>
-      <h1 class="pt-5 h1-jumbo" >Tu veux apprendre <span id="typed"></span></h1>
-      <h2 class="mb-5">Bienvenue sur <b>KnowShare</b>, où le partage est au coeur de la connaissance </h2>
-      <%= link_to "Voir tous les cours disponibles", lessons_path, :class => "btn-lg btn-info px-4 py-3 text-center" %>
+<div class="container-fluid jumbo">
+    <div class="row custom-section-jumbo">
+      <div class="col-xl-8 col-lg-9">
+        <h2 class="h2-jumbo" >Tu veux apprendre </h2>
+        <p class="h2-jumbo"><span id="typed"></span></p>
+        <h1 class="mb-5 h1-jumbo">Bienvenue sur <b>KnowShare</b>, où le partage est au coeur de la connaissance </h1>
+        <%= link_to "Voir tous les cours disponibles", lessons_path, :class => "btn-lg btn-info px-4 py-3 text-center" %>
       </div>
     </div>
-  </div>
 </div>
 
 <%= javascript_include_tag 'jumbo_typed_text' %>

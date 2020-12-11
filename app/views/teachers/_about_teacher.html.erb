@@ -1,0 +1,48 @@
+<div class="container my-5">
+
+  <div class="row">
+    <div class="mx-2">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, alt: "profile picture", class: "p-1 profile-avatar" %>
+      <% else %>
+        <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class: "p-1 profile-avatar" %>
+      <% end %>
+    </div>
+    <div class="mx-2 d-flex align-self-center">
+      <h3><strong>À propos de <%= @user.username.capitalize %></strong></h3>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-3 col-md-3 col-sm-12">
+      <h4><strong>Prénom</strong></h4>
+      <span><%= @user.display_first_name %></span>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+      <h4><strong>Nom</strong></h4>
+      <span><%= @user.display_last_name %></span>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+      <h4><strong>Cours créés</strong></h4>
+      <span><%= @lessons.count %></span>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+      <h4><strong>Cours suivis</strong></h4>
+      <span><%= @user.bookings.count %></span>
+    </div>
+  </div>
+
+  <hr class="border-light">
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h4><strong>Bio</strong></h4>
+      <% if @user.description %>
+        <p><%= @user.display_description %></p>
+      <% else %>
+        <p>Cet utilisateur n'a pas encore de bio !</p>
+      <% end %>
+    </div> 
+  </div>
+
+</div>

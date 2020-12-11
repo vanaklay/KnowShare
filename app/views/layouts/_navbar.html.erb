@@ -1,44 +1,73 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    Kn<span class="text-danger">o</span>wSh<span class="text-danger">a</span>re
-  <%end%>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<% if user_signed_in? %>
 
-  <div class="collapse navbar-collapse mr-2" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <%= link_to "Créer un cours", new_lesson_path, class: "nav-item active nav-link mr-3" %>
+  <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top p-2" id="nav-knowshare">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      Kn<span class="text-danger">o</span>wSh<span class="text-danger">a</span>re
+    <% end %>
+
+
+    <ul class="navbar-nav ml-auto d-flex justify-content-center align-items-center">
+
+      <li class="nav-item active mr-4 list-inline-item">
+        <%= link_to new_lesson_path, class: "btn btn-outline-success " do %>
+          <span>Créer un cours</span>
+        <% end %>
       </li>
+
+      <li class="nav-item active mr-3 list-inline-item">
+        <%= link_to pricing_path, class: "nav-item mr-1" do %>
+          <i class="fas fa-coins fa-2x"></i>
+          <span class="badge badge-pill"><strong id="badge-number"><%= current_user.personal_credit %></strong></span>
+      <% end %>
+      </li>
+
+      <li class="nav-item active mr-2">
+        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent"> 
+          <div class="dropdown ml-auto">
+            <a href="#" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+              <% if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar, alt: "profile picture", class:"navbar-avatar" %>
+              <% else %>
+                <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class:"navbar-avatar" %>
+              <% end %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+              <li><%= link_to "Mon profil", user_path(current_user), class: "nav-link btn btn-primary mx-2 my-2 text-white" %></li>
+              <li><%= link_to "Déconnexion", destroy_user_session_path, class: "nav-link btn btn-danger mx-2 my-2 text-white", method: :delete %></li>
+              <% if current_user.is_admin? %>
+                <li><%= link_to "Dashboard admin", admin_root_path, class: "nav-link btn btn-outline-warning mx-2 my-2 text-white" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+      </li>
+
     </ul>
 
-    <% if user_signed_in? %>
-      <div class="nav-item">
-      <div class="nav-item dropdown">
-        <a class="dropdown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar, alt: "profile picture", class:"navbar-avatar" %>
-          <% else %>
-            <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", alt: "profile picture", class:"navbar-avatar" %>
-          <% end %>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "Mon profil", user_path(current_user), class: "nav-link btn btn-primary mx-2 my-2" %>
-          <%= link_to "Déconnexion", destroy_user_session_path, class: "nav-link btn btn-danger mx-2 my-2", method: :delete %>
-        </div>
-      </div>
+
+  </nav>
         
-    <% else %>
-      <div class="nav-item dropdown">
-        <a class="nav-link btn btn-primary dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Se connecter
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "Inscription", new_user_registration_path, class: "nav-link btn btn-warning mx-2 my-2" %>
-          <%= link_to "Connexion", new_user_session_path, class: "nav-link btn btn-info mx-2 my-2" %>        
-        </div>
-      </div>
-    <% end %> 
-  </div>
-</nav>
+    <%# If user is not connected %>
+<% else %>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" id="nav-knowshare">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      Kn<span class="text-danger">o</span>wSh<span class="text-danger">a</span>re
+    <%end%>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link btn btn-warning mx-2 my-1 px-4" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Se connecter", new_user_session_path, class: "nav-link btn btn-info mx-2 my-1 px-3" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<% end %> 

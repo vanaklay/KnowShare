@@ -1,20 +1,19 @@
 <% lesson = booking.lesson %>
-<div class="row border-bottom border-gray pb-2 mb-2 mr-2 align-items-center">
-  <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= booking.display_start_date_time %>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= lesson.title %>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-12">
-    <%= lesson.teacher.display_name %>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-12">
-      <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?"}  do %>
-        <i class="fas fa-times fa-2x"></i>
-      <% end %>
-      <%= link_to lesson, class: "mx-2 text-info"  do %>
-        <i class="fas fa-eye fa-2x"></i>
-      <% end %>
-  </div>
-</div>
+<tr>
+  <td class="align-middle"><%= booking.display_start_date_time %></td>
+  <td class="align-middle"><%= lesson.title %></td>
+  <td class="align-middle"><%= lesson.teacher.display_name %></td>
+  <td class="align-middle"><%= booking.duration %> minutes</td>
+  <td class="align-middle">
+    <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning" do %>
+      <i class="fas fa-2x fa-comment-dots"></i>
+    <% end %>
+    <%= link_to lesson, class: "mx-2 text-info"  do %>
+      <i class="fas fa-2x fa-eye"></i>
+    <% end %>
+    <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Es-tu sûr(e) de vouloir annuler ce cours ?"}  do %>
+      <i class="fas fa-2x fa-times"></i>
+    <% end %>
+  </td>
+</tr>
+    

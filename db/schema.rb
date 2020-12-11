@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_160753) do
+ActiveRecord::Schema.define(version: 2020_12_09_152723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,26 @@ ActiveRecord::Schema.define(version: 2020_12_04_160753) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "lesson_id"
+    t.boolean "paid", default: false
     t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "identifier"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
+  end
+
+  create_table "credit_orders", force: :cascade do |t|
+    t.integer "number_of_credit", null: false
+    t.decimal "price", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_orders_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -54,6 +72,14 @@ ActiveRecord::Schema.define(version: 2020_12_04_160753) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "chatroom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -80,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_12_04_160753) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

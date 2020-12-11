@@ -1,0 +1,11 @@
+<div class="container-fluid" id="messages-container">
+  <% if message.user == message.chatroom.booking.user %>
+    <div class="row">
+      <p class="ml-auto text-right bg-secondary p-2 message"><b><%= message.user.username %></b><br> <%= message.content %></p>
+    </div>
+  <% else %>
+    <div class="row">
+      <p class="bg-info p-2 message"><b><%= message.user.username %> </b><br> <%=message.content %></p>
+    </div>
+  <% end %>
+</div>

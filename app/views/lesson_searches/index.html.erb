@@ -1,0 +1,7 @@
+<div class="container mb-5">
+  <h2 class="titleIndex my-5 mb-0 text-center">Tous les cours disponibles</h2>
+  <%= render "shared/search_bar" %>
+  <div id="lessons-index">
+    <%= render "shared/index_cards", lessons: @searched_lessons %>
+  </div>
+</div>

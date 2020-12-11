@@ -4,10 +4,10 @@
     <title>Knowshare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <!-- CDN for fontawesome icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
@@ -18,10 +18,10 @@
 
   <body>
     <div class="footer-container">
-      <%= render "layouts/navbar"%>
+      <%= render "layouts/navbar" unless current_page?(new_user_registration_path) || current_page?(new_user_session_path) || current_page?(new_user_password_path) || current_page?(edit_user_password_path)%>
       <%= render 'layouts/flash' %>
       <%= yield %>
-      <%= render "layouts/footer"%>
+      <%= render "layouts/footer" unless current_page?(new_user_registration_path) || current_page?(new_user_session_path) || current_page?(new_user_password_path) || current_page?(edit_user_password_path) %>
     </div>
   </body>
 </html>

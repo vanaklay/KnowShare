@@ -12,15 +12,23 @@ class User < ApplicationRecord
   has_many  :followed_lessons,
             through: :bookings,
             foreign_key: 'followed_lesson_id',
-            class_name: 'Lesson',
+            source: :lesson,
             dependent: :destroy
+  has_many :messages
+  has_many :chatrooms, through: :bookings, dependent: :destroy
+  has_many :schedules, dependent: :destroy
+  has_many :credit_orders, dependent: :destroy
 
   has_one_attached :avatar
 
-  def role?
-    role.class == String
+  def to_param
+    username
   end
-  
+
+  def role?
+    role.instance_of?(String)
+  end
+
   after_create :send_welcome_email
 
   def role_include?(searched_role)
@@ -44,7 +52,7 @@ class User < ApplicationRecord
     if first_name?
       first_name
     else
-      "Pas encore de prénom!"
+      'Pas encore de prénom !'
     end
   end
 
@@ -56,7 +64,7 @@ class User < ApplicationRecord
     if last_name?
       last_name
     else
-      "Pas encore de nom !"
+      'Pas encore de nom !'
     end
   end
 
@@ -77,7 +85,7 @@ class User < ApplicationRecord
       avatar
     else
       # url to picture of cute cat
-      "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697"
+      'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697'
     end
   end
 
@@ -89,81 +97,60 @@ class User < ApplicationRecord
     if description?
       description
     else
-      "Pas encore de bio, édite ton profil pour en rajouter une !"
+      'Pas encore de bio, édite vite ton profil pour en rajouter une !'
     end
   end
 
-  def add_credit(number_of_credit)
-    new_personal_credit = personal_credit + number_of_credit
-    update(personal_credit: new_personal_credit)
-  end
-
-  def remove_credit(number_of_credit)
-    new_personal_credit = personal_credit - number_of_credit
-    update(personal_credit: new_personal_credit)
-  end
-
-  def past_bookings
-    bookings.select { |booking| booking.start_date < DateTime.now }
-  end
-
-  def future_bookings
-    bookings.select { |booking| booking.start_date > DateTime.now }
-  end
-
-  def has_past_bookings?
-    past_bookings.count > 0
-  end 
-
-  def has_future_bookings?
-    future_bookings.count > 0
-  end 
-
-  def past_lessons
-    past_lessons = []
-    past_bookings.each { |booking| past_lessons << booking.lesson }
-    past_lessons
-  end
-
-  def future_lessons
-    future_lessons = []
-    future_bookings.each { |booking| future_lessons << booking.lesson }
-    future_lessons
-  end
-  
   def students
     students = []
     lessons.each do |lesson|
       lesson.students.each { |student| students << student }
     end
     students
-  end 
-
-  def given_bookings
-    given_bookings = []
-    lessons.each do |lesson|
-      lesson.bookings.each { |booking| given_bookings << booking }
-    end
-    given_bookings
-  end 
-
-  def past_given_bookings?
-    past_given_bookings.count > 0
-  end 
-
-  def future_given_bookings?
-    future_given_bookings.count > 0
-  end 
-
-  def past_given_bookings
-    given_bookings.select { |given_booking| given_booking.start_date < DateTime.now }
-  end 
-
-  def future_given_bookings
-    given_bookings.select { |given_booking| given_booking.start_date > DateTime.now }
-  end 
+  end
 
   def send_welcome_email
     UserMailer.welcome_send(self).deliver_now
   end
+
+  def not_admin
+    self.is_admin = false
+  end
+
+  def is_admin?
+    self.is_admin == true
+  end
+
+  def past_student_bookings
+    @past_student_bookings = bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_student_bookings
+    @future_student_bookings = bookings.select { |booking| booking.start_date > DateTime.now }
+  end
+
+  def teacher_bookings
+    teacher_bookings = []
+    lessons.each do |lesson|
+    lesson.bookings.each { |booking| teacher_bookings << booking }
+    end
+    teacher_bookings
+  end
+
+  def past_teacher_bookings
+    teacher_bookings.select { |booking| booking.start_date < DateTime.now }
+  end
+
+  def future_teacher_bookings
+    teacher_bookings.select { |booking| booking.start_date > DateTime.now }
+  end
+
+  def has_schedules?
+    self.schedules.length > 0
+  end
+
+  def subscription_date
+    created_at.strftime("%d/%m/%Y")
+  end 
+
 end

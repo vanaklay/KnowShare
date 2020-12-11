@@ -1,0 +1,22 @@
+<div class="list-group my-3">
+  <div class="card-header bg-white text-dark">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-tachometer-alt fa-3x"></i>
+      </div>
+      <div class="d-flex mx-2">
+          <h3><strong>Dashboard</strong></h3>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Voir mes informations de profil", current_user, class:"list-group-item list-group-item-action text-dark", remote: true %>
+  <%= link_to "Modifier mes informations de profil", edit_user_path(current_user.username), class:"list-group-item list-group-item-action text-dark", remote: true %>
+  <%= link_to "Historique de mes commandes", user_user_credit_orders_path(current_user.username), class:"list-group-item list-group-item-action text-dark", remote: true %>
+  <li class="list-group-item bg-info text-center py-2">Dashboard élève</li>
+  <%= link_to "Voir mes réservations", user_student_bookings_path(current_user.username), class:"list-group-item list-group-item-action text-dark", remote: true %>
+  <% if current_user.teacher? %>
+    <li class="list-group-item bg-info text-center py-2">Dashboard prof</li>
+    <%= link_to "Voir mes réservations", user_teacher_bookings_path(current_user.username), class:"list-group-item list-group-item-action text-dark", remote: true %>
+    <%= link_to "Voir la liste de mes cours", user_teacher_lessons_path(current_user.username), class:"list-group-item list-group-item-action text-dark", remote: true %>
+  <% end %>
+</div>

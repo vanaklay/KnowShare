@@ -1,0 +1,59 @@
+<div class="card my-3 bg-white text-dark admin-dashboard-user-profile-show">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="fas fa-graduation-cap fa-3x"></i>
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <h3><strong>Son dashboard élève</strong></h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card-body">
+    <h4>Ses cours à venir</h4>
+    <% if !current_user.future_student_bookings.any? %>
+      <p>Il n'a encore aucun cours de prévu !</p>
+      <hr>
+    <% else %>
+      <table class="table table-bordered table-striped text-dark">
+        <thead>
+          <tr>
+            <th>Date du cours</th>
+            <th>Titre du cours</th>
+            <th>Nom du professeur</th>
+            <th>Durée du cours</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          <% current_user.future_student_bookings.each do |booking| %>
+            <%= render 'admin/users/booking_list_student', booking: booking %>
+          <% end %>
+      </table>
+    <% end %>
+
+    <h4>Ses cours passés</h4>
+
+    <% if !current_user.past_student_bookings.any? %>
+      <p>Il n'a encore jamais pris de cours</p>
+      <hr>
+    <% else %>
+      <table class="table table-bordered table-striped text-dark">
+        <thead>
+          <tr>
+            <th>Date du cours</th>
+            <th>Titre du cours</th>
+            <th>Nom du professeur</th>
+            <th>Durée du cours</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="myTable2">
+          <% current_user.past_student_bookings.each do |booking| %>
+            <%= render 'admin/users/booking_list_student', booking: booking %>
+          <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container-fluid mt-3">
+  <% if current_user == @chatroom.booking.teacher %>
+    <h3 class="text-center mb-3">Discussion avec <%= @chatroom.booking.student.username%></h3>
+  <% else %>
+    <h3 class="text-center mb-3">Discussion avec <%= @chatroom.booking.teacher.username%></h3>
+  <% end %>
+
+  <% if @chatroom.messages.any? %>
+    <div id="messages" class="bg-white text-dark">
+      <%= render partial: 'messages/message', collection: @chatroom.messages.order(id: :asc)%>
+    </div>
+  <%else%>
+    <div id="messages" class="bg-white text-dark">
+    </div>
+  <%end%>
+</div>
+<%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+<div class="container text-center">
+  <%= link_to  "Retour en arrière", :back, class:"btn btn-outline-info mb-3" %>
+</div>
+
+<%= javascript_tag 'messageForm()' %>
+<%= javascript_tag 'createMessageChannel()' %>

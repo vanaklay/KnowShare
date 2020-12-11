@@ -1,0 +1,40 @@
+<div class="card bg-white text-dark">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="ml-2 d-flex align-self-center">
+          <h2><strong>Mon planning</strong></h2>
+      </div>
+      <div class="mr-2 align-self-center ml-auto">
+        <%= link_to "Revenir à mon profil", user_path(current_user), class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark text-white p-3">
+    <%= week_calendar(events: @schedules) do |date, schedules| %>
+
+      <% schedules.each do |schedule| %>
+        <% if schedule.is_booked? %>
+          <div class="bg-danger text-white rounded-pill mt-2">
+            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %> - <%= schedule.end_time.strftime("%H:%M") %></p>
+          </div>
+        <% else %>
+          <div class="bg-success text-white rounded-pill mt-2">
+            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %> - <%= schedule.end_time.strftime("%H:%M") %></p>
+          </div>
+        <% end %>
+      <% end %>
+      
+    <% end %>
+  </div>
+  <ul class="list-group p-3" >
+    <div class="rounded schedule-items" id="schedule-container">
+    <% @schedules.each do |schedule| %>
+      <% if schedule.is_booked? %>
+        <%= render "schedule_booked", schedule: schedule %>
+      <% else %>
+        <%= render "schedule_object", schedule: schedule %>
+      <% end %>
+    <% end %>
+    </div>
+  </ul>
+</div>

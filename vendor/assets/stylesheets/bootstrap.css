@@ -22,14 +22,14 @@
    --yellow: #f39c12;
    --green: #00e677;
    --teal: #20c997;
-   --cyan: #3498db;
+   --cyan: #9195FF;
    --white: #fff;
    --gray: #888;
    --gray-dark: #002333;
    --primary: #2146FF;
    --secondary: #adb5bd;
    --success: #00e677;
-   --info: #3498db;
+   --info: #9195FF;
    --warning: #f39c12;
    --danger: #e74c3c;
    --light: #adb5bd;
@@ -1716,7 +1716,7 @@
  }
  
  .table-striped tbody tr:nth-of-type(odd) {
-   background-color: #002333;
+   background-color: #eceef0;
  }
  
  .table-hover tbody tr:hover {
@@ -2682,8 +2682,8 @@
  
  .btn-info.disabled, .btn-info:disabled {
    color: #fff;
-   background-color: #3498db;
-   border-color: #3498db;
+   background-color: #9195FF;
+   border-color: #9195FF;
  }
  
  .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
@@ -3637,7 +3637,7 @@
  
  .input-group-prepend,
  .input-group-append {
-   display: -ms-flexbox;
+   /* display: -ms-flexbox; */
    display: flex;
  }
  
@@ -3665,6 +3665,7 @@
  
  .input-group-prepend {
    margin-right: -1px;
+   border-right: 0;
  }
  
  .input-group-append {
@@ -3752,6 +3753,37 @@
    border-top-left-radius: 0;
    border-bottom-left-radius: 0;
  }
+
+ .input-group-transparent .input-group-text
+{
+    color: #adb5bd;
+    border: 2px solid rgba(133, 129, 129, 0.815); 
+    background-color: transparent;
+    border-right: 0;
+}
+
+.input-group-transparent .form-control
+{
+    box-shadow: none;
+}
+.input-group-transparent .form-control:not(:first-child)
+{
+    padding-left: 0; 
+
+    border-left: 0;
+}
+.input-group-transparent .form-control:not(:last-child)
+{
+    padding-right: 0; 
+
+    border-right: 0;
+}
+
+.focused .input-group-transparent .input-group-text
+{
+    border-color: rgba(81, 15, 168, .5); 
+    background-color: #fff;
+}
  
  .custom-control {
    position: relative;
@@ -5185,7 +5217,7 @@
  
  .badge-info {
    color: #fff;
-   background-color: #3498db;
+   background-color: #9195FF;
  }
  
  a.badge-info:hover, a.badge-info:focus {
@@ -6750,7 +6782,7 @@
  }
  
  .bg-info {
-   background-color: #3498db !important;
+   background-color: #9195FF !important;
  }
  
  a.bg-info:hover, a.bg-info:focus,
@@ -6860,7 +6892,7 @@
  }
  
  .border-info {
-   border-color: #3498db !important;
+   border-color: #9195FF !important;
  }
  
  .border-warning {
@@ -10107,7 +10139,7 @@
  }
  
  .text-info {
-   color: #3498db !important;
+   color: #9195FF !important;
  }
  
  a.text-info:hover, a.text-info:focus {
@@ -10307,7 +10339,7 @@
  .table-info,
  .table-info > th,
  .table-info > td {
-   background-color: #3498db;
+   background-color: #9195FF;
  }
  
  .table-danger,
@@ -10443,7 +10475,7 @@
  }
  
  .alert-info {
-   background-color: #3498db;
+   background-color: #9195FF;
  }
  
  .alert-warning {
