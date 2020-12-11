@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
   root 'home#index'
   get '/tarifs' => 'static_pages#pricing', as: 'pricing'
@@ -27,6 +30,15 @@ Rails.application.routes.draw do
     resources :credit_orders, only: %i[index new create], path: 'commandes-de-crédits'
     resources :contacts, only: %i[create new], path: 'contact'
     resources :lesson_searches, only: [:index], path: 'recherche'
+
+    # Only allow authenticated users to get access
+    # to the Sidekiq web interface
+    devise_scope :user do
+      authenticated :user do
+        mount Sidekiq::Web => '/sidekiq'
+      end
+    end
+
 
     # ActionCable
     mount ActionCable.server => '/cable'
