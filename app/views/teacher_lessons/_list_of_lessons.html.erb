@@ -26,10 +26,10 @@
       <tbody id="myTable">
         <% @all_users_lessons.each do |lesson| %>
         <tr id="lesson-<%= lesson.id %>">
-          <td><%= lesson.title %></td>
-          <td><%= lesson.created_at.strftime('%d/%m/%Y') %></td>
-          <td><%= lesson.bookings.count %></td>
-          <td>
+          <td class="align-middle"><%= lesson.title %></td>
+          <td class="align-middle"><%= lesson.created_at.strftime('%d/%m/%Y') %></td>
+          <td class="align-middle"><%= lesson.bookings.count %></td>
+          <td class="align-middle">
             <%= link_to lesson_path(lesson.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
               <i class="fas fa-2x fa-times"></i>
             <% end %>
