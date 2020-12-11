@@ -1,16 +1,12 @@
 <div class="card mb-3 bg-white text-dark text-center">
   <div class="card-body">
     <h5 class="card-title">Inscris-toi à ce cours</h5>
+    <p>Si tu veux plusieurs créneaux d'affilés, réserve un par un pour créer ta plage horaire.</p>
 
-    <%= form_for [ @lesson, @booking ] do |f| %>
+    <%= form_for [ @lesson, @booking ], remote: true do |f| %>
       <div class="form-group">
         <%= f.label "Choisis un horaire :" %><br/>
-        <%= f.datetime_select :start_date, :minute_step => 30, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "Choisis une durée : " %><br/>
-        <%= f.select :duration, [30, 60, 90, 120, 150, 180], class: "form-control" %><br/>
-        <p><small class="text-danger">* 60 = 1h; 90 = 1h30; 120 = 2h; 150 = 2h30; 180 = 3h</small></p>
+        <%= f.datetime_select :start_date, {:minute_step => 30} %>
       </div>
       <div class="form-group d-flex">
         <%= button_to "Je m'inscris", lesson_bookings_path(@lesson), :class => "btn btn-warning mx-auto px-5" %>

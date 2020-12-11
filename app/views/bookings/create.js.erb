@@ -1,0 +1,3 @@
+document.getElementById("badge-schedule-<%= @schedule.id %>").classList.remove("bg-success")
+document.getElementById("badge-schedule-<%= @schedule.id %>").classList.add("bg-danger")
+document.getElementById("lesson-show-page").insertAdjacentHTML("beforebegin", "<%= j render 'layouts/flash', flash: flash %>");
