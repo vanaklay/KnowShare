@@ -1,23 +1,24 @@
-<div class="card bg-white text-dark">
-  <div class="card-header bg-white">
-    <div class="ml-2 d-flex align-self-center flex-column">
-        <h2><strong>Ajouter une plage horaire</strong></h2>
-        <p>Indiques ici ta disponibilité à venir par période de 30 minutes.</p>
-        <p>Si tu veux créer une plage horaire, ajoute plusieurs périodes de 30 minutes.</p>
+<div class="py-4">
+  <div class="ml-2 d-flex align-self-center">
+    <div class="mx-2">
+      <i class="fas fa-chevron-right fa-2x"></i>
+    </div>
+    <div class="mx-2 d-flex">
+      <h4><strong>Ajouter une plage horaire</strong></h4>
     </div>
   </div>
-  <div class="card-body">
-    <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" } do |f| %>
-      <div class="row justify-content-center">
-        <div class="form-group text-center">
-          <%= f.label "Date et horaire de départ :" %><br/>
-          <%= f.datetime_select :start_time, {:minute_step => 30}, class: "p-1", require: true %>
-        </div>
+  <br>
+  <p>Indiques ici tes disponibilités par période de 30 minutes.</p>
+  <p>Si tu veux créer une plage horaire, ajoute plusieurs périodes de 30 minutes.</p>
+  <%= form_for [@user, @schedule], html: { class: "form-signin mt-3" } do |f| %>
+    <div class="row justify-content-center">
+      <div class="form-group text-center">
+        <%= f.label "Date et horaire de départ :" %><br/>
+        <%= f.datetime_select :start_time, {:minute_step => 30}, class: "p-1", require: true %>
       </div>
-      <div class="text-center">
-        <%= f.submit "Créer", class: "btn btn-primary px-5" %>
-      </div>
-    <% end %>
-
-  </div>
+    </div>
+    <div class="text-center">
+      <%= f.submit "Ajouter", class: "btn btn-primary px-5" %>
+    </div>
+  <% end %>
 </div>
