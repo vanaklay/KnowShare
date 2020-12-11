@@ -1,4 +1,4 @@
-<li id="schedule_id_<%= schedule.id %>" class="table-info list-group-item d-flex align-items-center">
-  <p class="mb-0 bg-warning px-1">Cet horaire : 
+<li id="schedule_id_<%= schedule.id %>" class="table-danger list-group-item d-flex align-items-center">
+  <p class="mb-0 bg-danger px-1">Cet horaire : 
   <%= schedule.start_time.strftime("%d / %m / %Y") %> de <%= schedule.start_time.strftime("%H:%M") %> - <%= schedule.end_time ? schedule.end_time.strftime("%H:%M") : nil %> est réservé</p>
 </li>

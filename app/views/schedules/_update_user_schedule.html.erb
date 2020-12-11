@@ -1,0 +1,17 @@
+<div class="card my-3 bg-white text-dark dashboard-right-card">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="mx-2">
+        <i class="far fa-calendar-plus fa-3x"></i>
+      </div>
+      <div class="mx-2 d-flex align-self-center">
+          <h3><strong>Mettre à jour mes disponibilités</strong></h3>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <%= render "index_schedules", local: @schedules %>
+    <%= render "new_schedule"%>
+    <%= render "delete_schedule" %>
+  </div>
+</div>
