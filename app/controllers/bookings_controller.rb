@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.lesson_id = params[:lesson_id]
     @booking.user_id = current_user.id
+    @booking.duration = 30
     
     if @booking.start_must_be_in_schedule
       
@@ -20,9 +21,9 @@ class BookingsController < ApplicationController
           Chatroom.create(identifier: SecureRandom.hex, booking_id: @booking.id)
           BookingMailer.send_email_confirm_to_user(booking: @booking).deliver_now
           BookingMailer.send_email_confirm_to_teacher(booking: @booking).deliver_now
-          @booking.split_and_create_schedule
+          @booking.booked_schedule
           flash[:success] = "La réservation a bien été prise en compte"
-          redirect_to current_user
+          redirect_to lesson_path(params[:lesson_id])
         else
           flash[:danger] = "La réservation n'a pas pu aboutir"
           redirect_back(fallback_location: root_path)
@@ -39,7 +40,7 @@ class BookingsController < ApplicationController
       Credit::Add.new(amount: @booking.price, user: @booking.student).call
       BookingMailer.send_cancel_booking_email_to_student(booking: @booking).deliver_now
       BookingMailer.send_cancel_booking_email_to_teacher(booking: @booking).deliver_now
-      @booking.create_schedule_after_cancelling
+      @booking.update_schedule_after_cancelling
       @booking.destroy
       respond_to do |format|
         format.html { redirect_to current_user, notice: "La réservation a bien été annulée" }
@@ -55,6 +56,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :duration)
+    params.require(:booking).permit(:start_date)
   end
 end
