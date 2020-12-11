@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  def to_param
+    username
+  end
+
   def role?
     role.instance_of?(String)
   end

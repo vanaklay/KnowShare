@@ -9,7 +9,7 @@
       </div>
       <div class="row pb-0 ml-auto mr-2 align-self-center">
         <div><input class="form-control mr-4" id="myInput" type="text" placeholder="Rechercher"> </div>
-        <div><%= link_to "Editer mon planning de disponibilités", user_schedules_path(current_user.id), class: "btn btn-outline-primary mr-2 ml-4" %></div>
+        <div><%= link_to "Editer mon planning de disponibilités", user_schedules_path(current_user.username), class: "btn btn-outline-primary mr-2 ml-4" %></div>
     </div>
   </div>
   
@@ -24,7 +24,7 @@
           <tr>
             <th>Date du cours</th>
             <th>Titre du cours</th>
-            <th>Nom du professeur</th>
+            <th>Nom de l'élève</th>
             <th>Durée du cours</th>
             <th>Actions</th>
           </tr>

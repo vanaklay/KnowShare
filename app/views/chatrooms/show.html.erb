@@ -15,6 +15,9 @@
   <%end%>
 </div>
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+<div class="container text-center">
+  <%= link_to  "Retour en arrière", :back, class:"btn btn-outline-info mb-3" %>
+</div>
 
 <%= javascript_tag 'messageForm()' %>
 <%= javascript_tag 'createMessageChannel()' %>

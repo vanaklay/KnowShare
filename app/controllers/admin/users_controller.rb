@@ -11,17 +11,6 @@ class Admin::UsersController < Admin::FacadeController
 
   def show
   end
-  
-  def edit
-  end
-
-  def update
-    if @user.update(user_params)
-      redirect_to @user, success: "Les informations de cet utilisateur ont été mises à jour"
-    else
-      render :edit
-    end
-  end
 
   def destroy
     @user.destroy
@@ -35,9 +24,5 @@ class Admin::UsersController < Admin::FacadeController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description, :avatar)
-  end
-
-  def find_user
-    @user = User.find(params[:id])
   end
 end

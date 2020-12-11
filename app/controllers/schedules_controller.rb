@@ -3,13 +3,14 @@ class SchedulesController < ApplicationController
   before_action :find_schedule, only: [:destroy]
 
   def index
-    @schedules = Schedule.where(user_id: params[:user_id]).all.order("start_time")
+    @schedules = Schedule.where(user_id: @user.id).all.order("start_time")
     @schedule = Schedule.new
   end
 
   def create
     @schedule = Schedule.new(start_params)
     @schedule.user_id = current_user.id
+    @schedule.end_time = @schedule.start_time + 30.minute
     if @schedule.start_must_be_outside_other_schedule(@schedule.start_time, @schedule.user_id)
       flash[:danger] = "Tu ne peux pas créer d'horaire dans une plage horaire existante"
       redirect_to user_schedules_path
@@ -35,7 +36,7 @@ class SchedulesController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by(username: params[:user_username])
   end
 
   def find_schedule
@@ -43,7 +44,7 @@ class SchedulesController < ApplicationController
   end
 
   def start_params
-    params.require(:schedule).permit(:start_time, :end_time)
+    params.require(:schedule).permit(:start_time)
   end
 
 end

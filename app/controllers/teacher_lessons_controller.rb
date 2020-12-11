@@ -14,7 +14,7 @@ class TeacherLessonsController < ApplicationController
   private
   
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by(username: params[:user_username])
   end
 
   def redirect_if_not_author
