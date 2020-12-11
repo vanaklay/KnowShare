@@ -1,10 +1,10 @@
 <% lesson = booking.lesson %>
 <tr>
-  <td><%= booking.display_start_date_time %></td>
-  <td><%= lesson.title %></td>
-  <td><%= booking.student.display_name %></td>
-  <td><%= booking.duration %> minutes</td>
-  <td>
+  <td class="align-middle"><%= booking.display_start_date_time %></td>
+  <td class="align-middle"><%= lesson.title %></td>
+  <td class="align-middle"><%= booking.student.display_name %></td>
+  <td class="align-middle"><%= booking.duration %> minutes</td>
+  <td class="align-middle">
     <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning" do %>
       <i class="fas fa-2x fa-comment-dots fa-1x"></i>
     <% end %>

@@ -29,13 +29,13 @@
       <tbody id="myTable">
       <% @bookings.each do |booking| %>
         <tr id="booking-<%= booking.id %>">
-          <td><%= booking.id %></td>
-          <td><%= booking.lesson_title %></td>
-          <td><%= booking.student.username %></td>
-          <td><%= booking.teacher.username %></td>
-          <td><%= booking.display_start_date_time %></td>
-          <td><%= booking.duration %> minutes</td>
-          <td>
+          <td class="align-middle"><%= booking.id %></td>
+          <td class="align-middle"><%= booking.lesson_title %></td>
+          <td class="align-middle"><%= booking.student.username %></td>
+          <td class="align-middle"><%= booking.teacher.username %></td>
+          <td class="align-middle"><%= booking.display_start_date_time %></td>
+          <td class="align-middle"><%= booking.duration %> minutes</td>
+          <td class="align-middle">
             <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cette réservation ?"}  do %>
               <i class="fas fa-times fa-2x"></i>
             <% end %>
