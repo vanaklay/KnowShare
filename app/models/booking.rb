@@ -76,6 +76,10 @@ class Booking < ApplicationRecord
     self_schedule = Schedule.where('start_time <= ? AND end_time >= ?', self.start_date, end_date)[0]
     self_schedule.update(title: "")
   end
+
+  def end_date
+    self.start_date + self.duration.minute
+  end
   
   private
   
@@ -90,37 +94,19 @@ class Booking < ApplicationRecord
   end
 
   def not_begun?
-    errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.") unless start_date > DateTime.now
+    errors.add(:start_date, ": Impossible d'annuler un cours qui a déjà commencé.") unless start_after_now?
   end
 
   def start_in_future
-    errors.add(:start_date, ": Impossible de réserver une leçon dans le passé") unless start_date > DateTime.now
+    errors.add(:start_date, ": Impossible de réserver une leçon dans le passé") unless start_after_now?
+  end
+
+  def start_after_now?
+    start_date > DateTime.now
   end
 
   def multiple_of_thirty?
     errors.add(:duration, ": Les cours se font par tranche de 30min") unless (duration % 30).zero?
   end
 
-  def end_date
-    self.start_date + self.duration.minute
-  end
-
-  def start_time(schedule)
-    schedule.start_time
-  end
-
-  def end_time(schedule)
-    schedule.end_time
-  end
-
-  def start_time_now
-    day_start = Date.today
-    if DateTime.now.minute < 30 
-      day_start = day_start + (DateTime.now.hour.hour) + 30.minute 
-      day_start
-    else
-      day_start = day_start + (DateTime.now.hour.hour) + 1.hour 
-      day_start
-    end
-  end
 end
