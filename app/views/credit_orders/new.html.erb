@@ -16,24 +16,24 @@
             <li>Nombre de crédit(s) : <%= @credits %></li>
           </ul>
           <%= form_tag credit_orders_path do %>
-          <%= hidden_field_tag 'amount', @amount %>
-          <%= hidden_field_tag 'credits', @credits %>
-          <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p><%= flash[:error] %></p>
-              </div>
-            <% end %>
-          </article>
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="Achat de crédits"
-            data-label="Payer par carte"
-            data-amount= <%= @stripe_amount %>
-            data-currency="eur"
-            data-locale="auto">
-          </script>
-        <% end %>
+            <%= hidden_field_tag 'amount', @amount %>
+            <%= hidden_field_tag 'credits', @credits %>
+            <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+            </article>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Achat de crédits"
+              data-label="Payer par carte"
+              data-amount= <%= @stripe_amount %>
+              data-currency="eur"
+              data-locale="auto">
+            </script>
+          <% end %>
         </div>
       </div>
     </div>

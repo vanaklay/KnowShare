@@ -1,2 +1,4 @@
-<h1>LessonSearches#index</h1>
-<p>Find me in app/views/lesson_searches/index.html.erb</p>
+<div class="container mb-5">
+  <h2 class="titleIndex my-5 mb-0 text-center">Tous les cours disponibles</h2>
+  <%= render "shared/index_cards", lessons: @searched_lessons %>
+</div>

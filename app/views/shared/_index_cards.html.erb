@@ -1,42 +1,52 @@
-<div class="mx-auto col-6 pb-5">
-  <input class="form-control" id="myLessonInput" type="text" placeholder="Rechercher parmi les cours">
+<div class="mx-auto col-6 mb-5 row">
+  <%= form_tag lesson_searches_path, method: :get do %>
+    <div><%= text_field_tag 'search_input', nil, placeholder: 'Rechercher un cours', class:"form-control mx-auto col-6" %></div>
+    <div><%= submit_tag "Rechercher", class:"mx-auto mb-5 btn btn-secondary text-dark" %></div>
+  <% end %>
 </div>
 
-<div class="row" id="myLessonSearch">
-  <%@lessons.each do |lesson| %>
-  <div class="col-sm-12 col-md-6 col-lg-4 my-2 lesson-to-search">
-    <div class="card bg-white text-dark">
-    <% if lesson.picture.attached? %>
-      <%= image_tag lesson.picture, class:"img-fluid img-lesson-card" %>
-    <% else %>
-      <%= image_tag  "https://cdn.pixabay.com/photo/2020/11/04/10/45/school-5711987_1280.jpg", class:"img-fluid img-lesson-card" %>
+<% if lessons.nil? || !lessons.any? %>
 
-    <% end %>
+AUCUN COURS
 
-      <h4 class="card-header bg-white text-center"><%= truncate(lesson.title, length: 25) %></h4>
-      <div class="card-body">
-        <div class="row mx-2">
-        <% if lesson.teacher.avatar.attached? %>
-          <%= image_tag lesson.teacher.avatar, class:"avatar mr-3 rounded-circle"%>
-        <% else %>
-          <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"avatar mr-3 rounded-circle"%>
-        <% end %>
-          <div class="d-flex flex-column">
-            <strong><%= lesson.teacher.display_name.titleize %></strong>
-            <% if lesson.bookings.count == 1%>
-              <h6 class="card-title text-muted">1 personne a suivi ce cours !</h6>
-            <% elsif lesson.bookings.count < 1 %>
-              <h6 class="card-title text-muted">Soit le premier à réserver ce cours !</h6>
-            <% else %>
-              <h6 class="card-title text-muted"><%= lesson.bookings.count %> personnes ont suivi ce cours !</h6>
-            <% end %>
+<% else %>
+
+  <div class="row">
+    <%lessons.each do |lesson| %>
+    <div class="col-sm-12 col-md-6 col-lg-4 my-2">
+      <div class="card bg-white text-dark">
+      <% if lesson.picture.attached? %>
+        <%= image_tag lesson.picture, class:"img-fluid img-lesson-card" %>
+      <% else %>
+        <%= image_tag  "https://cdn.pixabay.com/photo/2020/11/04/10/45/school-5711987_1280.jpg", class:"img-fluid img-lesson-card" %>
+
+      <% end %>
+
+        <h4 class="card-header bg-white text-center"><%= truncate(lesson.title, length: 25) %></h4>
+        <div class="card-body">
+          <div class="row mx-2">
+          <% if lesson.teacher.avatar.attached? %>
+            <%= image_tag lesson.teacher.avatar, class:"avatar mr-3 rounded-circle"%>
+          <% else %>
+            <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"avatar mr-3 rounded-circle"%>
+          <% end %>
+            <div class="d-flex flex-column">
+              <strong><%= lesson.teacher.display_name.titleize %></strong>
+              <% if lesson.bookings.count == 1%>
+                <h6 class="card-title text-muted">1 personne a suivi ce cours !</h6>
+              <% elsif lesson.bookings.count < 1 %>
+                <h6 class="card-title text-muted">Soit le premier à réserver ce cours !</h6>
+              <% else %>
+                <h6 class="card-title text-muted"><%= lesson.bookings.count %> personnes ont suivi ce cours !</h6>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="row justify-content-around">
-          <%= link_to  "En savoir plus", lesson_path(lesson.id), class:"btn btn-warning" %>
+          <div class="row justify-content-around">
+            <%= link_to  "En savoir plus", lesson_path(lesson.id), class:"btn btn-warning" %>
+          </div>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+<% end %>
