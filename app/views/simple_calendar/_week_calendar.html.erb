@@ -8,6 +8,14 @@
     </p>
     <%= link_to 'Suivant &nbsp; <i class="fas fa-arrow-circle-right"></i>'.html_safe, calendar.url_for_next_view, class: "btn text-info" %>
     </div>
+    <div class="row justify-content-center align-items-end">
+      <div class="bg-info text-white rounded-pill m-2">
+        <p class="text-center mb-0 p-2">Réservé</p>
+      </div>
+      <div class="bg-warning text-white rounded-pill m-2">
+        <p class="text-center p-2 m-0" >Disponible</p>
+      </div>
+    </div>
   </div>
 
   <table class="table table-striped">

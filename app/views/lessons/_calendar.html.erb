@@ -1,15 +1,15 @@
 <div class="card mb-3 bg-white text-dark">
   <h4 class="card-header bg-white text-center mt-3">Voici les disponibilités du prof</h4>
-  <div class="bg-dark text-white p-3 rounded">
+  <div class="bg-dark text-white p-3 rounded-bottom">
     <%= week_calendar(events: @schedules) do |date, schedules| %>
       <% schedules.each do |schedule| %>
         <% if schedule.is_booked? %>
-          <div class="bg-info text-white">
-            <p class="text-center">Réservé : <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
+          <div class="bg-info text-white rounded-pill mt-2">
+            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %></p>
           </div>
         <% else %>
-          <div class="bg-warning text-white">
-            <p class="text-center">Disponible : <%= schedule.start_time.strftime("%H:%M") %> à <%= schedule.end_time.strftime("%H:%M") %></p>
+          <div class="bg-warning text-white rounded-pill mt-2">
+            <p class="text-center py-2"><%= schedule.start_time.strftime("%H:%M") %></p>
           </div>
         <% end %>
       <% end %>
