@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @booking.lesson_id = params[:lesson_id]
     @booking.user_id = current_user.id
     @booking.duration = 30
+    @schedule = Schedule.where('start_time <= ? AND end_time >= ?', @booking.start_date, @booking.end_date)[0]
     
     if @booking.start_must_be_in_schedule
       
@@ -22,8 +23,16 @@ class BookingsController < ApplicationController
           BookingMailer.send_email_confirm_to_user(booking: @booking).deliver_now
           BookingMailer.send_email_confirm_to_teacher(booking: @booking).deliver_now
           @booking.booked_schedule
-          flash[:success] = "La réservation a bien été prise en compte"
-          redirect_to lesson_path(params[:lesson_id])
+          respond_to do |format|
+            format.html do 
+              flash[:success] = "La réservation a bien été prise en compte"
+              redirect_to lesson_path(params[:lesson_id])
+            end
+            format.js do
+              flash[:success] = "La réservation a bien été prise en compte"
+            end
+          end
+          
         else
           flash[:danger] = "La réservation n'a pas pu aboutir"
           redirect_back(fallback_location: root_path)

@@ -10,7 +10,7 @@
 
 .custom-section-jumbo {
   padding-top: 11rem;
-  padding-bottom: 6rem;
+  padding-bottom: 10rem;
 }
 
 .h2-jumbo {
@@ -50,7 +50,13 @@
   height: 4vw;
   border-radius: 50%;
   object-fit: cover;
+}
 
+@media (max-width: 992px) {
+  .navbar-avatar {
+    width: 8vw;
+    height: 8vw;
+  }
 }
 
 .profile-avatar{
