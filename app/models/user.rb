@@ -7,15 +7,15 @@ class User < ApplicationRecord
   validates :username,          presence: true,
                                 uniqueness: true,
                                 format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
-                                          message: 'Seuls les lettres et les chiffres sont acceptés'
+                                          message: ': seuls les lettres et les chiffres sont acceptés'
                                         }
 
   validates :first_name,        format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
-                                          message: 'Seuls les lettres et les chiffres sont acceptés'
+                                          message: 'Prénom : Seuls les lettres et les chiffres sont acceptés'
                                         }
-                                        
+
   validates :last_name,         format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
-                                          message: 'Seuls les lettres et les chiffres sont acceptés'
+                                          message: 'Nom : Seuls les lettres et les chiffres sont acceptés'
                                         }
 
   has_many  :lessons,           dependent: :destroy
