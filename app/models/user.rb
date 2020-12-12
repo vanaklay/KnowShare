@@ -4,20 +4,31 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username,  presence: true,
-                        uniqueness: true
+  validates :username,          presence: true,
+                                uniqueness: true,
+                                format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
+                                          message: 'Seuls les lettres et les chiffres sont acceptés'
+                                        }
 
-  has_many  :lessons, dependent: :destroy
-  has_many  :bookings, dependent: :destroy
-  has_many  :followed_lessons,
-            through: :bookings,
-            foreign_key: 'followed_lesson_id',
-            source: :lesson,
-            dependent: :destroy
+  validates :first_name,        format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
+                                          message: 'Seuls les lettres et les chiffres sont acceptés'
+                                        }
+                                        
+  validates :last_name,         format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
+                                          message: 'Seuls les lettres et les chiffres sont acceptés'
+                                        }
+
+  has_many  :lessons,           dependent: :destroy
+  has_many  :bookings,          dependent: :destroy
+  has_many  :followed_lessons,  through: :bookings,
+                                foreign_key: 'followed_lesson_id',
+                                source: :lesson,
+                                dependent: :destroy
   has_many :messages
-  has_many :chatrooms, through: :bookings, dependent: :destroy
-  has_many :schedules, dependent: :destroy
-  has_many :credit_orders, dependent: :destroy
+  has_many :chatrooms,          through: :bookings, 
+                                dependent: :destroy
+  has_many :schedules,          dependent: :destroy
+  has_many :credit_orders,      dependent: :destroy
 
   has_one_attached :avatar
 
