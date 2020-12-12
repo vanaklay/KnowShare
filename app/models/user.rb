@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  # To display user's username in the url instead of its id
   def to_param
     username
   end
@@ -45,36 +46,30 @@ class User < ApplicationRecord
   end
 
   def first_name?
-    first_name
+    first_name.nil? || first_name.split.count.zero? ? false : true
   end
 
   def display_first_name
-    if first_name?
-      first_name
-    else
-      'Pas encore de prénom !'
-    end
+    first_name? ? first_name : 'Pas encore de prénom !'
   end
 
   def last_name?
-    last_name
+    last_name.nil? || last_name.split.count.zero? ? false : true
   end
 
   def display_last_name
-    if last_name?
-      last_name
-    else
-      'Pas encore de nom !'
-    end
+    last_name? ? last_name : 'Pas encore de nom !'
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def display_name
-    if first_name?
-      if last_name?
-        "#{first_name} #{last_name}"
-      else
-        first_name
-      end
+    if first_name? && last_name?
+      full_name
+    elsif first_name?
+      first_name
     else
       username
     end
@@ -90,7 +85,7 @@ class User < ApplicationRecord
   end
 
   def description?
-    description
+    description.nil? || description.split.count.zero? ? false : true
   end
 
   def display_description
@@ -152,5 +147,4 @@ class User < ApplicationRecord
   def subscription_date
     created_at.strftime("%d/%m/%Y")
   end 
-
 end
