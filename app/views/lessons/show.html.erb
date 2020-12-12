@@ -17,13 +17,11 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12 p-0">
-        <% if @lesson.user.has_schedules? %>
-          <%= render "calendar", local: @schedules %>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 p-3">
+      <% if @lesson.user.has_schedules? %>
+        <%= render "calendar", local: @schedules %>
+      <% end %>
     </div>
   </div>
 </div>
