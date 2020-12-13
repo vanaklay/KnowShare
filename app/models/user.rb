@@ -4,23 +4,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username,  presence: true,
-                        uniqueness: true
-
-  has_many  :lessons, dependent: :destroy
-  has_many  :bookings, dependent: :destroy
-  has_many  :followed_lessons,
-            through: :bookings,
-            foreign_key: 'followed_lesson_id',
-            source: :lesson,
-            dependent: :destroy
+  validates :username,          presence: true,
+                                uniqueness: true
+  has_many  :lessons,           dependent: :destroy
+  has_many  :bookings,          dependent: :destroy
+  has_many  :followed_lessons,  through: :bookings,
+                                foreign_key: 'followed_lesson_id',
+                                source: :lesson,
+                                dependent: :destroy
   has_many :messages
-  has_many :chatrooms, through: :bookings, dependent: :destroy
-  has_many :schedules, dependent: :destroy
-  has_many :credit_orders, dependent: :destroy
+  has_many :chatrooms,          through: :bookings, 
+                                dependent: :destroy
+  has_many :schedules,          dependent: :destroy
+  has_many :credit_orders,      dependent: :destroy
 
   has_one_attached :avatar
 
+  # To display user's username in the url instead of its id
   def to_param
     username
   end
@@ -45,36 +45,30 @@ class User < ApplicationRecord
   end
 
   def first_name?
-    first_name
+    first_name.nil? || first_name.split.count.zero? ? false : true
   end
 
   def display_first_name
-    if first_name?
-      first_name
-    else
-      'Pas encore de prénom !'
-    end
+    first_name? ? first_name : 'Pas encore de prénom !'
   end
 
   def last_name?
-    last_name
+    last_name.nil? || last_name.split.count.zero? ? false : true
   end
 
   def display_last_name
-    if last_name?
-      last_name
-    else
-      'Pas encore de nom !'
-    end
+    last_name? ? last_name : 'Pas encore de nom !'
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def display_name
-    if first_name?
-      if last_name?
-        "#{first_name} #{last_name}"
-      else
-        first_name
-      end
+    if first_name? && last_name?
+      full_name
+    elsif first_name?
+      first_name
     else
       username
     end
@@ -90,7 +84,7 @@ class User < ApplicationRecord
   end
 
   def description?
-    description
+    description.nil? || description.split.count.zero? ? false : true
   end
 
   def display_description
@@ -152,5 +146,4 @@ class User < ApplicationRecord
   def subscription_date
     created_at.strftime("%d/%m/%Y")
   end 
-
 end
