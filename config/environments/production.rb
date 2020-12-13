@@ -42,8 +42,8 @@ Rails.application.configure do
   config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain
-  config.web_socket_server_url = "wss://knowshare-staging.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = [ 'https://knowshare-staging.herokuapp.com/', 'http://knowshare-staging.herokuapp.com/' ]
+  config.web_socket_server_url = "wss://knowshare-thp.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = [ 'https://knowshare-thp.herokuapp.com/', 'http://knowshare-thp.herokuapp.com/' ]
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
 
@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Change the host when work with staging or production
-  config.action_mailer.default_url_options = { :host => 'knowshare-staging.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'knowshare-thp.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
