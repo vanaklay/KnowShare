@@ -32,6 +32,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  before_save :capitalize_first_name, :capitalize_last_name
+
   # To display user's username in the url instead of its id
   def to_param
     username
@@ -64,12 +66,20 @@ class User < ApplicationRecord
     first_name? ? first_name : 'Pas encore de prénom !'
   end
 
+  def capitalize_first_name
+    self.first_name = self.first_name.capitalize if self.first_name?
+  end
+
   def last_name?
     last_name.nil? || last_name.split.count.zero? ? false : true
   end
 
   def display_last_name
     last_name? ? last_name : 'Pas encore de nom !'
+  end
+  
+  def capitalize_last_name
+    self.last_name = self.last_name.capitalize if self.last_name?
   end
 
   def full_name
