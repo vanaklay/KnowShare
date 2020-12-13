@@ -83,3 +83,4 @@ production:
   database: knowshare_production
   username: knowshare
   password: <%= ENV['KNOWSHARE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
