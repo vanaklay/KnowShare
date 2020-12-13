@@ -14,12 +14,11 @@
 
               <div class="form-group">
                 <label class="form-control-label"><strong>Pseudonyme</strong></label>
-                <p class="text-muted"><i>Seuls les chiffres et les lettres sont acceptés</i></p>
                 <div class="input-group input-group-transparent">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                   </div>
-                  <%= f.text_field :username, autofocus: true, class: "form-control", pattern: "^[a-zA-Z0-9]+$", placeholder: "Jeanmich", required: true %>
+                  <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "Jeanmich", required: true %>
                 </div>
               </div>
 
