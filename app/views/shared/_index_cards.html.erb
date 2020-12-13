@@ -24,7 +24,7 @@
                 <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"avatar mr-3 rounded-circle"%>
               <% end %>
               <div class="d-flex flex-column">
-                <strong><%= lesson.teacher.display_name.capitalize %></strong>
+                <strong><%= lesson.teacher.display_name %></strong>
                 <% if lesson.bookings.count == 1%>
                   <h6 class="card-title text-muted">1 personne a suivi ce cours !</h6>
                 <% elsif lesson.bookings.count < 1 %>
