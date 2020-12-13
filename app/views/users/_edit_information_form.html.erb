@@ -29,23 +29,21 @@
 
         <div class="form-group">
           <label class="form-control-label"><strong>Prénom</strong></label>
-          <p class="text-muted"><i>Seuls les chiffres et les lettres sont acceptés</i></p>
           <div class="input-group input-group-transparent">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-          <%= f.text_field :first_name, class: "form-control", pattern: "^[a-zA-Z0-9]+$", placeholder: "Prénom", autocomplete: "first_name" %>
+          <%= f.text_field :first_name, class: "form-control", placeholder: "Prénom", autocomplete: "first_name" %>
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-control-label"><strong>Nom</strong></label>
-          <p class="text-muted"><i>Seuls les chiffres et les lettres sont acceptés</i></p>
           <div class="input-group input-group-transparent">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <%= f.text_field :last_name, class: "form-control", pattern: "^[a-zA-Z0-9]+$", placeholder: "Nom", autocomplete: "last_name" %>
+            <%= f.text_field :last_name, class: "form-control", placeholder: "Nom", autocomplete: "last_name" %>
           </div>
         </div>
 

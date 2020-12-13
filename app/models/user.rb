@@ -5,19 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username,          presence: true,
-                                uniqueness: true,
-                                format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
-                                          message: ': seuls les lettres et les chiffres sont acceptés'
-                                        }
-
-  validates :first_name,        format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
-                                          message: 'Prénom : Seuls les lettres et les chiffres sont acceptés'
-                                        }
-
-  validates :last_name,         format: { with: /\A[a-zA-Z0-9 ]*\z/ ,
-                                          message: 'Nom : Seuls les lettres et les chiffres sont acceptés'
-                                        }
-
+                                uniqueness: true
   has_many  :lessons,           dependent: :destroy
   has_many  :bookings,          dependent: :destroy
   has_many  :followed_lessons,  through: :bookings,
