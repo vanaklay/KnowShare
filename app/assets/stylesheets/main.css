@@ -141,6 +141,16 @@
   object-fit: cover;
 }
 
+.lesson-card{
+  transition: 200ms;
+
+}
+
+.lesson-card:hover{
+  transform: scale(1.03);
+  box-shadow: 0 0 5px #F8F8F8;
+}
+
 /* USER PROFILE */
 
 .user-container {
