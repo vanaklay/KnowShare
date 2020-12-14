@@ -5,13 +5,13 @@
   <td class="align-middle"><%= booking.student.display_name %></td>
   <td class="align-middle"><%= booking.duration %> minutes</td>
   <td class="align-middle">
-    <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning" do %>
+    <%= link_to lesson_booking_chatroom_path(lesson_id: lesson.id, booking_id: booking.id, id: booking.chatroom.id), class:"mx-2 text-warning", title:"Messagerie instantanée" do %>
       <i class="fas fa-2x fa-comment-dots fa-1x"></i>
     <% end %>
-    <%= link_to lesson, class: "mx-2 text-info"  do %>
+    <%= link_to lesson, class: "mx-2 text-info", title:"Voir la leçon" do %>
       <i class="fas fa-2x fa-eye fa-1x"></i>
     <% end %>
-    <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?"}  do %>
+    <%= link_to lesson_booking_path(lesson.id, booking.id), class: "mx-2 text-danger", title:"Supprimer la réservation", method: :delete, data: {confirm: "Êtes-vous sûr(e) de vouloir annuler ce cours ?"}  do %>
       <i class="fas fa-2x fa-times fa-1x"></i>
     <% end %>
   </td>
