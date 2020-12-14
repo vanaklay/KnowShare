@@ -15,7 +15,7 @@
       <% if @lesson.bookings.count == 1%>
         <span>1 personne a suivi ce cours !</span>
       <% elsif @lesson.bookings.count < 1 %>
-        <span>Soit le premier à réserver ce cours !</span>
+        <span>Sois le premier à réserver ce cours !</span>
       <% else %>
         <span><%= @lesson.bookings.count %> personnes ont déjà suivi ce cours !</span>
       <% end %>

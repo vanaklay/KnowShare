@@ -36,7 +36,7 @@
           <td class="align-middle"><%= booking.display_start_date_time %></td>
           <td class="align-middle"><%= booking.duration %> minutes</td>
           <td class="align-middle">
-            <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cette réservation ?"}  do %>
+            <%= link_to admin_booking_path(booking.id), class: "mx-2 text-danger", title:"Supprimer la réservation", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer cette réservation ?"}  do %>
               <i class="fas fa-times fa-2x"></i>
             <% end %>
           </td>

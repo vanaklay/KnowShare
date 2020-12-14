@@ -8,7 +8,7 @@
 
     <%lessons.each do |lesson| %>
       <div class="col-sm-12 col-md-6 col-lg-4 my-2">
-        <div class="card bg-white text-dark">
+        <div class="card bg-white text-dark lesson-card">
           <% if lesson.picture.attached? %>
             <%= image_tag lesson.picture, class:"img-fluid img-lesson-card" %>
           <% else %>
@@ -18,17 +18,19 @@
           <h4 class="card-header bg-white text-center"><%= truncate(lesson.title, length: 25) %></h4>
           <div class="card-body">
             <div class="row mx-2">
-              <% if lesson.teacher.avatar.attached? %>
-                <%= image_tag lesson.teacher.avatar, class:"avatar mr-3 rounded-circle"%>
-              <% else %>
-                <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"avatar mr-3 rounded-circle"%>
-              <% end %>
-              <div class="d-flex flex-column">
+              <div class="col-3">
+                <% if lesson.teacher.avatar.attached? %>
+                  <%= image_tag lesson.teacher.avatar, class:"avatar mr-3 rounded-circle"%>
+                <% else %>
+                  <%= image_tag "https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", class:"avatar mr-3 rounded-circle"%>
+                <% end %>
+              </div>
+              <div class="d-flex flex-column col-9">
                 <strong><%= lesson.teacher.display_name %></strong>
                 <% if lesson.bookings.count == 1%>
                   <h6 class="card-title text-muted">1 personne a suivi ce cours !</h6>
                 <% elsif lesson.bookings.count < 1 %>
-                  <h6 class="card-title text-muted">Soit le premier à réserver ce cours !</h6>
+                  <h6 class="card-title text-muted">Sois le premier à réserver ce cours !</h6>
                 <% else %>
                   <h6 class="card-title text-muted"><%= lesson.bookings.count %> personnes ont suivi ce cours !</h6>
                 <% end %>
