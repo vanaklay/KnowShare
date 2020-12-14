@@ -30,13 +30,13 @@
           <td class="align-middle"><%= lesson.created_at.strftime('%d/%m/%Y') %></td>
           <td class="align-middle"><%= lesson.bookings.count %></td>
           <td class="align-middle">
-            <%= link_to lesson_path(lesson.id), class: "mx-2 text-danger", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
+            <%= link_to lesson_path(lesson.id), class: "mx-2 text-danger", title:"Supprimer le cours", method: :delete, remote: true, data: {confirm: "Es-tu sûr(e) de vouloir supprimer ce cours ?"}  do %>
               <i class="fas fa-2x fa-times"></i>
             <% end %>
-            <%= link_to lesson, class: "mx-2 text-info"  do %>
+            <%= link_to lesson, class: "mx-2 text-info", title:"Voir la leçon" do %>
               <i class="fas fa-2x fa-eye"></i>
             <% end %>
-            <%= link_to edit_lesson_path(lesson.id), class: "mx-2 text-warning"  do %>
+            <%= link_to edit_lesson_path(lesson.id), class: "mx-2 text-warning", title:"Modifer la leçon" do %>
               <i class="fas fa-2x fa-pencil-alt"></i>
             <% end %>
           </td>
