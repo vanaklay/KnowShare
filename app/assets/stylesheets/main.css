@@ -210,6 +210,16 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.box{
+  transition: 200ms;
+  
+}
+
+.box:hover{
+  transform: scale(1.03);
+}
+
 .wrapper .box {
   background: #fff;
   width: calc(33% - 10px);
@@ -256,9 +266,6 @@
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #fff;
-}
-.box:hover .content .image img {
-  border-color: #fff;
 }
 
 @media (max-width: 1045px) {
