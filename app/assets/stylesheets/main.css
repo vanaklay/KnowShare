@@ -105,6 +105,15 @@
   padding-top: 1rem;
 }
 
+.concept-card{
+  transition: 200ms;
+}
+
+.concept-card:hover{
+  transform: scale(1.03);
+
+}
+
 .row-footer {
   display: -ms-flexbox;
   display: flex;
