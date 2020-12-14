@@ -9,7 +9,12 @@
         <%= render "schedule_card", local: @lesson %>
       <% else %>
         <% if @lesson.user.has_schedules? %>
-          <%= render "calendar_lesson_show_card" %>
+          <% if user_signed_in? %>
+            <%= render "calendar_lesson_show_card" %>
+          <% else %>
+            <%= render "signin_cards" %>
+          <% end %>
+            
         <% else %>
           <%= render "wait_schedules_card" %>
         <% end %>
